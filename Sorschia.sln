@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.NS", "Sorschia.NS\Sorschia.NS.csproj", "{40317BDD-1AEA-4207-99F7-2CE68DDF0BFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia (.NET Standard)", "Sorschia (.NET Standard)\Sorschia (.NET Standard).csproj", "{DDC54CC5-F081-4327-A697-FFD2479E75BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{40317BDD-1AEA-4207-99F7-2CE68DDF0BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40317BDD-1AEA-4207-99F7-2CE68DDF0BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40317BDD-1AEA-4207-99F7-2CE68DDF0BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40317BDD-1AEA-4207-99F7-2CE68DDF0BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDC54CC5-F081-4327-A697-FFD2479E75BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC54CC5-F081-4327-A697-FFD2479E75BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC54CC5-F081-4327-A697-FFD2479E75BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC54CC5-F081-4327-A697-FFD2479E75BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
