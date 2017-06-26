@@ -5,9 +5,10 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Authors>John Josua R. Paderon</Authors>
     <Company>Sorschia</Company>
-    <Description />
+    <Description>Contains commonly used functionalities of every systems.</Description>
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageTags>Sorschia Core</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
