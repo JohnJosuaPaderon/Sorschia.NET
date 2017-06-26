@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Sorschia.Core.Entities;
+﻿using Sorschia.Core.Entities;
+using System.Text;
 
 namespace Sorschia.Core.EntityProcesses
 {
@@ -7,49 +7,64 @@ namespace Sorschia.Core.EntityProcesses
     {
         public Person Person { get; set; }
 
-        public void Dispose()
-        {
-            Person = null;
-        }
-
         public IDataProcessResult<string> Execute()
         {
             string data = null;
             ProcessResultStatus status = ProcessResultStatus.Undefined;
             string message = null;
 
-            Validate(ref status, ref message);
+            if (Validate(Person, ref status, ref message))
+            {
+                data = Construct(Person, ref status, ref message);
+            }
 
             Person = null;
             return new DataProcessResult<string>(data, status, message);
         }
 
-        private void Validate(ref ProcessResultStatus status, ref string message)
+        private static bool Validate(Person person, ref ProcessResultStatus status, ref string message)
         {
-            if (Person == null)
+            var returnValue = true;
+
+            if (person == null)
             {
                 status = ProcessResultStatus.Failed;
                 message = $"{nameof(Person)} is null.";
+                returnValue = false;
             }
-            else if (string.IsNullOrWhiteSpace(Person.MiddleName))
+
+            return returnValue;
+        }
+
+        private static string Construct(Person person, ref ProcessResultStatus status, ref string message)
+        {
+            var hasMiddleName = HasValue(person.MiddleName);
+
+            if (hasMiddleName)
+            {
+                var builder = new StringBuilder();
+
+                var splittedMiddleName = person.MiddleName.Split(' ');
+
+                foreach (var item in splittedMiddleName)
+                {
+                    AppendChar(builder, item);
+                }
+
+                status = ProcessResultStatus.Success;
+                return builder.ToString();
+            }
+            else
             {
                 status = ProcessResultStatus.Failed;
-                message = $"{nameof(Person)}.{nameof(Person.MiddleName)} is null or white space.";
+                message = "Middle initials cannot be constructed.";
+                return null;
             }
         }
 
-        private string Construct()
+        private static bool HasValue(string arg)
         {
-            var builder = new StringBuilder();
-
-            var splittedMiddleName = Person.MiddleName.Split(' ');
-
-            foreach (var item in splittedMiddleName)
-            {
-                AppendChar(builder, item);
-            }
-
-            return builder.ToString();
+            return !string.IsNullOrWhiteSpace(arg);
         }
 
         private static void AppendChar(StringBuilder builder, string item)
