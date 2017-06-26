@@ -9,6 +9,8 @@ namespace Sorschia.Core.Entities
         static Person()
         {
             NameManager = new PersonNameManager(
+                new ConstructPersonFullName(),
+                new ConstructPersonInformalFullName(),
                 new ConstructPersonMiddleInitials());
         }
 
@@ -19,6 +21,8 @@ namespace Sorschia.Core.Entities
         private string _MiddleInitials;
         private string _LastName;
         private string _NameSuffix;
+        private string _FullName;
+        private string _InformalFullName;
 
         private bool MiddleInitialsRefreshRequired;
         private bool FullNameRefreshRequired;
@@ -69,6 +73,72 @@ namespace Sorschia.Core.Entities
                 }
 
                 return _MiddleInitials;
+            }
+        }
+
+        public string LastName
+        {
+            get { return _LastName; }
+            set
+            {
+                if (_LastName != value)
+                {
+                    _LastName = value;
+                    FullNameRefreshRequired = true;
+                    InformalFullNameRefreshRequired = true;
+                }
+            }
+        }
+
+        public string NameSuffix
+        {
+            get { return _NameSuffix; }
+            set
+            {
+                if (_NameSuffix != value)
+                {
+                    _NameSuffix = value;
+                    FullNameRefreshRequired = true;
+                    InformalFullNameRefreshRequired = true;
+                }
+            }
+        }
+
+        public string FullName
+        {
+            get
+            {
+                if (FullNameRefreshRequired)
+                {
+                    var process = NameManager.ConstructFullName(this);
+
+                    if (process.Status == ProcessResultStatus.Success)
+                    {
+                        _FullName = process.Data;
+                        FullNameRefreshRequired = false;
+                    }
+                }
+
+                return _FullName;
+            }
+        }
+
+        public string InformalFullName
+        {
+            get
+            {
+                if (InformalFullNameRefreshRequired)
+                {
+                    var process = NameManager.ConstructInformalFullName(this);
+
+                    if (process.Status == ProcessResultStatus.Success)
+                    {
+                        _InformalFullName = process.Data;
+                        InformalFullNameRefreshRequired = false;
+                    }
+                }
+
+                return _InformalFullName;
             }
         }
     }

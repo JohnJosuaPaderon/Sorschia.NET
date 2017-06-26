@@ -1,33 +1,33 @@
 ﻿namespace Sorschia.Core.Entities
 {
-    public class Gender
+    public class UserType
     {
-        public static Gender Male { get; } = new Gender(nameof(Male));
-        public static Gender Female { get; } = new Gender(nameof(Female));
+        public static UserType Administrator { get; } = new UserType("Administrator");
+        public static UserType Guest { get; } = new UserType("Guest");
 
-        private Gender(string value)
+        protected UserType(string value)
         {
             Value = string.IsNullOrWhiteSpace(value) ? null : value.Trim();
         }
 
         public string Value { get; }
 
-        public static implicit operator Gender(string arg)
+        public static implicit operator UserType(string arg)
         {
-            return new Gender(arg);
+            return new UserType(arg);
         }
 
-        public static explicit operator string(Gender arg)
+        public static explicit operator string(UserType arg)
         {
             return arg?.Value;
         }
 
-        public static bool operator ==(Gender left, Gender right)
+        public static bool operator ==(UserType left, UserType right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Gender left, Gender right)
+        public static bool operator !=(UserType left, UserType right)
         {
             return !(left == right);
         }
@@ -38,7 +38,7 @@
             if (ReferenceEquals(this, obj)) return true;
             if (GetType() != obj.GetType()) return false;
 
-            var value = obj as Gender;
+            var value = obj as UserType;
             return Value.Equals(value.Value);
         }
 
