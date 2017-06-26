@@ -5,7 +5,7 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Authors>John Josua R. Paderon</Authors>
     <Company>Sorschia</Company>
-    <Description />
+    <Description>Contains basic requirements of every systems.</Description>
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <PackageTags>Sorschia</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
