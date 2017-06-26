@@ -9,13 +9,13 @@ namespace Sorschia.Entities
         IDataProcessResult<T> GetById(Tidentifier id);
     }
 
-    public interface IAsyncEntityManager<T, TIdentifier> : IDataManager<T>
+    public interface IAsyncEntityManager<T, TIdentifier> : IAsyncDataManager<T>
         where T : IEntity<TIdentifier>
     {
         Task<IDataProcessResult<T>> GetByIdAsync(TIdentifier id);
     }
 
-    public interface ICancellableAsyncEntityManager<T, TIdentifier> : IDataManager<T>
+    public interface ICancellableAsyncEntityManager<T, TIdentifier> : ICancellableAsyncDataManager<T>
         where T : IEntity<TIdentifier>
     {
         Task<IDataProcessResult<T>> GetByIdAsync(TIdentifier id, CancellationToken cancellationToken);
