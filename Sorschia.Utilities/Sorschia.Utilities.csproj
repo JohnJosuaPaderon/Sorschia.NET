@@ -5,7 +5,7 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Authors>John Josua R. Paderon</Authors>
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
-    <Description />
+    <Description>Contains commonly used utilities. e.g. Converters.</Description>
     <Company>Sorschia</Company>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageTags>Sorschia Utilities</PackageTags>
