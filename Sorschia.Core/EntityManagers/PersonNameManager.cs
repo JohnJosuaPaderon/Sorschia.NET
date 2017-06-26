@@ -7,15 +7,20 @@ namespace Sorschia.Core.EntityManagers
     public class PersonNameManager : IPersonNameManager
     {
         private IConstructPersonMiddleInitials ConstructPersonMiddleInitials { get; }
+        private IConstructPersonFullName ConstructPersonFullName { get; }
+        private IConstructPersonInformalFullName ConstructPersonInformalFullName { get; }
 
-        public PersonNameManager(IConstructPersonMiddleInitials constructPersonMiddleInitials)
+        public PersonNameManager(IConstructPersonFullName constructPersonFullName, IConstructPersonInformalFullName constructPersonInformalFullName, IConstructPersonMiddleInitials constructPersonMiddleInitials)
         {
+            ConstructPersonFullName = constructPersonFullName;
+            ConstructPersonInformalFullName = constructPersonInformalFullName;
             ConstructPersonMiddleInitials = constructPersonMiddleInitials;
         }
 
         public IDataProcessResult<string> ConstructFullName(Person person)
         {
-            throw new NotImplementedException();
+            ConstructPersonFullName.Person = person;
+            return ConstructPersonFullName.Execute();
         }
 
         public IDataProcessResult<string> ConstructInformalFullName(Person person)
