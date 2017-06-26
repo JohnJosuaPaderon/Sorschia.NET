@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <Authors>John Josua R. Paderon</Authors>
+    <Company>Sorschia</Company>
+    <Description />
+    <PackageTags>Sorschia Entities</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
+  </ItemGroup>
+
+</Project>
