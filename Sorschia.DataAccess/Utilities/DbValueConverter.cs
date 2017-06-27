@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sorschia
+namespace Sorschia.DataAccess.Utilities
 {
     public static partial class DbValueConverter
     {

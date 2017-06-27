@@ -43,37 +43,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbValueConverter.cs" />
-    <Compile Include="DbValueConverter.Definitions.Boolean.cs" />
-    <Compile Include="DbValueConverter.Definitions.Byte.cs" />
-    <Compile Include="DbValueConverter.Definitions.Char.cs" />
-    <Compile Include="DbValueConverter.Definitions.DateTime.cs" />
-    <Compile Include="DbValueConverter.Definitions.Decimal.cs" />
-    <Compile Include="DbValueConverter.Definitions.Double.cs" />
-    <Compile Include="DbValueConverter.Definitions.Int16.cs" />
-    <Compile Include="DbValueConverter.Definitions.Int32.cs" />
-    <Compile Include="DbValueConverter.Definitions.Int64.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableBoolean.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableByte.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableChar.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableDateTime.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableDecimal.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableDouble.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableInt16.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableInt32.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableInt64.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableSByte.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableSingle.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableUInt16.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableUInt32.cs" />
-    <Compile Include="DbValueConverter.Definitions.NullableUInt64.cs" />
-    <Compile Include="DbValueConverter.Definitions.SByte.cs" />
-    <Compile Include="DbValueConverter.Definitions.Single.cs" />
-    <Compile Include="DbValueConverter.Definitions.String.cs" />
-    <Compile Include="DbValueConverter.Definitions.UInt16.cs" />
-    <Compile Include="DbValueConverter.Definitions.UInt32.cs" />
-    <Compile Include="DbValueConverter.Definitions.UInt64.cs" />
+    <Compile Include="Utilities\DbValueConverter.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Boolean.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Byte.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Char.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.DateTime.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Decimal.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Double.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Int16.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Int32.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Int64.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableBoolean.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableByte.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableChar.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableDateTime.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableDecimal.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableDouble.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableInt16.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableInt32.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableInt64.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableSByte.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableSingle.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableUInt16.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableUInt32.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.NullableUInt64.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.SByte.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.Single.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.String.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.UInt16.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.UInt32.cs" />
+    <Compile Include="Utilities\DbValueConverter.Definitions.UInt64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rdbms\IDbConnectionEstablisher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
@@ -84,5 +85,6 @@
       <Name>Sorschia</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

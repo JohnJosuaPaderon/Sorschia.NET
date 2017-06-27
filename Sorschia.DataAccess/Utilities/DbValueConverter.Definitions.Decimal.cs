@@ -1,7 +1,7 @@
 ﻿using Sorschia.Utilities;
 using System;
 
-namespace Sorschia
+namespace Sorschia.DataAccess.Utilities
 {
     partial class DbValueConverter
     {
