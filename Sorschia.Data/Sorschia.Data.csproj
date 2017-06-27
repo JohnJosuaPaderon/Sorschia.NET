@@ -1,14 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
     <ApplicationIcon>logo.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>John Josua R. Paderon</Authors>
     <Company>Sorschia</Company>
-    <Description>Contains basic requirements of every systems.</Description>
+    <Description>Contains data access basics.</Description>
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
-    <PackageTags>Sorschia</PackageTags>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>

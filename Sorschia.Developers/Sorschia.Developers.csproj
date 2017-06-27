@@ -5,14 +5,13 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Authors>John Josua R. Paderon</Authors>
     <Company>Sorschia</Company>
-    <Description>Contains functionalities related to entities.</Description>
-    <PackageTags>Sorschia Entities</PackageTags>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>Contains functionalities to support development teams.</Description>
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>

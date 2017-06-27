@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security;
 
 namespace Sorschia.Core.Entities
 {
@@ -10,8 +11,8 @@ namespace Sorschia.Core.Entities
         }
 
         public User Owner { get; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public SecureString SecureUsername { get; set; }
+        public SecureString SecurePassword { get; set; }
 
         public static bool operator ==(UserCredentials left, UserCredentials right)
         {
