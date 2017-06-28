@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sorschia.DataAccess.Rdbms
 {
-    public interface IDbFactory<TCommand, TParameter, TDataReader>
+    public interface IDbHelper<TCommand, TParameter, TDataReader>
         where TCommand : DbCommand
         where TParameter : DbParameter
         where TDataReader : DbDataReader
@@ -18,7 +18,7 @@ namespace Sorschia.DataAccess.Rdbms
         IDataProcessResult<T> ExecuteScalar<T>(IDbQueryInfo<TCommand, TParameter> queryInfo, Func<object, T> converter);
     }
 
-    public interface IAsyncDbFactory<TCommand, TParameter, TDataReader>
+    public interface IAsyncDbHelper<TCommand, TParameter, TDataReader>
         where TCommand : DbCommand
         where TParameter : DbParameter
         where TDataReader : DbDataReader
@@ -28,6 +28,15 @@ namespace Sorschia.DataAccess.Rdbms
         Task<IDataProcessResult<T>> ExecuteNonQueryAsync<T>(IDbQueryInfo<TCommand, TParameter> queryInfo);
         Task<IDataProcessResult<T>> ExecuteReaderAsync<T>(IDbQueryInfo<TCommand, TParameter> queryInfo, Func<TDataReader, T> getFromReader);
         Task<IDataProcessResult<T>> ExecuteReaderAsync<T>(IDbQueryInfo<TCommand, TParameter> queryInfo, Func<TDataReader, Task<T>> getFromReaderAsync);
+        Task<IEnumerableDataProcessResult<T>> ExecuteReaderEnumerable<T>(IDbQueryInfo<TCommand, TParameter> queryInfo, Func<TDataReader, T> getFromReader);
+        Task<IEnumerableDataProcessResult<T>> ExecuteReaderEnumerable<T>(IDbQueryInfo<TCommand, TParameter> queryInfo, Func<TDataReader, Task<T>> getFromReaderAsync);
+    }
+
+    public interface ICancellableAsyncDbHelper<TCommand, TParameter, TDataReader>
+        where TCommand : DbCommand
+        where TParameter : DbParameter
+        where TDataReader : DbDataReader
+    {
 
     }
 }
