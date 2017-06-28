@@ -9,6 +9,10 @@
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <PackageTags>Sorschia</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/tree/master/Sorschia</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
 </Project>
