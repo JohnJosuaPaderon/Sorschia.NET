@@ -8,6 +8,11 @@
     <Description>Contains functionalities to support development teams.</Description>
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/tree/master/Sorschia.Developers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET</RepositoryUrl>
+    <PackageTags>Sorschia Developers</PackageTags>
+    <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
