@@ -1,4 +1,6 @@
-﻿namespace Sorschia
+﻿using System;
+
+namespace Sorschia
 {
     public struct DataProcessResult<T> : IDataProcessResult<T>
     {
@@ -6,27 +8,37 @@
         {
         }
 
+        public DataProcessResult(Exception exception) : this(default(T), ProcessResultStatus.Failed, "An exception has been thrown.", exception)
+        {
+        }
+
+        public DataProcessResult(string message, Exception exception) : this(default(T), ProcessResultStatus.Failed, message, exception)
+        {
+        }
+
         public DataProcessResult(T data, ProcessResultStatus status) : this(data, status, null)
         {
-
         }
 
-        public DataProcessResult(ProcessResultStatus status, string message)
+        public DataProcessResult(ProcessResultStatus status, string message) : this(default(T), status, message)
         {
-            Data = default(T);
-            Status = status;
-            Message = message;
         }
 
-        public DataProcessResult(T data, ProcessResultStatus status, string message)
+        public DataProcessResult(T data, ProcessResultStatus status, string message) : this(data, status, message, null)
+        {
+        }
+
+        public DataProcessResult(T data, ProcessResultStatus status, string message, Exception exception)
         {
             Data = data;
             Status = status;
             Message = message;
+            Exception = exception;
         }
 
         public T Data { get; }
         public ProcessResultStatus Status { get; }
         public string Message { get; }
+        public Exception Exception { get; }
     }
 }

@@ -6,9 +6,4 @@ namespace Sorschia
     {
         T Data { get; }
     }
-
-    public interface IEnumerableDataProcessResult<T> : IProcessResult
-    {
-        IEnumerable<T> DataList { get; }
-    }
 }
