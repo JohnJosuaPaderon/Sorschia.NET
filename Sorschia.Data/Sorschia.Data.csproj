@@ -16,7 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Rdbms\SqlHelper.Definitions.IAsyncDbHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.3.1" />
     <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
   </ItemGroup>
 
