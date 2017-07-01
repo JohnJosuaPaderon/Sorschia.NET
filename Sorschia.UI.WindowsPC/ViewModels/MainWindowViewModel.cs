@@ -1,6 +1,7 @@
 ﻿using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using System.Windows;
 
 namespace Sorschia.ViewModels
 {
@@ -17,6 +18,20 @@ namespace Sorschia.ViewModels
 
         private readonly IRegionManager RegionManager;
         private readonly IEventAggregator EventAggregator;
+
+        private string _Title = "Sorschia";
+        public string Title
+        {
+            get { return _Title; }
+            set { SetProperty(ref _Title, value); }
+        }
+
+        private WindowState _WindowState = WindowState.Maximized;
+        public WindowState WindowState
+        {
+            get { return _WindowState; }
+            set { SetProperty(ref _WindowState, value); }
+        }
 
         public void Load()
         {
