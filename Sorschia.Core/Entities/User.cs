@@ -1,5 +1,6 @@
 ﻿using Sorschia.Entities;
 using System;
+using System.Security;
 
 namespace Sorschia.Core.Entities
 {
@@ -14,6 +15,8 @@ namespace Sorschia.Core.Entities
             Owner = owner ?? throw new ArgumentNullException(nameof(owner));
         }
 
+        public SecureString SecureUsername { get; set; }
+        public SecureString SecurePassword { get; set; }
         public UserStatus Status { get; set; }
         public UserType Type { get; set; }
         public Person Owner { get; }
