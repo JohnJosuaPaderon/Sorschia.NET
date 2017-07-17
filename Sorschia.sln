@@ -1,57 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.Entities", "Sorschia.Entities\Sorschia.Entities.csproj", "{8ABE3065-690F-4183-8719-6091E4E2571B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia", "Sorschia\Sorschia.csproj", "{E05072D5-9C72-49E9-8F42-B63843105004}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.Core", "Sorschia.Core\Sorschia.Core.csproj", "{44FE1A5E-365A-4359-AEF9-5CAFFFDE97C0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.Data", "Sorschia.Data\Sorschia.Data.csproj", "{8FBDF3BC-A7D9-45B4-8CFB-12968F08B4DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.UI.WindowsPC", "Sorschia.UI.WindowsPC\Sorschia.UI.WindowsPC.csproj", "{05C7A049-AC3C-4E9D-AB68-CD049B86470C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{256A6DE9-CB04-4628-AD4A-2D56F135727D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.Tests.WindowsPCTest", "Sorschia.Tests.WindowsPCTest\Sorschia.Tests.WindowsPCTest.csproj", "{A1713320-9953-4269-961E-CD1F01DA8B7C}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8ABE3065-690F-4183-8719-6091E4E2571B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ABE3065-690F-4183-8719-6091E4E2571B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ABE3065-690F-4183-8719-6091E4E2571B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ABE3065-690F-4183-8719-6091E4E2571B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E05072D5-9C72-49E9-8F42-B63843105004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E05072D5-9C72-49E9-8F42-B63843105004}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E05072D5-9C72-49E9-8F42-B63843105004}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E05072D5-9C72-49E9-8F42-B63843105004}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44FE1A5E-365A-4359-AEF9-5CAFFFDE97C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44FE1A5E-365A-4359-AEF9-5CAFFFDE97C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44FE1A5E-365A-4359-AEF9-5CAFFFDE97C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44FE1A5E-365A-4359-AEF9-5CAFFFDE97C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FBDF3BC-A7D9-45B4-8CFB-12968F08B4DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FBDF3BC-A7D9-45B4-8CFB-12968F08B4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FBDF3BC-A7D9-45B4-8CFB-12968F08B4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FBDF3BC-A7D9-45B4-8CFB-12968F08B4DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05C7A049-AC3C-4E9D-AB68-CD049B86470C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05C7A049-AC3C-4E9D-AB68-CD049B86470C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05C7A049-AC3C-4E9D-AB68-CD049B86470C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05C7A049-AC3C-4E9D-AB68-CD049B86470C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1713320-9953-4269-961E-CD1F01DA8B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1713320-9953-4269-961E-CD1F01DA8B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1713320-9953-4269-961E-CD1F01DA8B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1713320-9953-4269-961E-CD1F01DA8B7C}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A1713320-9953-4269-961E-CD1F01DA8B7C} = {256A6DE9-CB04-4628-AD4A-2D56F135727D}
 	EndGlobalSection
 EndGlobal
