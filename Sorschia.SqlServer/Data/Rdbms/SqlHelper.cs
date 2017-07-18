@@ -209,32 +209,140 @@ namespace Sorschia.Data.Rdbms
 
         public IProcessResult<T> ExecuteReader<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, IDataConverter<T, SqlDataReader> converter)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = ConnectionEstablisher.Establish())
+                {
+                    using (var command = queryInfo.CreateCommand(connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                return converter.FromReader(reader);
+                            }
+                            else
+                            {
+                                return new ProcessResult<T>(ProcessResultStatus.NoData, "No result.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ProcessResult<T>(ex);
+            }
         }
 
-        public Task<IProcessResult<T>> ExecuteReaderAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, IDataConverter<T, SqlDataReader> converter)
+        public async Task<IProcessResult<T>> ExecuteReaderAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, IDataConverter<T, SqlDataReader> converter)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = await ConnectionEstablisher.EstablishAsync())
+                {
+                    using (var command = queryInfo.CreateCommand(connection))
+                    {
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            if (reader.HasRows)
+                            {
+                                return await converter.FromReaderAsync(reader);
+                            }
+                            else
+                            {
+                                return new ProcessResult<T>(ProcessResultStatus.NoData, "No result.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ProcessResult<T>(ex);
+            }
         }
 
-        public Task<IProcessResult<T>> ExecuteReaderAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, IDataConverter<T, SqlDataReader> converter, CancellationToken cancellationToken)
+        public async Task<IProcessResult<T>> ExecuteReaderAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, IDataConverter<T, SqlDataReader> converter, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = await ConnectionEstablisher.EstablishAsync(cancellationToken))
+                {
+                    using (var command = queryInfo.CreateCommand(connection))
+                    {
+                        using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+                        {
+                            if (reader.HasRows)
+                            {
+                                return await converter.FromReaderAsync(reader, cancellationToken);
+                            }
+                            else
+                            {
+                                return new ProcessResult<T>(ProcessResultStatus.NoData, "No result.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ProcessResult<T>(ex);
+            }
         }
 
         public IProcessResult<T> ExecuteScalar<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, Func<object, T> converter)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = ConnectionEstablisher.Establish())
+                {
+                    using (var command = queryInfo.CreateCommand(connection))
+                    {
+                        return new ProcessResult<T>(converter(command.ExecuteScalar()), ProcessResultStatus.Success);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ProcessResult<T>(ex);
+            }
         }
 
-        public Task<IProcessResult<T>> ExecuteScalarAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, Func<object, T> converter)
+        public async Task<IProcessResult<T>> ExecuteScalarAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, Func<object, T> converter)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = await ConnectionEstablisher.EstablishAsync())
+                {
+                    using (var command = queryInfo.CreateCommand(connection))
+                    {
+                        return new ProcessResult<T>(converter(await command.ExecuteScalarAsync()), ProcessResultStatus.Success);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ProcessResult<T>(ex);
+            }
         }
 
-        public Task<IProcessResult<T>> ExecuteScalarAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, Func<object, T> converter, CancellationToken cancellationToken)
+        public async Task<IProcessResult<T>> ExecuteScalarAsync<T>(IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter> queryInfo, Func<object, T> converter, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = await ConnectionEstablisher.EstablishAsync(cancellationToken))
+                {
+                    using (var command = queryInfo.CreateCommand(connection))
+                    {
+                        return new ProcessResult<T>(converter(await command.ExecuteScalarAsync(cancellationToken)), ProcessResultStatus.Success);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ProcessResult<T>(ex);
+            }
         }
     }
 }
