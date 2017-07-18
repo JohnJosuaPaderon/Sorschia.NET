@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Rdbms\" />
+  </ItemGroup>
+
 </Project>
