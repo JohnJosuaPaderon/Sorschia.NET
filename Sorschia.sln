@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia", "Sorschia\Sorschia.csproj", "{FB011A6C-26D0-4657-8DB6-CAE487B1692D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia", "Sorschia\Sorschia.csproj", "{FB011A6C-26D0-4657-8DB6-CAE487B1692D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.SqlServer", "Sorschia.SqlServer\Sorschia.SqlServer.csproj", "{FD7543BB-B43F-4FAB-9047-EEF12DB9D678}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.SqlServer", "Sorschia.SqlServer\Sorschia.SqlServer.csproj", "{FD7543BB-B43F-4FAB-9047-EEF12DB9D678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.MySql", "Sorschia.MySql\Sorschia.MySql.csproj", "{8CCEB333-BA97-4F59-9EBD-958CB4B5AE73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.MySql", "Sorschia.MySql\Sorschia.MySql.csproj", "{8CCEB333-BA97-4F59-9EBD-958CB4B5AE73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
