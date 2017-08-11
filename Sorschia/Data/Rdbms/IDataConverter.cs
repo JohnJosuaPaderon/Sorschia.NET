@@ -15,4 +15,14 @@ namespace Sorschia.Data.Rdbms
         Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(TDataReader reader);
         Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(TDataReader reader, CancellationToken cancellationToken);
     }
+
+    public interface IDataConverter<T>
+    {
+        IProcessResult<T> FromReader(DbDataReader reader);
+        Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader);
+        Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, CancellationToken cancellationToken);
+        IEnumerableProcessResult<T> EnumerableFromReader(DbDataReader reader);
+        Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader);
+        Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken);
+    }
 }
