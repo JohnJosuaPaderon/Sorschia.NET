@@ -9,8 +9,6 @@ namespace Sorschia.Extensions
         public static IServiceCollection UseSqlServer(this IServiceCollection services)
         {
             services.AddSingleton<IDbConnectionEstablisher<SqlConnection>, SqlConnectionEstablisher>();
-            services.AddSingleton<ISqlConnectionEstablisher, SqlConnectionEstablisher>();
-            services.AddSingleton<ISqlHelper, SqlHelper>();
 
             return services;
         }
