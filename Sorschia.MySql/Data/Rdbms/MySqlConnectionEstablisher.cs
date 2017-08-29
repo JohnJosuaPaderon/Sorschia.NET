@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sorschia.Data.Rdbms
 {
-    public sealed class MySqlConnectionEstablisher : IMySqlConnectionEstablisher
+    public sealed class MySqlConnectionEstablisher : IDbConnectionEstablisher<MySqlConnection>
     {
         private readonly ConnectionString ConnectionString;
 
