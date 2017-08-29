@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Sorschia</RootNamespace>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
@@ -16,10 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Rdbms\" />
   </ItemGroup>
 
 </Project>
