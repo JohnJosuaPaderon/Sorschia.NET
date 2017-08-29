@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Sorschia.Data.Rdbms
 {
-    public sealed class SqlQueryInfo : ISqlQueryInfo
+    public sealed class SqlQueryInfo : IDbQueryInfo<SqlConnection, SqlCommand, SqlParameter>
     {
         public List<SqlParameter> Parameters { get; } = new List<SqlParameter>();
 
@@ -27,7 +27,7 @@ namespace Sorschia.Data.Rdbms
         }
     }
 
-    public sealed class SqlQueryInfo<T> : ISqlQueryInfo<T>
+    public sealed class SqlQueryInfo<T> : IDbQueryInfo<T, SqlConnection, SqlCommand, SqlParameter>
     {
         public List<SqlParameter> Parameters { get; } = new List<SqlParameter>();
 
