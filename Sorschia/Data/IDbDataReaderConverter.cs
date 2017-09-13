@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sorschia.Data
 {
-    public interface IReaderToDataConverter<T>
+    public interface IDbDataReaderConverter<T>
     {
         IProcessResult<T> FromReader(DbDataReader reader);
         Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader);
