@@ -10,7 +10,7 @@ namespace Sample.WindowsFormsApplication
         {
             base.ConfigureServices(services);
             
-            services.UseSqlServer();
+            services.AddSqlServer();
         }
 
 
