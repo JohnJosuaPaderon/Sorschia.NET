@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sorschia;
+using Sorschia.Data;
+using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Sample.WindowsFormsApplication
@@ -15,6 +11,11 @@ namespace Sample.WindowsFormsApplication
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var dbHelper = SorschiaApp.Resolve<IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter>>();
         }
     }
 }
