@@ -2,11 +2,14 @@
 
 namespace Sorschia.Data
 {
-    public interface IDbCommandProvider<TCommand> where TCommand : DbCommand
+    public interface IDbCommandProvider<TConnection, TTransaction, TCommand>
+        where TConnection : DbConnection
+        where TCommand : DbCommand
     {
-        TCommand Create<TParameter>(IQuery<TParameter> query)
+        TCommand Create<TParameter>(TConnection connection, IQuery<TParameter> query)
             where TParameter : IQueryParameter;
-        IAggregateDbCommand<TCommand> Create<TParameter>(IAggregateQuery<TParameter> aggregateQuery)
+
+        TCommand Create<TParameter>(TConnection connection, TTransaction transaction, IQuery<TParameter> query)
             where TParameter : IQueryParameter;
     }
 }

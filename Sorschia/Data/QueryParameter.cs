@@ -6,7 +6,7 @@
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new SorschiaException(SorschiaExceptionType.InvalidQueryParameterName);
+                throw new SorschiaException(SorschiaExceptionType.InvalidValue);
             }
         }
 

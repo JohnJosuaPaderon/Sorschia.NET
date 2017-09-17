@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Collections.Generic;
+using System.Data.Common;
 
 namespace Sorschia.Data
 {
@@ -8,6 +9,7 @@ namespace Sorschia.Data
         string CommandText { get; set; }
         QueryType Type { get; set; }
         string ConnectionStringKey { get; set; }
+        Dictionary<string, object> BindingSource { get; set; }
         IQueryParameterCollection<TParameter> Parameters { get; }
     }
 

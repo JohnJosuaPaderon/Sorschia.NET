@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Collections.Generic;
+using System.Data.Common;
 
 namespace Sorschia.Data
 {
@@ -8,11 +9,13 @@ namespace Sorschia.Data
         public Query()
         {
             Parameters = new QueryParameterCollection<TParameter>();
+            BindingSource = new Dictionary<string, object>();
         }
 
         public string CommandText { get; set; }
         public QueryType Type { get; set; }
         public string ConnectionStringKey { get; set; }
+        public Dictionary<string, object> BindingSource { get; set; }
         public IQueryParameterCollection<TParameter> Parameters { get; }
 
         public static bool operator ==(Query<TParameter> left, Query<TParameter> right)
