@@ -5,17 +5,17 @@ namespace Sorschia
     [Serializable]
     public sealed class SorschiaException : Exception
     {
-        internal SorschiaException(SorschiaExceptionType type = SorschiaExceptionType.Unknown)
+        public SorschiaException(SorschiaExceptionType type = SorschiaExceptionType.Undefined)
         {
             Type = type;
         }
 
-        internal SorschiaException(string message, SorschiaExceptionType type = SorschiaExceptionType.Unknown) : base(message)
+        public SorschiaException(string message, SorschiaExceptionType type = SorschiaExceptionType.Undefined) : base(message)
         {
             Type = type;
         }
 
-        internal SorschiaException(string message, Exception innerException, SorschiaExceptionType type = SorschiaExceptionType.Unknown) : base(message, innerException)
+        public SorschiaException(string message, Exception innerException, SorschiaExceptionType type = SorschiaExceptionType.Undefined) : base(message, innerException)
         {
             Type = type;
         }
