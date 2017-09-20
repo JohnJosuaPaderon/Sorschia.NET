@@ -3,14 +3,16 @@ using System;
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class Project : Entity<long>
+    public class Assignment : Entity<long>
     {
-        public string Name { get; set; }
         public ValueRange<DateTime> TimeFrame { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public AssignmentStatus Status { get; set; }
 
         public override string ToString()
         {
-            return Name;
+            return Title;
         }
     }
 }
