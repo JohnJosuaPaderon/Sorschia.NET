@@ -3,7 +3,7 @@ using System;
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class Team : Entity<int>
+    public class Team : Entity<int>, ITeam
     {
         public Team()
         {
@@ -13,7 +13,7 @@ namespace Sorschia.DevTeam.Entities
         public string Name { get; set; }
         public DateTime EstablishDate { get; set; }
 
-        public IEntityCollection<TeamMember, long> Members { get; }
+        public ITeamMemberCollection Members { get; }
 
         public override string ToString()
         {

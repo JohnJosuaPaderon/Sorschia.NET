@@ -2,7 +2,7 @@
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class Member : Entity<long>
+    public class Member : Entity<long>, IMember
     {
         public Member()
         {
@@ -11,8 +11,7 @@ namespace Sorschia.DevTeam.Entities
 
         public string Name { get; set; }
         public Role Role { get; set; }
-
-        public IEntityCollection<Team, int> Teams { get; }
+        public ITeamCollection Teams { get; }
 
         public override string ToString()
         {

@@ -2,16 +2,16 @@
 
 namespace Sorschia.DevTeam.Entities
 {
-    public sealed class TeamMemberCollection : EntityCollection<TeamMember, long>, ITeamMemberCollection
+    public sealed class TeamMemberCollection : EntityCollection<ITeamMember, long>, ITeamMemberCollection
     {
         public TeamMemberCollection(Team team)
         {
             Team = team ?? throw new SorschiaException(nameof(team), SorschiaExceptionType.UnexpectedNull);
         }
 
-        public Team Team { get; }
+        public ITeam Team { get; }
 
-        protected override void UnsafeAdd(TeamMember item)
+        protected override void UnsafeAdd(ITeamMember item)
         {
             if (item.Team != Team)
             {
@@ -26,7 +26,7 @@ namespace Sorschia.DevTeam.Entities
             base.UnsafeAdd(item);
         }
 
-        protected override bool UnsafeRemove(TeamMember item)
+        protected override bool UnsafeRemove(ITeamMember item)
         {
             item.Team = null;
 

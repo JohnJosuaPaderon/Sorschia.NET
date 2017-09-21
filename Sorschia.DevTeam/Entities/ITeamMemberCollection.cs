@@ -2,8 +2,8 @@
 
 namespace Sorschia.DevTeam.Entities
 {
-    public interface ITeamMemberCollection : IEntityCollection<TeamMember, long>
+    public interface ITeamMemberCollection : IEntityCollection<ITeamMember, long>
     {
-        Team Team { get; }
+        ITeam Team { get; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Sorschia.DevTeam.Entities
 {
-    public sealed class TeamCollection : EntityCollection<Team, int>
+    public sealed class TeamCollection : EntityCollection<ITeam, int>, ITeamCollection
     {
     }
 }

@@ -1,14 +1,10 @@
-﻿using Sorschia.Entities;
-
-namespace Sorschia.DevTeam.Entities
+﻿namespace Sorschia.DevTeam.Entities
 {
-    public class Role : Entity<int>
+    public enum Role
     {
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        TeamLeader,
+        ProjectManager,
+        Developer,
+        UiDesigner
     }
 }
