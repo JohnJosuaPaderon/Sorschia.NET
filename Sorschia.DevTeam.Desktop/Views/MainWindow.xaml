@@ -12,7 +12,8 @@
                      prism:ViewModelLocator.AutoWireViewModel="True"
                      Title="Sorschia Dev-Team" WindowState="Maximized"
                      TitlebarHeight="40"
-                     FontFamily="Roboto">
+                     FontFamily="Roboto"
+                     Background="{DynamicResource MaterialDesignPaper}">
     <mahApps:MetroWindow.TitleTemplate>
         <DataTemplate>
             <Grid Margin="10 5">

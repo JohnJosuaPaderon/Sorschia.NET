@@ -7,12 +7,25 @@
     <materialDesign:Card VerticalAlignment="Stretch">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Sign-up" Style="{DynamicResource CardTitleTextBlock}"/>
-            <materialDesign:ColorZone Grid.Row="2" Style="{DynamicResource CardFooterColorZone}">
+            <Grid Grid.Row="0" Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <materialDesign:PackIcon Kind="AccountCircle" VerticalAlignment="Center" HorizontalAlignment="Center" Height="250" Width="250" Foreground="{DynamicResource AccentColorBrush4}">
+                </materialDesign:PackIcon>
+                <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.IsFloating="True"/>
+                <PasswordBox Grid.Row="3" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True"/>
+                <CheckBox Grid.Row="5" Content="Keep me logged-in"/>
+            </Grid>
+            <materialDesign:ColorZone Grid.Row="1" Style="{DynamicResource CardFooterColorZone}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
