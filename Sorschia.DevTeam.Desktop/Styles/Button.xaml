@@ -14,17 +14,17 @@
     
     <Style x:Key="CardFooterButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
         <Setter Property="Height" Value="NaN"/>
-        <Setter Property="Padding" Value="15 10"/>
+        <Setter Property="Padding" Value="10 5"/>
         <Setter Property="Width" Value="NaN"/>
-        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="MinHeight" Value="35"/>
         <Setter Property="MinWidth" Value="100"/>
     </Style>
 
     <Style x:Key="CardFooterSecondaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
         <Setter Property="Height" Value="NaN"/>
-        <Setter Property="Padding" Value="15 10"/>
+        <Setter Property="Padding" Value="10 5"/>
         <Setter Property="Width" Value="NaN"/>
-        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="MinHeight" Value="35"/>
         <Setter Property="MinWidth" Value="100"/>
     </Style>
 </ResourceDictionary>
