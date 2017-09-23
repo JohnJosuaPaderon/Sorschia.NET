@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Description>Sorschia library.</Description>
-    <Copyright>Copyright (c) John Josua R. Paderon</Copyright>
+    <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
-    <PackageTags>Sorschia System Development</PackageTags>
+    <PackageTags>Sorschia</PackageTags>
     <Version>1.1.0</Version>
   </PropertyGroup>
 
