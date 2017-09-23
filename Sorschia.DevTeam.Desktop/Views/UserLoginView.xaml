@@ -14,15 +14,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="{DynamicResource DefaultGridSpace}"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="{DynamicResource DefaultGridSpace}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <materialDesign:PackIcon Kind="AccountCircle" VerticalAlignment="Center" HorizontalAlignment="Center" Height="250" Width="250" Foreground="{DynamicResource AccentColorBrush4}">
                 </materialDesign:PackIcon>
-                <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.IsFloating="True"/>
-                <PasswordBox Grid.Row="3" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True"/>
+                <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Username" Style="{DynamicResource FieldTextBox}"/>
+                <PasswordBox Grid.Row="3" materialDesign:HintAssist.Hint="Password" Style="{DynamicResource FieldPasswordBox}"/>
                 <CheckBox Grid.Row="5" Content="Keep me logged-in"/>
             </Grid>
             <materialDesign:ColorZone Grid.Row="1" Style="{DynamicResource CardFooterColorZone}">
@@ -30,7 +30,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="{DynamicResource DefaultGridSpace}"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="1" Content="Next" Style="{DynamicResource CardFooterButton}"/>

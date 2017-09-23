@@ -6,14 +6,14 @@
     <Grid Margin="50 0" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="{DynamicResource DefaultGridSpace}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Source="../Images/logo.png" Height="300" Width="300"/>
         <Grid Grid.Column="2" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="{DynamicResource DefaultGridSpace}"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Welcome to Sorschia" Style="{DynamicResource MaterialDesignDisplay2TextBlock}"/>

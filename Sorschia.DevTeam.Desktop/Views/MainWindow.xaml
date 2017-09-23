@@ -13,13 +13,14 @@
                      Title="Sorschia Dev-Team" WindowState="Maximized"
                      TitlebarHeight="40"
                      FontFamily="Roboto"
+                     FontSize="12"
                      Background="{DynamicResource MaterialDesignPaper}">
     <mahApps:MetroWindow.TitleTemplate>
         <DataTemplate>
             <Grid Margin="10 5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="{DynamicResource DefaultGridSpace}"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="../Images/logo_white.png"/>
