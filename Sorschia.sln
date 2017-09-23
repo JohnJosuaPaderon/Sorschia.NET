@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{FDED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A764126-4331-42F9-AC2E-838DB5BF8247}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask", "Sorschia.DailyTask\Sorschia.DailyTask.csproj", "{9F70B103-28AC-45C8-877B-B1170CA292D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{C3D29AC3-EE6B-4072-AA0A-2C871717E1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3D29AC3-EE6B-4072-AA0A-2C871717E1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3D29AC3-EE6B-4072-AA0A-2C871717E1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{674C5CAD-9F5F-4670-9971-41F2E0840A03} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
 		{C3D29AC3-EE6B-4072-AA0A-2C871717E1CE} = {FDEDED6C-C94D-4142-9CBB-A46587E92B36}
 		{FDEDED6C-C94D-4142-9CBB-A46587E92B36} = {4E670C2E-8065-4D0D-8D8B-75745CD24EF0}
+		{9F70B103-28AC-45C8-877B-B1170CA292D8} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66242A14-3DAF-43A2-93B4-05C5464AD747}
