@@ -4,7 +4,7 @@ namespace Sorschia.Utilities
 {
     public static class DirectoryResolver
     {
-        public static void Resolve(string directory)
+        public static void ResolveExistence(string directory)
         {
             if (string.IsNullOrWhiteSpace(directory))
             {
