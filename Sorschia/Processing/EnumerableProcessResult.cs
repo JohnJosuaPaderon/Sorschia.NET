@@ -5,6 +5,9 @@ namespace Sorschia.Processing
 {
     public class EnumerableProcessResult<T> : IEnumerableProcessResult<T>
     {
+        private const string MESSAGE_EXCEPTION_THROWN = "An exception has been thrown.";
+        private const string MESSAGE_SUCCESS = "Process successfully completed.";
+
         public static EnumerableProcessResult<T> Failed(string message)
         {
             return new EnumerableProcessResult<T>(null, ProcessResultStatus.Failed, message);
@@ -12,7 +15,7 @@ namespace Sorschia.Processing
 
         public static EnumerableProcessResult<T> Failed(Exception exception)
         {
-            return new EnumerableProcessResult<T>(null, ProcessResultStatus.Failed, "An exception has been thrown.", exception);
+            return new EnumerableProcessResult<T>(null, ProcessResultStatus.Failed, MESSAGE_EXCEPTION_THROWN, exception);
         }
 
         public static EnumerableProcessResult<T> Failed(string message, Exception exception)
@@ -22,7 +25,7 @@ namespace Sorschia.Processing
 
         public static EnumerableProcessResult<T> Success(IEnumerable<T> dataList)
         {
-            return new EnumerableProcessResult<T>(dataList, ProcessResultStatus.Success, "Process successfully completed.");
+            return new EnumerableProcessResult<T>(dataList, ProcessResultStatus.Success, MESSAGE_SUCCESS);
         }
 
         public static EnumerableProcessResult<T> Success(IEnumerable<T> dataList, string message)
