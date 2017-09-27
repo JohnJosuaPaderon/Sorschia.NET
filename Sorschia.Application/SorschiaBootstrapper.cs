@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sorschia.Extensions;
 
 namespace Sorschia
 {
@@ -6,7 +7,7 @@ namespace Sorschia
     {
         internal protected virtual void ConfigureServices(IServiceCollection services)
         {
-            // TODO: Default services.
+            services.UseDefaultStringBuilders();
         }
 
         internal protected string BaseDirectory { get; set; }
