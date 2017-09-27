@@ -16,6 +16,8 @@ namespace Sorschia.Configurations
         private readonly JsonConnectionStringSourceProvider _Provider;
         private const string CONNECTION_STRINGS = "connectionStrings";
         private const string CONNECTION_STRING_KEY = "key";
+        private const string MESSAGE_MODE_NOT_SUPPORTED = "The selected mode of getting connection string is currently not supported.";
+        private const string MESSAGE_NULL_SOURCE = "JSON connection string source.";
 
         protected override void Initialize()
         {
@@ -38,7 +40,7 @@ namespace Sorschia.Configurations
                 case JsonConnectionStringSourceMode.DirectObject: return GetFromDirectObject;
                 case JsonConnectionStringSourceMode.FromFile: return GetFromFile;
                 default:
-                    throw new SorschiaException($"The selected mode of getting connection string is currently not supported.{Environment.NewLine}Mode: {_Provider.Mode}", SorschiaExceptionType.FeatureNotSupported);
+                    throw new SorschiaException($"{MESSAGE_MODE_NOT_SUPPORTED}{Environment.NewLine}Mode: {_Provider.Mode}", SorschiaExceptionType.FeatureNotSupported);
             }
         }
 
@@ -46,7 +48,7 @@ namespace Sorschia.Configurations
         {
             if (source == null)
             {
-                throw new SorschiaException("JSON connection string source.", SorschiaExceptionType.UnexpectedNull);
+                throw new SorschiaException(MESSAGE_NULL_SOURCE, SorschiaExceptionType.UnexpectedNull);
             }
             else
             {

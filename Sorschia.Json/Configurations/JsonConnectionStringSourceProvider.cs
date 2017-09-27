@@ -14,6 +14,11 @@ namespace Sorschia.Configurations
             return new JsonConnectionStringSourceProvider(JsonConnectionStringSourceMode.DirectObject, null, source);
         }
 
+        private static string GetModeErrorMessage(JsonConnectionStringSourceMode mode)
+        {
+            return $"Mode is set to {mode}.";
+        }
+
         private JsonConnectionStringSourceProvider(JsonConnectionStringSourceMode mode, string filePath, JObject source)
         {
             Mode = mode;
@@ -35,7 +40,7 @@ namespace Sorschia.Configurations
                 }
                 else
                 {
-                    throw new SorschiaException($"Mode is set to {nameof(JsonConnectionStringSourceMode.FromFile)}.", SorschiaExceptionType.AccessDenied);
+                    throw new SorschiaException(GetModeErrorMessage(JsonConnectionStringSourceMode.FromFile), SorschiaExceptionType.AccessDenied);
                 }
             }
         }
@@ -49,7 +54,7 @@ namespace Sorschia.Configurations
                 }
                 else
                 {
-                    throw new SorschiaException($"Mode is set to {nameof(JsonConnectionStringSourceMode.DirectObject)}.", SorschiaExceptionType.AccessDenied);
+                    throw new SorschiaException(GetModeErrorMessage(JsonConnectionStringSourceMode.DirectObject), SorschiaExceptionType.AccessDenied);
                 }
             }
         }
