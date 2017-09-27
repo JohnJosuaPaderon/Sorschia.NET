@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Sorschia.Configurations
 {
-    public sealed class JsonConnectionStringSource : ConnectionStringSource, IConnectionStringSource
+    public sealed class JsonConnectionStringSource : ConnectionStringSourceBase, IConnectionStringSource
     {
         public JsonConnectionStringSource(JsonConnectionStringSourceProvider provider)
         {
