@@ -15,4 +15,12 @@
     <Version>1.1.0</Version>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
