@@ -15,7 +15,7 @@ namespace Sample.WindowsFormsApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var dbHelper = SorschiaApp.Resolve<IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter>>();
+            var dbHelper = SorschiaApp.ResolveService<IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter>>();
         }
     }
 }
