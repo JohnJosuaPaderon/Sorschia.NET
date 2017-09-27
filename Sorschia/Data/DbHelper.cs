@@ -12,6 +12,8 @@ namespace Sorschia.Data
         where TCommand : DbCommand
         where TQueryParameter : IQueryParameter
     {
+        private const string MESSAGE_NO_RESULT = "No result.";
+
         public DbHelper(
             IDbConnectionProvider<TConnection> dbConnectionProvider,
             IDbCommandProvider<TConnection, TTransaction, TCommand> dbCommandProvider)
@@ -19,8 +21,6 @@ namespace Sorschia.Data
             _ConnectionProvider = dbConnectionProvider;
             _CommandProvider = dbCommandProvider;
         }
-
-        private const string NO_RESULT_MESSAGE = "No result.";
 
         private readonly IDbConnectionProvider<TConnection> _ConnectionProvider;
         private readonly IDbCommandProvider<TConnection, TTransaction, TCommand> _CommandProvider;
@@ -323,7 +323,7 @@ namespace Sorschia.Data
                             }
                             else
                             {
-                                return ProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                                return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                             }
                         }
                     }
@@ -351,7 +351,7 @@ namespace Sorschia.Data
                             }
                             else
                             {
-                                return ProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                                return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                             }
                         }
                     }
@@ -379,7 +379,7 @@ namespace Sorschia.Data
                             }
                             else
                             {
-                                return ProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                                return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                             }
                         }
                     }
@@ -403,7 +403,7 @@ namespace Sorschia.Data
                     }
                     else
                     {
-                        return ProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                        return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                     }
                 }
             }
@@ -421,7 +421,7 @@ namespace Sorschia.Data
                     }
                     else
                     {
-                        return ProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                        return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                     }
                 }
             }
@@ -439,7 +439,7 @@ namespace Sorschia.Data
                     }
                     else
                     {
-                        return ProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                        return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                     }
                 }
             }
@@ -461,7 +461,7 @@ namespace Sorschia.Data
                             }
                             else
                             {
-                                return EnumerableProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                                return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                             }
                         }
                     }
@@ -489,7 +489,7 @@ namespace Sorschia.Data
                             }
                             else
                             {
-                                return EnumerableProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                                return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                             }
                         }
                     }
@@ -517,7 +517,7 @@ namespace Sorschia.Data
                             }
                             else
                             {
-                                return EnumerableProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                                return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                             }
                         }
                     }
@@ -541,7 +541,7 @@ namespace Sorschia.Data
                     }
                     else
                     {
-                        return EnumerableProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                        return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                     }
                 }
             }
@@ -559,7 +559,7 @@ namespace Sorschia.Data
                     }
                     else
                     {
-                        return EnumerableProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                        return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                     }
                 }
             }
@@ -577,7 +577,7 @@ namespace Sorschia.Data
                     }
                     else
                     {
-                        return EnumerableProcessResult<T>.Failed(NO_RESULT_MESSAGE);
+                        return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
                     }
                 }
             }
