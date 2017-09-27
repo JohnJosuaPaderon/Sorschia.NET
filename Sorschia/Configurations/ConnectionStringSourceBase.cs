@@ -6,9 +6,9 @@ using System.Security;
 
 namespace Sorschia.Configurations
 {
-    public abstract class ConnectionStringSource : IConnectionStringSource
+    public abstract class ConnectionStringSourceBase : IConnectionStringSource
     {
-        protected ConnectionStringSource()
+        protected ConnectionStringSourceBase()
         {
             _Source = new Dictionary<string, SecureString>();
             IsDataLoaded = false;
@@ -53,86 +53,62 @@ namespace Sorschia.Configurations
             get
             {
 
-                if (string.IsNullOrWhiteSpace(key))
+                ValidateKey(key);
+                TryInitialize();
+
+                if (!_Source.ContainsKey(key))
                 {
-                    throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+                    throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
                 }
                 else
                 {
-                    TryInitialize();
-
-                    if (!_Source.ContainsKey(key))
-                    {
-                        throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
-                    }
-                    else
-                    {
-                        return SecureStringConverter.Convert(_Source[key]);
-                    }
+                    return SecureStringConverter.Convert(_Source[key]);
                 }
             }
         }
 
         public virtual void Add(string key, string connectionString)
         {
-            if (string.IsNullOrWhiteSpace(key))
+            ValidateKey(key);
+            TryInitialize();
+
+            if (_Source.ContainsKey(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(SorschiaExceptionType.KeyAlreadyExists);
             }
             else
             {
-                TryInitialize();
-
-                if (_Source.ContainsKey(key))
-                {
-                    throw new SorschiaException(SorschiaExceptionType.KeyAlreadyExists);
-                }
-                else
-                {
-                    _Source.Add(key, SecureStringConverter.Convert(connectionString));
-                }
+                _Source.Add(key, SecureStringConverter.Convert(connectionString));
             }
         }
 
         public virtual void Remove(string key)
         {
-            if (string.IsNullOrWhiteSpace(key))
+            ValidateKey(key);
+            TryInitialize();
+
+            if (!_Source.ContainsKey(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
             }
             else
             {
-                TryInitialize();
-
-                if (!_Source.ContainsKey(key))
-                {
-                    throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
-                }
-                else
-                {
-                    _Source.Remove(key);
-                }
+                _Source.Remove(key);
             }
         }
 
         public virtual void Update(string key, string connectionString)
         {
-            if (string.IsNullOrWhiteSpace(key))
+            ValidateKey(key);
+            TryInitialize();
+
+            if (!_Source.ContainsKey(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
             }
             else
             {
-                TryInitialize();
-
-                if (!_Source.ContainsKey(key))
-                {
-                    throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
-                }
-                else
-                {
-                    _Source[key] = SecureStringConverter.Convert(connectionString);
-                }
+                _Source[key] = SecureStringConverter.Convert(connectionString);
             }
         }
 
@@ -158,6 +134,14 @@ namespace Sorschia.Configurations
             }
 
             return result;
+        }
+
+        private void ValidateKey(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+            }
         }
     }
 }
