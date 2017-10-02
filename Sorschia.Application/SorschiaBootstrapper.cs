@@ -11,5 +11,6 @@ namespace Sorschia
         }
 
         internal protected string BaseDirectory { get; set; }
+        internal protected string PluginDirectory { get; set; }
     }
 }

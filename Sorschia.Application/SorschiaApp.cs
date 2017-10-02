@@ -2,11 +2,20 @@
 using Sorschia.Configurations;
 using Sorschia.Utilities;
 using System;
+using System.Collections.Generic;
+using System.Composition;
+using System.Composition.Hosting;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Loader;
 
 namespace Sorschia
 {
     public sealed class SorschiaApp
     {
+        private const string ASSEMBLY_SEARCH_PATTERN = "*.dll";
+
         static SorschiaApp()
         {
             Current = new SorschiaApp();
@@ -41,16 +50,56 @@ namespace Sorschia
                 DirectoryResolver.ResolveExistence(bootstrapper.BaseDirectory);
             }
 
-            Current.ServiceProvider = services.BuildServiceProvider();
             Current.BaseDirectory = bootstrapper.BaseDirectory;
+            Current.PluginDirectory = bootstrapper.PluginDirectory;
+
             Current.DirectoryProvider = new ApplicationDirectoryProvider(Current);
             Current.FileProvider = new ApplicationFileProvider(Current);
+
+            Current.TryIntegrateExternalServices(services);
+            Current.ServiceProvider = services.BuildServiceProvider();
         }
+
+        [Import]
+        private IEnumerable<IServiceIntegrator> ServiceIntegrators { get; set; }
 
         public IServiceProvider ServiceProvider { get; private set; }
         public ApplicationDirectoryProvider DirectoryProvider { get; private set; }
         public ApplicationFileProvider FileProvider { get; private set; }
         public string BaseDirectory { get; private set; }
+        public string PluginDirectory { get; private set; }
+
+        private void ComposeServiceIntegrators()
+        {
+            if (Directory.Exists(PluginDirectory))
+            {
+                var configuration = new ContainerConfiguration();
+                configuration.WithAssemblies(GetAssemblies());
+
+                using (var container = configuration.CreateContainer())
+                {
+                    ServiceIntegrators = container.GetExports<IServiceIntegrator>();
+                }
+            }
+        }
+
+        private IEnumerable<Assembly> GetAssemblies()
+        {
+            return Directory.GetFiles(PluginDirectory, ASSEMBLY_SEARCH_PATTERN, SearchOption.TopDirectoryOnly).Select(AssemblyLoadContext.Default.LoadFromAssemblyPath);
+        }
+
+        private void TryIntegrateExternalServices(IServiceCollection services)
+        {
+            ComposeServiceIntegrators();
+
+            if (ServiceIntegrators != null && ServiceIntegrators.Any())
+            {
+                foreach (var serviceIntegrator in ServiceIntegrators)
+                {
+                    serviceIntegrator.Integrate(services);
+                }
+            }
+        }
 
         public string ResolveRelativePath(string sourcePath)
         {
