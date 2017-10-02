@@ -1,6 +1,6 @@
-﻿using System.Windows;
-using Prism.Unity;
+﻿using Prism.Unity;
 using Sorschia.DevTeam.Views;
+using System.Windows;
 
 namespace Sorschia.DevTeam
 {
