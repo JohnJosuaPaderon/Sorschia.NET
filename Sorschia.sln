@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia", "Sorschia\Sorschia.csproj", "{3531D6E5-E58E-4DBC-B093-4DB86BA13B8A}"
 EndProject
@@ -29,7 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{FDED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A764126-4331-42F9-AC2E-838DB5BF8247}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask", "Sorschia.DailyTask\Sorschia.DailyTask.csproj", "{9F70B103-28AC-45C8-877B-B1170CA292D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.DailyTask", "Sorschia.DailyTask\Sorschia.DailyTask.csproj", "{9F70B103-28AC-45C8-877B-B1170CA292D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask.SqlServer", "Sorschia.DailyTask.SqlServer\Sorschia.DailyTask.SqlServer.csproj", "{A9038708-D107-4067-850C-55FFEFCC68FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask.Desktop", "Sorschia.DailyTask.Desktop\Sorschia.DailyTask.Desktop.csproj", "{982D9D84-34F7-45B1-A3EB-41E8147EE92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,14 @@ Global
 		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F70B103-28AC-45C8-877B-B1170CA292D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9038708-D107-4067-850C-55FFEFCC68FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9038708-D107-4067-850C-55FFEFCC68FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9038708-D107-4067-850C-55FFEFCC68FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9038708-D107-4067-850C-55FFEFCC68FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +100,8 @@ Global
 		{C3D29AC3-EE6B-4072-AA0A-2C871717E1CE} = {FDEDED6C-C94D-4142-9CBB-A46587E92B36}
 		{FDEDED6C-C94D-4142-9CBB-A46587E92B36} = {4E670C2E-8065-4D0D-8D8B-75745CD24EF0}
 		{9F70B103-28AC-45C8-877B-B1170CA292D8} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
+		{A9038708-D107-4067-850C-55FFEFCC68FC} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
+		{982D9D84-34F7-45B1-A3EB-41E8147EE92C} = {FDEDED6C-C94D-4142-9CBB-A46587E92B36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66242A14-3DAF-43A2-93B4-05C5464AD747}
