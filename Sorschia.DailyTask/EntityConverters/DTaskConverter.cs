@@ -1,4 +1,5 @@
 ﻿using Sorschia.DailyTask.Entities;
+using Sorschia.DailyTask.EntityInfo;
 using Sorschia.Data;
 using Sorschia.Extensions;
 using Sorschia.Processing;
@@ -12,36 +13,34 @@ namespace Sorschia.DailyTask.EntityConverters
 {
     public sealed class DTaskConverter : IDTaskConverter
     {
-        private const string FIELD_ID = "Id";
-        private const string FIELD_TITLE = "Title";
-        private const string FIELD_DESCRIPTION = "Description";
-        private const string FIELD_SCHEDULED_DATE = "ScheduledDate";
-        private const string FIELD_STATUS = "Status";
-
-        public DTaskConverter()
+        public DTaskConverter(IDTaskFields fields)
         {
-            Def_Id = new DbDataReaderConverterProperty<long>();
-            Def_Title = new DbDataReaderConverterProperty<string>();
-            Def_Description = new DbDataReaderConverterProperty<string>();
-            Def_Status = new DbDataReaderConverterProperty<DTaskStatus>();
-            Def_ScheduledDate = new DbDataReaderConverterProperty<DateTime>();
+            _Fields = fields;
+
+            PId = new DbDataReaderConverterProperty<long>();
+            PTitle = new DbDataReaderConverterProperty<string>();
+            PDescription = new DbDataReaderConverterProperty<string>();
+            PStatus = new DbDataReaderConverterProperty<DTaskStatus>();
+            PScheduledDate = new DbDataReaderConverterProperty<DateTime>();
         }
 
-        public IDbDataReaderConverterProperty<long> Def_Id { get; }
-        public IDbDataReaderConverterProperty<string> Def_Title { get; }
-        public IDbDataReaderConverterProperty<string> Def_Description { get; }
-        public IDbDataReaderConverterProperty<DTaskStatus> Def_Status { get; }
-        public IDbDataReaderConverterProperty<DateTime> Def_ScheduledDate { get; }
+        private readonly IDTaskFields _Fields;
+
+        public IDbDataReaderConverterProperty<long> PId { get; }
+        public IDbDataReaderConverterProperty<string> PTitle { get; }
+        public IDbDataReaderConverterProperty<string> PDescription { get; }
+        public IDbDataReaderConverterProperty<DTaskStatus> PStatus { get; }
+        public IDbDataReaderConverterProperty<DateTime> PScheduledDate { get; }
 
         private IDTask Get(DbDataReader reader)
         {
             return new DTask()
             {
-                Id = Def_Id.TryGetValue(reader.GetInt64, FIELD_ID),
-                Title = Def_Title.TryGetValue(reader.GetString, FIELD_TITLE),
-                Description = Def_Title.TryGetValue(reader.GetString, FIELD_DESCRIPTION),
-                ScheduledDate = Def_ScheduledDate.TryGetValue(reader.GetDateTime, FIELD_SCHEDULED_DATE),
-                Status = Def_Status.TryGetValue(DTaskStatusParser.TryParse, reader.GetString(FIELD_STATUS))
+                Id = PId.TryGetValue(reader.GetInt64, _Fields.Id),
+                Title = PTitle.TryGetValue(reader.GetString, _Fields.Title),
+                Description = PDescription.TryGetValue(reader.GetString, _Fields.Description),
+                ScheduledDate = PScheduledDate.TryGetValue(reader.GetDateTime, _Fields.ScheduledDate),
+                Status = PStatus.TryGetValue(DTaskStatusParser.TryParse, reader.GetString(_Fields.Status))
             };
         }
 

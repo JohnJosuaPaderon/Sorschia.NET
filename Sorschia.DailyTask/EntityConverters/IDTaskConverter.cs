@@ -6,10 +6,10 @@ namespace Sorschia.DailyTask.EntityConverters
 {
     public interface IDTaskConverter : IDbDataReaderConverter<IDTask>
     {
-        IDbDataReaderConverterProperty<long> Def_Id { get; }
-        IDbDataReaderConverterProperty<string> Def_Title { get; }
-        IDbDataReaderConverterProperty<string> Def_Description { get; }
-        IDbDataReaderConverterProperty<DTaskStatus> Def_Status { get; }
-        IDbDataReaderConverterProperty<DateTime> Def_ScheduledDate { get; }
+        IDbDataReaderConverterProperty<long> PId { get; }
+        IDbDataReaderConverterProperty<string> PTitle { get; }
+        IDbDataReaderConverterProperty<string> PDescription { get; }
+        IDbDataReaderConverterProperty<DTaskStatus> PStatus { get; }
+        IDbDataReaderConverterProperty<DateTime> PScheduledDate { get; }
     }
 }
