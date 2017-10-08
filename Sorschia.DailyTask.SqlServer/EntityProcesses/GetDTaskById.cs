@@ -1,5 +1,6 @@
 ﻿using Sorschia.DailyTask.Entities;
 using Sorschia.DailyTask.EntityConverters;
+using Sorschia.DailyTask.EntityInfo;
 using Sorschia.Data;
 using Sorschia.EntityProcesses;
 using Sorschia.Extensions;
@@ -12,33 +13,36 @@ namespace Sorschia.DailyTask.EntityProcesses
 {
     public sealed class GetDTaskById : SqlServerProcessBase, IGetDTaskById
     {
-        private const string FIELD_ID = "@_Id";
-
-        public GetDTaskById(IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter> dbHelper, IDTaskConverter converter) : base(dbHelper)
+        public GetDTaskById(IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter> dbHelper, IDTaskConverter converter, IDTaskParameters parameters) : base(dbHelper)
         {
             _Converter = converter;
+            _Parameters = parameters;
         }
 
         private readonly IDTaskConverter _Converter;
+        private readonly IDTaskParameters _Parameters;
 
         public long DTaskId { get; set; }
 
         private IQuery<IQueryParameter> Query =>
             Query<IQueryParameter>.GetStoredProcedure(nameof(GetDTaskById))
-            .AddInParameter(FIELD_ID, DTaskId);
+            .AddInParameter(_Parameters.Id, DTaskId);
 
         public IProcessResult<IDTask> Execute()
         {
+            _Converter.PId.Value = DTaskId;
             return _DbHelper.ExecuteReader(Query, _Converter);
         }
 
         public Task<IProcessResult<IDTask>> ExecuteAsync()
         {
+            _Converter.PId.Value = DTaskId;
             return _DbHelper.ExecuteReaderAsync(Query, _Converter);
         }
 
         public Task<IProcessResult<IDTask>> ExecuteAsync(CancellationToken cancellationToken)
         {
+            _Converter.PId.Value = DTaskId;
             return _DbHelper.ExecuteReaderAsync(Query, _Converter, cancellationToken);
         }
     }

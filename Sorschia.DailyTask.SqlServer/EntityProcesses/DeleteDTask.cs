@@ -1,4 +1,5 @@
 ﻿using Sorschia.DailyTask.Entities;
+using Sorschia.DailyTask.EntityInfo;
 using Sorschia.Data;
 using Sorschia.EntityProcesses;
 using Sorschia.Extensions;
@@ -11,18 +12,20 @@ namespace Sorschia.DailyTask.EntityProcesses
 {
     public sealed class DeleteDTask : SqlServerProcessBase, IDeleteDTask
     {
-        private const string FIELD_ID = "@_Id";
         private const string MESSAGE_FAILED = "Failed to delete task.";
 
-        public DeleteDTask(IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter> dbHelper) : base(dbHelper)
+        public DeleteDTask(IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter> dbHelper, IDTaskParameters parameters) : base(dbHelper)
         {
+            _Parameters = parameters;
         }
+
+        private readonly IDTaskParameters _Parameters;
 
         public IDTask DTask { get; set; }
 
         private IQuery<IDTask, SqlCommand, IQueryParameter> Query =>
             Query<IDTask, SqlCommand, IQueryParameter>.GetStoredProcedure(nameof(DeleteDTask), GetProcessResult)
-            .AddInParameter(FIELD_ID, DTask.Id);
+            .AddInParameter(_Parameters.Id, DTask.Id);
 
         private IProcessResult<IDTask> GetProcessResult(SqlCommand command, int affectedRows)
         {
