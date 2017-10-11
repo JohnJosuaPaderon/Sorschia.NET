@@ -35,13 +35,13 @@ namespace Sorschia.Processing
 
         public EnumerableProcessResult(IEnumerable<T> dataList, ProcessResultStatus status, string message, Exception exception = null)
         {
-            DataList = dataList;
+            DataCollection = dataList;
             Status = status;
             Message = message;
             Exception = exception;
         }
 
-        public IEnumerable<T> DataList { get; }
+        public IEnumerable<T> DataCollection { get; }
         public ProcessResultStatus Status { get; }
         public string Message { get; }
         public Exception Exception { get; }

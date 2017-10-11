@@ -4,6 +4,6 @@ namespace Sorschia.Processing
 {
     public interface IEnumerableProcessResult<T> : IProcessResult
     {
-        IEnumerable<T> DataList { get; }
+        IEnumerable<T> DataCollection { get; }
     }
 }
