@@ -59,8 +59,7 @@ namespace Sorschia
             Current.TryIntegrateExternalServices(services);
             Current.ServiceProvider = services.BuildServiceProvider();
         }
-
-        [Import]
+        
         private IEnumerable<IServiceIntegrator> ServiceIntegrators { get; set; }
 
         public IServiceProvider ServiceProvider { get; private set; }
@@ -74,7 +73,7 @@ namespace Sorschia
             if (Directory.Exists(PluginDirectory))
             {
                 var configuration = new ContainerConfiguration();
-                configuration.WithAssemblies(GetAssemblies());
+                configuration.WithAssemblies(GetPluginAssemblies());
 
                 using (var container = configuration.CreateContainer())
                 {
@@ -83,7 +82,7 @@ namespace Sorschia
             }
         }
 
-        private IEnumerable<Assembly> GetAssemblies()
+        private IEnumerable<Assembly> GetPluginAssemblies()
         {
             return Directory.GetFiles(PluginDirectory, ASSEMBLY_SEARCH_PATTERN, SearchOption.TopDirectoryOnly).Select(AssemblyLoadContext.Default.LoadFromAssemblyPath);
         }
