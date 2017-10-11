@@ -31,9 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A764126
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.DailyTask", "Sorschia.DailyTask\Sorschia.DailyTask.csproj", "{9F70B103-28AC-45C8-877B-B1170CA292D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask.SqlServer", "Sorschia.DailyTask.SqlServer\Sorschia.DailyTask.SqlServer.csproj", "{A9038708-D107-4067-850C-55FFEFCC68FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.DailyTask.SqlServer", "Sorschia.DailyTask.SqlServer\Sorschia.DailyTask.SqlServer.csproj", "{A9038708-D107-4067-850C-55FFEFCC68FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask.Desktop", "Sorschia.DailyTask.Desktop\Sorschia.DailyTask.Desktop.csproj", "{982D9D84-34F7-45B1-A3EB-41E8147EE92C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.DailyTask.SqlServer.ServiceIntegrator", "Sorschia.DailyTask.SqlServer.ServiceIntegrator\Sorschia.DailyTask.SqlServer.ServiceIntegrator.csproj", "{34E8973B-FD9E-4DA1-9BDD-6F88C1ACF3AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982D9D84-34F7-45B1-A3EB-41E8147EE92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E8973B-FD9E-4DA1-9BDD-6F88C1ACF3AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E8973B-FD9E-4DA1-9BDD-6F88C1ACF3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E8973B-FD9E-4DA1-9BDD-6F88C1ACF3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E8973B-FD9E-4DA1-9BDD-6F88C1ACF3AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{9F70B103-28AC-45C8-877B-B1170CA292D8} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
 		{A9038708-D107-4067-850C-55FFEFCC68FC} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
 		{982D9D84-34F7-45B1-A3EB-41E8147EE92C} = {FDEDED6C-C94D-4142-9CBB-A46587E92B36}
+		{34E8973B-FD9E-4DA1-9BDD-6F88C1ACF3AC} = {F19BBE39-3953-4E88-BA48-2BEC8B207AAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66242A14-3DAF-43A2-93B4-05C5464AD747}
