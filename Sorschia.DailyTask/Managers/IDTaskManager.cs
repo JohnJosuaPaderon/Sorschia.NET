@@ -3,7 +3,7 @@ using Sorschia.Processing;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sorschia.DailyTask.EntityManagers
+namespace Sorschia.DailyTask.Managers
 {
     public interface IDTaskManager
     {

@@ -1,9 +1,9 @@
 ﻿using Sorschia.DailyTask.Entities;
 using Sorschia.Processing;
 
-namespace Sorschia.DailyTask.EntityProcesses
+namespace Sorschia.DailyTask.Processes
 {
-    public interface IInsertDTask : IProcess<IDTask>
+    public interface IUpdateDTaskStatus : IProcess<IDTask>
     {
         IDTask DTask { get; set; }
     }

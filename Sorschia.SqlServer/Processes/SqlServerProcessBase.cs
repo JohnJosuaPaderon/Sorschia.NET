@@ -1,7 +1,7 @@
 ﻿using Sorschia.Data;
 using System.Data.SqlClient;
 
-namespace Sorschia.EntityProcesses
+namespace Sorschia.Processes
 {
     public abstract class SqlServerProcessBase
     {

@@ -1,8 +1,9 @@
-﻿namespace Sorschia.DailyTask.EntityInfo
+﻿using Sorschia.Convention;
+
+namespace Sorschia.DailyTask.EntityInfo
 {
-    public interface IDTaskParameters
+    public interface IDTaskParameters : IEntityParameters
     {
-        string Id { get; }
         string Title { get; }
         string Description { get; }
         string ScheduledDate { get; }

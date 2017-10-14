@@ -1,17 +1,17 @@
-﻿namespace Sorschia.DailyTask.EntityInfo
+﻿using Sorschia.Convention;
+
+namespace Sorschia.DailyTask.EntityInfo
 {
-    public sealed class DTaskParameters : IDTaskParameters
+    public sealed class DTaskParameters : EntityParametersBase, IDTaskParameters
     {
-        public DTaskParameters()
+        public DTaskParameters(IEntityInfoConfiguration configuration) : base(configuration)
         {
-            Id = "@_Id";
-            Title = "@_Title";
-            Description = "@_Description";
-            ScheduledDate = "@_ScheduledDate";
-            Status = "@_Status";
+            Title = AppendPrefix(nameof(Title));
+            Description = AppendPrefix(nameof(Description));
+            ScheduledDate = AppendPrefix(nameof(ScheduledDate));
+            Status = AppendPrefix(nameof(Status));
         }
 
-        public string Id { get; }
         public string Title { get; }
         public string Description { get; }
         public string ScheduledDate { get; }

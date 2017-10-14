@@ -1,15 +1,15 @@
 ﻿using Sorschia.DailyTask.Entities;
-using Sorschia.DailyTask.EntityConverters;
+using Sorschia.DailyTask.Converters;
 using Sorschia.DailyTask.EntityInfo;
 using Sorschia.Data;
-using Sorschia.EntityProcesses;
+using Sorschia.Processes;
 using Sorschia.Extensions;
 using Sorschia.Processing;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sorschia.DailyTask.EntityProcesses
+namespace Sorschia.DailyTask.Processes
 {
     public sealed class GetDTaskById : SqlServerProcessBase, IGetDTaskById
     {

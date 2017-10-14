@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Sorschia.DailyTask.EntityConverters;
-using Sorschia.DailyTask.EntityProcesses;
+using Sorschia.DailyTask.Converters;
+using Sorschia.DailyTask.Processes;
 using Sorschia.Extensions;
 
 namespace Sorschia.DailyTask.Extensions

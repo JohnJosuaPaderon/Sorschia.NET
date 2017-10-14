@@ -9,7 +9,7 @@ using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sorschia.DailyTask.EntityConverters
+namespace Sorschia.DailyTask.Converters
 {
     public sealed class DTaskConverter : IDTaskConverter
     {

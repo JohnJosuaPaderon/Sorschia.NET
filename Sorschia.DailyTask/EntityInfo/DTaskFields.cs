@@ -1,17 +1,17 @@
-﻿namespace Sorschia.DailyTask.EntityInfo
+﻿using Sorschia.Convention;
+
+namespace Sorschia.DailyTask.EntityInfo
 {
-    public sealed class DTaskFields : IDTaskFields
+    public sealed class DTaskFields : EntityFieldsBase, IDTaskFields
     {
-        public DTaskFields()
+        public DTaskFields(IEntityInfoConfiguration configuration) : base(configuration)
         {
-            Id = "Id";
-            Title = "Title";
-            Description = "Description";
-            ScheduledDate = "ScheduledDate";
-            Status = "Status";
+            Title = AppendPrefix(nameof(Title));
+            Description = AppendPrefix(nameof(Description));
+            ScheduledDate = AppendPrefix(nameof(ScheduledDate));
+            Status = AppendPrefix(nameof(Status));
         }
 
-        public string Id { get; }
         public string Title { get; }
         public string Description { get; }
         public string ScheduledDate { get; }

@@ -2,7 +2,7 @@
 using Sorschia.Data;
 using System;
 
-namespace Sorschia.DailyTask.EntityConverters
+namespace Sorschia.DailyTask.Converters
 {
     public interface IDTaskConverter : IDbDataReaderConverter<IDTask>
     {
