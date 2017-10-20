@@ -10,7 +10,7 @@ namespace Sorschia.Extensions
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw new SorschiaException(nameof(key), SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(nameof(key), SorschiaExceptionKind.KeyRequired);
             }
         }
 

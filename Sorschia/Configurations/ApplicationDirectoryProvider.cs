@@ -24,7 +24,7 @@ namespace Sorschia.Configurations
                 ValidateKey(key);
                 if (!_Directories.ContainsKey(key))
                 {
-                    throw new SorschiaException(nameof(key), SorschiaExceptionType.KeyNotFound);
+                    throw new SorschiaException(nameof(key), SorschiaExceptionKind.KeyNotFound);
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace Sorschia.Configurations
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw new SorschiaException(nameof(key), SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(nameof(key), SorschiaExceptionKind.KeyRequired);
             }
         }
 

@@ -31,11 +31,11 @@ namespace Sorschia.Configurations
         {
             if (connectionStrings == null)
             {
-                throw new SorschiaException(SorschiaExceptionType.UnexpectedNull);
+                throw new SorschiaException(SorschiaExceptionKind.UnexpectedNull);
             }
             else if (!connectionStrings.Any())
             {
-                throw new SorschiaException(SorschiaExceptionType.EmptyCollection);
+                throw new SorschiaException(SorschiaExceptionKind.EmptyCollection);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace Sorschia.Configurations
 
                 if (!_Source.ContainsKey(key))
                 {
-                    throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
+                    throw new SorschiaException(SorschiaExceptionKind.KeyNotFound);
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace Sorschia.Configurations
 
             if (_Source.ContainsKey(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyAlreadyExists);
+                throw new SorschiaException(SorschiaExceptionKind.KeyAlreadyExists);
             }
             else
             {
@@ -89,7 +89,7 @@ namespace Sorschia.Configurations
 
             if (!_Source.ContainsKey(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
+                throw new SorschiaException(SorschiaExceptionKind.KeyNotFound);
             }
             else
             {
@@ -104,7 +104,7 @@ namespace Sorschia.Configurations
 
             if (!_Source.ContainsKey(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyNotFound);
+                throw new SorschiaException(SorschiaExceptionKind.KeyNotFound);
             }
             else
             {
@@ -140,7 +140,7 @@ namespace Sorschia.Configurations
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(SorschiaExceptionKind.KeyRequired);
             }
         }
     }

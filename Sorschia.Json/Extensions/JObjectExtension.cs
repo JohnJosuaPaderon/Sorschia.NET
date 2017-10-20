@@ -10,17 +10,17 @@ namespace Sorschia.Extensions
         {
             if (jObject == null)
             {
-                throw new SorschiaException(nameof(jObject), SorschiaExceptionType.UnexpectedNull);
+                throw new SorschiaException(nameof(jObject), SorschiaExceptionKind.UnexpectedNull);
             }
 
             if (jObject.Count <= 0)
             {
-                throw new SorschiaException(nameof(jObject), SorschiaExceptionType.EmptyCollection);
+                throw new SorschiaException(nameof(jObject), SorschiaExceptionKind.EmptyCollection);
             }
 
             if (string.IsNullOrWhiteSpace(propertyName))
             {
-                throw new SorschiaException(nameof(propertyName), SorschiaExceptionType.InvalidValue);
+                throw new SorschiaException(nameof(propertyName), SorschiaExceptionKind.InvalidValue);
             }
         }
 

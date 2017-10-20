@@ -5,21 +5,21 @@ namespace Sorschia
     [Serializable]
     public sealed class SorschiaException : Exception
     {
-        public SorschiaException(SorschiaExceptionType type = SorschiaExceptionType.Undefined)
+        public SorschiaException(SorschiaExceptionKind type = SorschiaExceptionKind.Undefined)
         {
             Type = type;
         }
 
-        public SorschiaException(string message, SorschiaExceptionType type = SorschiaExceptionType.Undefined) : base(message)
+        public SorschiaException(string message, SorschiaExceptionKind type = SorschiaExceptionKind.Undefined) : base(message)
         {
             Type = type;
         }
 
-        public SorschiaException(string message, Exception innerException, SorschiaExceptionType type = SorschiaExceptionType.Undefined) : base(message, innerException)
+        public SorschiaException(string message, Exception innerException, SorschiaExceptionKind type = SorschiaExceptionKind.Undefined) : base(message, innerException)
         {
             Type = type;
         }
 
-        public SorschiaExceptionType Type { get; }
+        public SorschiaExceptionKind Type { get; }
     }
 }

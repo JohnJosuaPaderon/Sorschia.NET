@@ -25,7 +25,7 @@ namespace Sorschia.Configurations
                 }
                 else
                 {
-                    throw new SorschiaException(nameof(key), SorschiaExceptionType.KeyNotFound);
+                    throw new SorschiaException(nameof(key), SorschiaExceptionKind.KeyNotFound);
                 }
             }
             set
@@ -47,7 +47,7 @@ namespace Sorschia.Configurations
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw new SorschiaException(nameof(key), SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(nameof(key), SorschiaExceptionKind.KeyRequired);
             }
         }
     }

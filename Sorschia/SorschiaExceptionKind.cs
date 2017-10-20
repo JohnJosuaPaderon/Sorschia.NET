@@ -1,6 +1,6 @@
 ﻿namespace Sorschia
 {
-    public enum SorschiaExceptionType
+    public enum SorschiaExceptionKind
     {
         Undefined = 0,
         UnknownOperation = 1,

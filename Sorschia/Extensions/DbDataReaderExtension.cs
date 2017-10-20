@@ -12,12 +12,12 @@ namespace Sorschia.Extensions
         {
             if (string.IsNullOrWhiteSpace(fieldName))
             {
-                throw new SorschiaException(nameof(fieldName), SorschiaExceptionType.ValueRequired);
+                throw new SorschiaException(nameof(fieldName), SorschiaExceptionKind.ValueRequired);
             }
 
             if (reader.FieldCount <= 0)
             {
-                throw new SorschiaException(nameof(reader), SorschiaExceptionType.EmptyCollection);
+                throw new SorschiaException(nameof(reader), SorschiaExceptionKind.EmptyCollection);
             }
         }
 

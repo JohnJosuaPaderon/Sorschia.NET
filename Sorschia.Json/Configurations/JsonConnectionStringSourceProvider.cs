@@ -40,7 +40,7 @@ namespace Sorschia.Configurations
                 }
                 else
                 {
-                    throw new SorschiaException(GetModeErrorMessage(JsonConnectionStringSourceMode.FromFile), SorschiaExceptionType.AccessDenied);
+                    throw new SorschiaException(GetModeErrorMessage(JsonConnectionStringSourceMode.FromFile), SorschiaExceptionKind.AccessDenied);
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Sorschia.Configurations
                 }
                 else
                 {
-                    throw new SorschiaException(GetModeErrorMessage(JsonConnectionStringSourceMode.DirectObject), SorschiaExceptionType.AccessDenied);
+                    throw new SorschiaException(GetModeErrorMessage(JsonConnectionStringSourceMode.DirectObject), SorschiaExceptionKind.AccessDenied);
                 }
             }
         }

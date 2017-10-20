@@ -24,7 +24,7 @@ namespace Sorschia.Utilities
                 }
                 else
                 {
-                    throw new SorschiaException(nameof(splitItems), SorschiaExceptionType.EmptyCollection);
+                    throw new SorschiaException(nameof(splitItems), SorschiaExceptionKind.EmptyCollection);
                 }
 
                 return builder.ToString();

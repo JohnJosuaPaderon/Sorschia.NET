@@ -10,7 +10,7 @@ namespace Sorschia.Data
     {
         public SqlConnectionProvider(IConnectionStringSource connectionStringSource)
         {
-            _ConnectionStringSource = connectionStringSource ?? throw new SorschiaException(SorschiaExceptionType.ValueRequired);
+            _ConnectionStringSource = connectionStringSource ?? throw new SorschiaException(SorschiaExceptionKind.ValueRequired);
         }
 
         private readonly IConnectionStringSource _ConnectionStringSource;
@@ -19,7 +19,7 @@ namespace Sorschia.Data
         {
             if (string.IsNullOrWhiteSpace(connectionStringKey))
             {
-                throw new SorschiaException(SorschiaExceptionType.KeyRequired);
+                throw new SorschiaException(SorschiaExceptionKind.KeyRequired);
             }
 
             return new SqlConnection(_ConnectionStringSource[connectionStringKey]);

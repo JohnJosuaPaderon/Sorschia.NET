@@ -25,7 +25,7 @@ namespace Sorschia.Configurations
 
             if (getData == null)
             {
-                throw new SorschiaException(SorschiaExceptionType.UnknownOperation);
+                throw new SorschiaException(SorschiaExceptionKind.UnknownOperation);
             }
             else
             {
@@ -40,7 +40,7 @@ namespace Sorschia.Configurations
                 case JsonConnectionStringSourceMode.DirectObject: return GetFromDirectObject;
                 case JsonConnectionStringSourceMode.FromFile: return GetFromFile;
                 default:
-                    throw new SorschiaException($"{MESSAGE_MODE_NOT_SUPPORTED}{Environment.NewLine}Mode: {_Provider.Mode}", SorschiaExceptionType.FeatureNotSupported);
+                    throw new SorschiaException($"{MESSAGE_MODE_NOT_SUPPORTED}{Environment.NewLine}Mode: {_Provider.Mode}", SorschiaExceptionKind.FeatureNotSupported);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Sorschia.Configurations
         {
             if (source == null)
             {
-                throw new SorschiaException(MESSAGE_NULL_SOURCE, SorschiaExceptionType.UnexpectedNull);
+                throw new SorschiaException(MESSAGE_NULL_SOURCE, SorschiaExceptionKind.UnexpectedNull);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace Sorschia.Configurations
                 }
                 else
                 {
-                    throw new SorschiaException(CONNECTION_STRINGS, SorschiaExceptionType.ValueRequired);
+                    throw new SorschiaException(CONNECTION_STRINGS, SorschiaExceptionKind.ValueRequired);
                 }
             }
         }
