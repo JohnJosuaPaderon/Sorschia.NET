@@ -9,7 +9,7 @@ namespace Sorschia.DailyTask.Extensions
     {
         public static IServiceCollection UseSqlServerForDailyTask(this IServiceCollection instance)
         {
-            instance.AddSqlServer();
+            instance.UseSqlServer();
 
             instance.AddTransient<IDTaskConverter, DTaskConverter>();
             instance.AddTransient<IDeleteDTask, DeleteDTask>();

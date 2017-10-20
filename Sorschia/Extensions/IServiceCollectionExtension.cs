@@ -5,7 +5,7 @@ namespace Sorschia.Extensions
 {
     public static class IServiceCollectionExtension
     {
-        public static IServiceCollection UseEntityInfoConfiguration<T>(IServiceCollection instance)
+        public static IServiceCollection UseEntityInfoConfiguration<T>(this IServiceCollection instance)
             where T : class, IEntityInfoConfiguration
         {
             instance.AddSingleton<IEntityInfoConfiguration, T>();

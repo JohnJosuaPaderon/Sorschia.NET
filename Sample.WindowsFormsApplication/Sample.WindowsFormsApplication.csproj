@@ -92,10 +92,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sorschia.Application\Sorschia.Application.csproj">
-      <Project>{5D270D7A-A1D8-43A5-8AA9-F1342433FC05}</Project>
-      <Name>Sorschia.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Sorschia.Json\Sorschia.Json.csproj">
       <Project>{4546e6af-d2e1-430d-ad5a-341303023fa9}</Project>
       <Name>Sorschia.Json</Name>
