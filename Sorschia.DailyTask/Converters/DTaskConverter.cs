@@ -4,16 +4,20 @@ using Sorschia.Data;
 using Sorschia.Extensions;
 using Sorschia.Processing;
 using System;
-using System.Collections.Generic;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorschia.DailyTask.Converters
 {
-    public sealed class DTaskConverter : IDTaskConverter
+    public sealed class DTaskConverter : DbDataReaderConverterBase, IDTaskConverter
     {
-        public DTaskConverter(IDTaskFields fields)
+        private readonly IDTaskFields _Fields;
+
+        public DTaskConverter(
+            IDbDataReaderToProcessResultConverter toProcessResultConverter,
+            IDbDataReaderToEnumerableProcessResultConverter toEnumerableProcessResultConverter,
+            IDTaskFields fields) : base(toProcessResultConverter, toEnumerableProcessResultConverter)
         {
             _Fields = fields;
 
@@ -23,8 +27,6 @@ namespace Sorschia.DailyTask.Converters
             PStatus = new DbDataReaderConverterProperty<DTaskStatus>();
             PScheduledDate = new DbDataReaderConverterProperty<DateTime>();
         }
-
-        private readonly IDTaskFields _Fields;
 
         public IDbDataReaderConverterProperty<long> PId { get; }
         public IDbDataReaderConverterProperty<string> PTitle { get; }
@@ -46,98 +48,32 @@ namespace Sorschia.DailyTask.Converters
 
         public IEnumerableProcessResult<IDTask> EnumerableFromReader(DbDataReader reader)
         {
-            try
-            {
-                var list = new List<IDTask>();
-
-                while (reader.Read())
-                {
-                    list.Add(Get(reader));
-                }
-
-                return EnumerableProcessResult<IDTask>.Success(list);
-            }
-            catch (Exception ex)
-            {
-                return EnumerableProcessResult<IDTask>.Failed(ex);
-            }
+            return _ToEnumerableProcessResultConverter.EnumerableFromReader(reader, Get);
         }
 
-        public async Task<IEnumerableProcessResult<IDTask>> EnumerableFromReaderAsync(DbDataReader reader)
+        public Task<IEnumerableProcessResult<IDTask>> EnumerableFromReaderAsync(DbDataReader reader)
         {
-            try
-            {
-                var list = new List<IDTask>();
-
-                while (await reader.ReadAsync())
-                {
-                    list.Add(Get(reader));
-                }
-
-                return EnumerableProcessResult<IDTask>.Success(list);
-            }
-            catch (Exception ex)
-            {
-                return EnumerableProcessResult<IDTask>.Failed(ex);
-            }
+            return _ToEnumerableProcessResultConverter.EnumerableFromReaderAsync(reader, Get);
         }
 
-        public async Task<IEnumerableProcessResult<IDTask>> EnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken)
+        public Task<IEnumerableProcessResult<IDTask>> EnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken)
         {
-            try
-            {
-                var list = new List<IDTask>();
-
-                while (await reader.ReadAsync(cancellationToken))
-                {
-                    list.Add(Get(reader));
-                }
-
-                return EnumerableProcessResult<IDTask>.Success(list);
-            }
-            catch (Exception ex)
-            {
-                return EnumerableProcessResult<IDTask>.Failed(ex);
-            }
+            return _ToEnumerableProcessResultConverter.EnumerableFromReaderAsync(reader, cancellationToken, Get);
         }
 
         public IProcessResult<IDTask> FromReader(DbDataReader reader)
         {
-            try
-            {
-                reader.Read();
-                return ProcessResult<IDTask>.Success(Get(reader));
-            }
-            catch (Exception ex)
-            {
-                return ProcessResult<IDTask>.Failed(ex);
-            }
+            return _ToProcessResultConverter.FromReader(reader, Get);
         }
 
-        public async Task<IProcessResult<IDTask>> FromReaderAsync(DbDataReader reader)
+        public Task<IProcessResult<IDTask>> FromReaderAsync(DbDataReader reader)
         {
-            try
-            {
-                await reader.ReadAsync();
-                return ProcessResult<IDTask>.Success(Get(reader));
-            }
-            catch (Exception ex)
-            {
-                return ProcessResult<IDTask>.Failed(ex);
-            }
+            return _ToProcessResultConverter.FromReaderAsync(reader, Get);
         }
 
-        public async Task<IProcessResult<IDTask>> FromReaderAsync(DbDataReader reader, CancellationToken cancellationToken)
+        public Task<IProcessResult<IDTask>> FromReaderAsync(DbDataReader reader, CancellationToken cancellationToken)
         {
-            try
-            {
-                await reader.ReadAsync(cancellationToken);
-                return ProcessResult<IDTask>.Success(Get(reader));
-            }
-            catch (Exception ex)
-            {
-                return ProcessResult<IDTask>.Failed(ex);
-            }
+            return _ToProcessResultConverter.FromReaderAsync(reader, Get);
         }
     }
 }
