@@ -14,6 +14,7 @@ namespace Sorschia
     public sealed class SorschiaApp
     {
         private const string ASSEMBLY_SEARCH_PATTERN = "*.dll";
+        private const string BASE_DIRECTORY_PLACEHOLDER = "<basedir>";
 
         static SorschiaApp()
         {
@@ -21,8 +22,6 @@ namespace Sorschia
         }
 
         public static SorschiaApp Current { get; }
-
-        private const string BASE_DIRECTORY_PLACEHOLDER = "<basedir>";
 
         public static T ResolveService<T>()
         {
