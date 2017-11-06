@@ -12,8 +12,6 @@ namespace Sorschia.Data
         where TCommand : DbCommand
         where TQueryParameter : IQueryParameter
     {
-        private const string MESSAGE_NO_RESULT = "No result.";
-
         public DbHelper(
             IDbConnectionProvider<TConnection> dbConnectionProvider,
             IDbCommandProvider<TConnection, TTransaction, TCommand> dbCommandProvider)
@@ -317,14 +315,7 @@ namespace Sorschia.Data
                     {
                         using (var reader = command.ExecuteReader())
                         {
-                            if (reader.HasRows)
-                            {
-                                return converter.FromReader(reader);
-                            }
-                            else
-                            {
-                                return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                            }
+                            return converter.FromReader(reader);
                         }
                     }
                 }
@@ -345,14 +336,7 @@ namespace Sorschia.Data
                     {
                         using (var reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                            {
-                                return await converter.FromReaderAsync(reader);
-                            }
-                            else
-                            {
-                                return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                            }
+                            return await converter.FromReaderAsync(reader);
                         }
                     }
                 }
@@ -373,14 +357,7 @@ namespace Sorschia.Data
                     {
                         using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                         {
-                            if (reader.HasRows)
-                            {
-                                return await converter.FromReaderAsync(reader, cancellationToken);
-                            }
-                            else
-                            {
-                                return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                            }
+                            return await converter.FromReaderAsync(reader, cancellationToken);
                         }
                     }
                 }
@@ -397,14 +374,7 @@ namespace Sorschia.Data
             {
                 using (var reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows)
-                    {
-                        return converter.FromReader(reader);
-                    }
-                    else
-                    {
-                        return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                    }
+                    return converter.FromReader(reader);
                 }
             }
         }
@@ -415,14 +385,7 @@ namespace Sorschia.Data
             {
                 using (var reader = await command.ExecuteReaderAsync())
                 {
-                    if (reader.HasRows)
-                    {
-                        return await converter.FromReaderAsync(reader);
-                    }
-                    else
-                    {
-                        return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                    }
+                    return await converter.FromReaderAsync(reader);
                 }
             }
         }
@@ -433,14 +396,7 @@ namespace Sorschia.Data
             {
                 using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                 {
-                    if (reader.HasRows)
-                    {
-                        return await converter.FromReaderAsync(reader, cancellationToken);
-                    }
-                    else
-                    {
-                        return ProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                    }
+                    return await converter.FromReaderAsync(reader, cancellationToken);
                 }
             }
         }
@@ -455,14 +411,7 @@ namespace Sorschia.Data
                     {
                         using (var reader = command.ExecuteReader())
                         {
-                            if (reader.HasRows)
-                            {
-                                return converter.EnumerableFromReader(reader);
-                            }
-                            else
-                            {
-                                return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                            }
+                            return converter.EnumerableFromReader(reader);
                         }
                     }
                 }
@@ -483,14 +432,7 @@ namespace Sorschia.Data
                     {
                         using (var reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                            {
-                                return await converter.EnumerableFromReaderAsync(reader);
-                            }
-                            else
-                            {
-                                return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                            }
+                            return await converter.EnumerableFromReaderAsync(reader);
                         }
                     }
                 }
@@ -511,14 +453,7 @@ namespace Sorschia.Data
                     {
                         using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                         {
-                            if (reader.HasRows)
-                            {
-                                return await converter.EnumerableFromReaderAsync(reader, cancellationToken);
-                            }
-                            else
-                            {
-                                return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                            }
+                            return await converter.EnumerableFromReaderAsync(reader, cancellationToken);
                         }
                     }
                 }
@@ -535,14 +470,7 @@ namespace Sorschia.Data
             {
                 using (var reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows)
-                    {
-                        return converter.EnumerableFromReader(reader);
-                    }
-                    else
-                    {
-                        return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                    }
+                    return converter.EnumerableFromReader(reader);
                 }
             }
         }
@@ -553,14 +481,7 @@ namespace Sorschia.Data
             {
                 using (var reader = await command.ExecuteReaderAsync())
                 {
-                    if (reader.HasRows)
-                    {
-                        return await converter.EnumerableFromReaderAsync(reader);
-                    }
-                    else
-                    {
-                        return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                    }
+                    return await converter.EnumerableFromReaderAsync(reader);
                 }
             }
         }
@@ -571,14 +492,7 @@ namespace Sorschia.Data
             {
                 using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                 {
-                    if (reader.HasRows)
-                    {
-                        return await converter.EnumerableFromReaderAsync(reader, cancellationToken);
-                    }
-                    else
-                    {
-                        return EnumerableProcessResult<T>.Failed(MESSAGE_NO_RESULT);
-                    }
+                    return await converter.EnumerableFromReaderAsync(reader, cancellationToken);
                 }
             }
         }
