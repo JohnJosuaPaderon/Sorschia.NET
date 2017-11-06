@@ -48,6 +48,7 @@ namespace Sorschia.Processing
     {
         private const string MESSAGE_EXCEPTION_THROWN = "An exception has been thrown.";
         private const string MESSAGE_SUCCESS = "Process successfully completed.";
+        private const string MESSAGE_NO_RESULT = "Process successfully completed but has no result.";
 
         public static ProcessResult<T> Failed(string message)
         {
@@ -72,6 +73,11 @@ namespace Sorschia.Processing
         public static ProcessResult<T> Success(T data, string message)
         {
             return new ProcessResult<T>(data, ProcessResultStatus.Success, message);
+        }
+
+        public static ProcessResult<T> NoResult()
+        {
+            return new ProcessResult<T>(default(T), ProcessResultStatus.Undefined, MESSAGE_NO_RESULT);
         }
 
         public ProcessResult(T data, ProcessResultStatus status, string message, Exception exception = null)
