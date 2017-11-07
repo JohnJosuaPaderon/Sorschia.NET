@@ -1,6 +1,4 @@
-﻿using Sorschia.Entities;
-
-namespace Sorschia.Convention
+﻿namespace Sorschia.Convention
 {
     public abstract class EntityParametersBase : IEntityParameters
     {
