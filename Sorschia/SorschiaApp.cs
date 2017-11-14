@@ -1,31 +1,40 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sorschia.Configurations;
-using Sorschia.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Composition.Hosting;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
 
 namespace Sorschia
 {
     public sealed class SorschiaApp
     {
-        private const string ASSEMBLY_SEARCH_PATTERN = "*.dll";
         private const string BASE_DIRECTORY_PLACEHOLDER = "<basedir>";
 
         static SorschiaApp()
         {
             Current = new SorschiaApp();
+            _Builder = SorschiaAppBuilder.Instance;
         }
+
+        private static readonly SorschiaAppBuilder _Builder;
 
         public static SorschiaApp Current { get; }
 
         public static T ResolveService<T>()
         {
             return Current.ServiceProvider.GetService<T>();
+        }
+
+        public static T ResolveRequiredService<T>()
+        {
+            var service = Current.ServiceProvider.GetService<T>();
+
+            if (Equals(service, default(T)))
+            {
+                throw SorschiaException.ServiceRequired(typeof(T).Name);
+            }
+
+            return service;
         }
 
         public static string ResolveDirectory(string key)
@@ -40,54 +49,29 @@ namespace Sorschia
 
         public static void BuildApp(SorschiaBootstrapper bootstrapper)
         {
-            var services = new ServiceCollection();
-            bootstrapper.ConfigureServices(services);
-
-            if (!string.IsNullOrWhiteSpace(bootstrapper.BaseDirectory))
-            {
-                DirectoryResolver.ResolveExistence(bootstrapper.BaseDirectory);
-            }
-
-            Current.BaseDirectory = bootstrapper.BaseDirectory;
-            Current.PluginDirectory = bootstrapper.PluginDirectory;
-
-            Current.DirectoryProvider = new ApplicationDirectoryProvider(Current);
-            Current.FileProvider = new ApplicationFileProvider(Current);
-
-            Current.TryIntegrateExternalServices(services);
-            Current.ServiceProvider = services.BuildServiceProvider();
+            _Builder.Build(Current, bootstrapper);
         }
+
+        private SorschiaApp()
+        {
+            _ServiceIntegratorComposer = new ServiceIntegratorComposer(this);
+            DirectoryProvider = new ApplicationDirectoryProvider(this);
+            FileProvider = new ApplicationFileProvider(this);
+        }
+
+        private readonly ServiceIntegratorComposer _ServiceIntegratorComposer;
         
         private IEnumerable<IServiceIntegrator> ServiceIntegrators { get; set; }
 
-        public IServiceProvider ServiceProvider { get; private set; }
-        public ApplicationDirectoryProvider DirectoryProvider { get; private set; }
-        public ApplicationFileProvider FileProvider { get; private set; }
-        public string BaseDirectory { get; private set; }
-        public string PluginDirectory { get; private set; }
-
-        private void ComposeServiceIntegrators()
+        public IServiceProvider ServiceProvider { get; internal set; }
+        public ApplicationDirectoryProvider DirectoryProvider { get; }
+        public ApplicationFileProvider FileProvider { get; }
+        public string BaseDirectory { get; internal set; }
+        public string PluginDirectory { get; internal set; }
+        
+        internal void TryIntegrateExternalServices(IServiceCollection services)
         {
-            if (Directory.Exists(PluginDirectory))
-            {
-                var configuration = new ContainerConfiguration();
-                configuration.WithAssemblies(GetPluginAssemblies());
-
-                using (var container = configuration.CreateContainer())
-                {
-                    ServiceIntegrators = container.GetExports<IServiceIntegrator>();
-                }
-            }
-        }
-
-        private IEnumerable<Assembly> GetPluginAssemblies()
-        {
-            return Directory.GetFiles(PluginDirectory, ASSEMBLY_SEARCH_PATTERN, SearchOption.TopDirectoryOnly).Select(AssemblyLoadContext.Default.LoadFromAssemblyPath);
-        }
-
-        private void TryIntegrateExternalServices(IServiceCollection services)
-        {
-            ComposeServiceIntegrators();
+            ServiceIntegrators = _ServiceIntegratorComposer.Compose();
 
             if (ServiceIntegrators != null && ServiceIntegrators.Any())
             {
