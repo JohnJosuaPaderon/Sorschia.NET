@@ -18,6 +18,7 @@ namespace Sorschia.Extensions
         {
             instance.AddSingleton<IDbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter>, DbHelper<SqlConnection, SqlTransaction, SqlCommand, IQueryParameter>>();
             instance.AddSingleton<IDbConnectionProvider<SqlConnection>, SqlConnectionProvider>();
+            instance.AddSingleton<IConnectionPool<SqlConnection>, SqlConnectionPool>();
             instance.AddSingleton<IDbTransactionProvider<SqlConnection, SqlTransaction>, SqlTransactionProvider>();
             instance.AddSingleton<IDbCommandProvider<SqlConnection, SqlTransaction, SqlCommand>, SqlCommandProvider>();
 
