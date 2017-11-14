@@ -6,9 +6,9 @@ namespace Sorschia.Entities
     {
         static NameBase()
         {
-            _AcronymBuilder = SorschiaApp.ResolveService<IAcronymBuilder>() ?? throw SorschiaException.ServiceRequired(nameof(IAcronymBuilder));
-            _FullNameBuilder = SorschiaApp.ResolveService<IFullNameBuilder>() ?? throw SorschiaException.ServiceRequired(nameof(IFullNameBuilder));
-            _InformalFullNameBuilder = SorschiaApp.ResolveService<IInformalFullNameBuilder>() ?? throw SorschiaException.ServiceRequired(nameof(IInformalFullNameBuilder));
+            _AcronymBuilder = SorschiaApp.ResolveRequiredService<IAcronymBuilder>();
+            _FullNameBuilder = SorschiaApp.ResolveRequiredService<IFullNameBuilder>();
+            _InformalFullNameBuilder = SorschiaApp.ResolveRequiredService<IInformalFullNameBuilder>();
         }
 
         private static readonly IAcronymBuilder _AcronymBuilder;
