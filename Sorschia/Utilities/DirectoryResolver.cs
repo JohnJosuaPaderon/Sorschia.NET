@@ -8,7 +8,7 @@ namespace Sorschia.Utilities
         {
             if (string.IsNullOrWhiteSpace(directory))
             {
-                throw new SorschiaException(SorschiaExceptionKind.ValueRequired);
+                throw SorschiaException.ParameterRequired(nameof(directory));
             }
             else if (!Directory.Exists(directory))
             {

@@ -10,17 +10,15 @@ namespace Sorschia.Extensions
         {
             if (jArray == null)
             {
-                throw new SorschiaException(nameof(jArray), SorschiaExceptionKind.UnexpectedNull);
+                throw SorschiaException.ParameterRequired(nameof(jArray));
             }
-
-            if (jArray.Count <= 0)
+            else if (jArray.Count <= 0)
             {
-                throw new SorschiaException(nameof(jArray), SorschiaExceptionKind.EmptyCollection);
+                throw SorschiaException.EmptyCollection(nameof(jArray));
             }
-
-            if (string.IsNullOrWhiteSpace(propertyName))
+            else if (string.IsNullOrWhiteSpace(propertyName))
             {
-                throw new SorschiaException(nameof(propertyName), SorschiaExceptionKind.InvalidValue);
+                throw SorschiaException.ParameterRequired(nameof(propertyName));
             }
         }
 

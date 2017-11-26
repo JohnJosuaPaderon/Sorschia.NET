@@ -1,30 +1,31 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Sorschia
 {
     [Serializable]
-    public sealed class SorschiaException : Exception
+    public partial class SorschiaException : Exception
     {
-        public static SorschiaException ServiceRequired(string serviceName)
+        public SorschiaException(SorschiaExceptionType type)
         {
-            return new SorschiaException($"The service '{serviceName}' is required by the application.", SorschiaExceptionKind.ServiceRequired);
+            Type = type;
         }
 
-        public SorschiaException(SorschiaExceptionKind kind = SorschiaExceptionKind.Undefined)
+        public SorschiaException(string message, SorschiaExceptionType type) : base(message)
         {
-            Kind = kind;
+            Type = type;
         }
 
-        public SorschiaException(string message, SorschiaExceptionKind kind = SorschiaExceptionKind.Undefined) : base(message)
+        public SorschiaException(string message, Exception inner, SorschiaExceptionType type) : base(message, inner)
         {
-            Kind = kind;
+            Type = type;
         }
 
-        public SorschiaException(string message, Exception innerException, SorschiaExceptionKind kind = SorschiaExceptionKind.Undefined) : base(message, innerException)
+        protected SorschiaException(SerializationInfo info, StreamingContext context, SorschiaExceptionType type) : base(info, context)
         {
-            Kind = kind;
+            Type = type;
         }
 
-        public SorschiaExceptionKind Kind { get; }
+        public SorschiaExceptionType Type { get; }
     }
 }

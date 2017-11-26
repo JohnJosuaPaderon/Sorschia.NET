@@ -9,7 +9,7 @@ namespace Sorschia.Utilities
         {
             if (jValue == null)
             {
-                throw new SorschiaException(nameof(jValue), SorschiaExceptionKind.UnexpectedNull);
+                throw SorschiaException.ParameterRequired(nameof(jValue));
             }
         }
 

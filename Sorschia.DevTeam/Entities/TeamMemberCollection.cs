@@ -6,7 +6,7 @@ namespace Sorschia.DevTeam.Entities
     {
         public TeamMemberCollection(Team team)
         {
-            Team = team ?? throw new SorschiaException(nameof(team), SorschiaExceptionKind.UnexpectedNull);
+            Team = team ?? throw SorschiaException.PropertyRequired(nameof(Team));
         }
 
         public ITeam Team { get; }
