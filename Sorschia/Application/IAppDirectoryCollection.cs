@@ -4,10 +4,10 @@ namespace Sorschia.Application
 {
     public interface IAppDirectoryCollection : IEnumerable<IAppDirectory>
     {
-        IAppDirectory this[AppDirectoryType type] { get; set; }
+        IAppDirectory this[string key] { get; set; }
 
         void Add(IAppDirectory directory);
-        void Remove(AppDirectoryType type);
+        void Remove(string key);
         void Clear();
     }
 }

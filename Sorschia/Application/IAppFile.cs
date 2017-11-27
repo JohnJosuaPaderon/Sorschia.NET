@@ -2,7 +2,7 @@
 {
     public interface IAppFile
     {
-        AppFileType Type { get; }
+        string Key { get; set; }
         string Path { get; set; }
         bool IsRequired { get; set; }
     }

@@ -10,34 +10,34 @@ namespace Sorschia.Application
         public AppDirectoryCollection()
         {
             _Helper = AppDirectoryCollectionHelper.Instance;
-            _Source = new Dictionary<AppDirectoryType, IAppDirectory>();
+            _Source = new Dictionary<string, IAppDirectory>();
         }
 
         private readonly AppDirectoryCollectionHelper _Helper;
-        private readonly Dictionary<AppDirectoryType, IAppDirectory> _Source;
+        private readonly Dictionary<string, IAppDirectory> _Source;
 
-        public IAppDirectory this[AppDirectoryType type]
+        public IAppDirectory this[string key]
         {
             get
             {
-                if (_Source.ContainsKey(type))
+                if (_Source.ContainsKey(key))
                 {
-                    return _Source[type];
+                    return _Source[key];
                 }
                 else
                 {
-                    throw _Helper.ComposeItemNotExistsError(type);
+                    throw _Helper.ComposeItemNotExistsError(key);
                 }
             }
             set
             {
-                if (_Source.ContainsKey(type))
+                if (_Source.ContainsKey(key))
                 {
-                    _Source[type] = value;
+                    _Source[key] = value;
                 }
                 else
                 {
-                    throw _Helper.ComposeItemNotExistsError(type);
+                    throw _Helper.ComposeItemNotExistsError(key);
                 }
             }
         }
@@ -46,13 +46,13 @@ namespace Sorschia.Application
         {
             _Helper.ValidateDirectory(directory);
 
-            if (_Source.ContainsKey(directory.Type))
+            if (_Source.ContainsKey(directory.Key))
             {
-                throw _Helper.ComposeItemDuplicationError(directory.Type);
+                throw _Helper.ComposeItemDuplicationError(directory.Key);
             }
             else
             {
-                _Source.Add(directory.Type, directory);
+                _Source.Add(directory.Key, directory);
             }
         }
 
@@ -66,15 +66,15 @@ namespace Sorschia.Application
             return _Source.Values.GetEnumerator();
         }
 
-        public void Remove(AppDirectoryType type)
+        public void Remove(string key)
         {
-            if (_Source.ContainsKey(type))
+            if (_Source.ContainsKey(key))
             {
-                _Source.Remove(type);
+                _Source.Remove(key);
             }
             else
             {
-                throw _Helper.ComposeItemNotExistsError(type);
+                throw _Helper.ComposeItemNotExistsError(key);
             }
         }
 

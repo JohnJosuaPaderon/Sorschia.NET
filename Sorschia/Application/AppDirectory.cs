@@ -2,12 +2,7 @@
 {
     public sealed class AppDirectory : IAppDirectory
     {
-        public AppDirectory(AppDirectoryType type)
-        {
-            Type = type;
-        }
-
-        public AppDirectoryType Type { get; }
+        public string Key { get; set; }
         public string Path { get; set; }
         public bool IsRequired { get; set; }
 
@@ -29,7 +24,7 @@
 
             if (obj is AppDirectory value)
             {
-                return Type == value.Type;
+                return Key == value.Key;
             }
             else
             {
@@ -39,7 +34,7 @@
 
         public override int GetHashCode()
         {
-            return Type.GetHashCode();
+            return Key.GetHashCode();
         }
     }
 }

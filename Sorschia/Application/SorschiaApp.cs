@@ -1,5 +1,6 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Sorschia.Utilities;
+using System;
 
 namespace Sorschia.Application
 {
@@ -26,22 +27,22 @@ namespace Sorschia.Application
             return Current.ServiceProvider.GetService<T>();
         }
 
-        public static string GetDirectory(AppDirectoryType type)
+        public static string GetDirectory(string key)
         {
             ValidateCurrent();
-            return Current.Directories[type].Path;
+            return Current.GetAppDirectory(key);
         }
 
-        public static string GetFile(AppFileType type)
+        public static string GetFile(string key)
         {
             ValidateCurrent();
-            return Current.Files[type].Path;
+            return Current.GetAppFile(key);
         }
 
         public static string GetSetting(string key)
         {
             ValidateCurrent();
-            return Current.Settings[key].Value;
+            return Current.GetAppSetting(key);
         }
 
         private static readonly SorschiaAppBuilder _Builder;
@@ -66,5 +67,20 @@ namespace Sorschia.Application
         public IAppDirectoryCollection Directories { get; }
         public IAppFileCollection Files { get; }
         public IAppSettingCollection Settings { get; }
+
+        public string GetAppDirectory(string key)
+        {
+            return DirectoryResolver.Resolve(this, Directories[key].Path);
+        }
+
+        public string GetAppFile(string key)
+        {
+            return DirectoryResolver.Resolve(this, Files[key].Path);
+        }
+
+        public string GetAppSetting(string key)
+        {
+            return Settings[key].Value;
+        }
     }
 }

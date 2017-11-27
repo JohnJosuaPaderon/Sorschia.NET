@@ -10,34 +10,34 @@ namespace Sorschia.Application
         public AppFileCollection()
         {
             _Helper = AppFileCollectionHelper.Instance;
-            _Source = new Dictionary<AppFileType, IAppFile>();
+            _Source = new Dictionary<string, IAppFile>();
         }
 
-        private readonly Dictionary<AppFileType, IAppFile> _Source;
+        private readonly Dictionary<string, IAppFile> _Source;
         private readonly AppFileCollectionHelper _Helper;
 
-        public IAppFile this[AppFileType type]
+        public IAppFile this[string key]
         {
             get
             {
-                if (_Source.ContainsKey(type))
+                if (_Source.ContainsKey(key))
                 {
-                    return _Source[type];
+                    return _Source[key];
                 }
                 else
                 {
-                    throw _Helper.ComposeItemNotExistsError(type);
+                    throw _Helper.ComposeItemNotExistsError(key);
                 }
             }
             set
             {
-                if (_Source.ContainsKey(type))
+                if (_Source.ContainsKey(key))
                 {
-                    _Source[type] = value;
+                    _Source[key] = value;
                 }
                 else
                 {
-                    throw _Helper.ComposeItemNotExistsError(type);
+                    throw _Helper.ComposeItemNotExistsError(key);
                 }
             }
         }
@@ -46,13 +46,13 @@ namespace Sorschia.Application
         {
             _Helper.ValidateFile(file);
 
-            if (_Source.ContainsKey(file.Type))
+            if (_Source.ContainsKey(file.Key))
             {
-                throw _Helper.ComposeItemDuplicationError(file.Type);
+                throw _Helper.ComposeItemDuplicationError(file.Key);
             }
             else
             {
-                _Source.Add(file.Type, file);
+                _Source.Add(file.Key, file);
             }
         }
 
@@ -66,15 +66,15 @@ namespace Sorschia.Application
             return _Source.Values.GetEnumerator();
         }
 
-        public void Remove(AppFileType type)
+        public void Remove(string key)
         {
-            if (_Source.ContainsKey(type))
+            if (_Source.ContainsKey(key))
             {
-                _Source.Remove(type);
+                _Source.Remove(key);
             }
             else
             {
-                throw _Helper.ComposeItemNotExistsError(type);
+                throw _Helper.ComposeItemNotExistsError(key);
             }
         }
 

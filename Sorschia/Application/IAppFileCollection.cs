@@ -4,10 +4,10 @@ namespace Sorschia.Application
 {
     public interface IAppFileCollection : IEnumerable<IAppFile>
     {
-        IAppFile this[AppFileType type] { get;set; }
+        IAppFile this[string key] { get; set; }
 
         void Add(IAppFile file);
-        void Remove(AppFileType type);
+        void Remove(string key);
         void Clear();
     }
 }

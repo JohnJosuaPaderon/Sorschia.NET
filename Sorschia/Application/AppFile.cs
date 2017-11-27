@@ -2,12 +2,7 @@
 {
     public sealed class AppFile : IAppFile
     {
-        public AppFile(AppFileType type)
-        {
-            Type = type;
-        }
-
-        public AppFileType Type { get; }
+        public string Key { get; set; }
         public string Path { get; set; }
         public bool IsRequired { get; set; }
 
@@ -29,7 +24,7 @@
 
             if (obj is AppFile value)
             {
-                return Type == value.Type;
+                return Key == value.Key;
             }
             else
             {
@@ -39,7 +34,7 @@
 
         public override int GetHashCode()
         {
-            return Type.GetHashCode();
+            return Key.GetHashCode();
         }
     }
 }

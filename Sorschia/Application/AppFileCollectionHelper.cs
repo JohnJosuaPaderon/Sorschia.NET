@@ -17,14 +17,14 @@
             }
         }
 
-        public SorschiaException ComposeItemDuplicationError(AppFileType type)
+        public SorschiaException ComposeItemDuplicationError(string key)
         {
-            return SorschiaException.CollectionItemDuplication($"File of type '{type}' is already exists in the collection.");
+            return SorschiaException.CollectionItemDuplication($"File with key '{key}' is already exists in the collection.");
         }
 
-        public SorschiaException ComposeItemNotExistsError(AppFileType type)
+        public SorschiaException ComposeItemNotExistsError(string key)
         {
-            return SorschiaException.CollectionItemNotExists($"File of type '{type}' doesn't exists in the collection.");
+            return SorschiaException.CollectionItemNotExists($"File with key '{key}' doesn't exists in the collection.");
         }
     }
 }
