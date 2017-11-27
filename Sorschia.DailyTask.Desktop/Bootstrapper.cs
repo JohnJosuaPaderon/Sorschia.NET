@@ -30,7 +30,7 @@ namespace Sorschia.DailyTask
 
         protected override void InitializeShell()
         {
-            Application.Current.MainWindow.Show();
+            System.Windows.Application.Current.MainWindow.Show();
         }
 
         protected override void ConfigureContainer()
