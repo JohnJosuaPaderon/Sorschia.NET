@@ -192,5 +192,17 @@ namespace Sorschia.Extensions
         {
             return GetValueBase(instance, propertyName, JValueConverter.ToUInt64);
         }
+
+        public static JArray GetArray(this JObject instance, string key)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw SorschiaException.ParameterRequired(nameof(key));
+            }
+            else
+            {
+                return instance[key] as JArray;
+            }
+        }
     }
 }
