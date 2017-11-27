@@ -1,15 +1,15 @@
 ﻿namespace Sorschia.Entities
 {
-    public abstract class Entity<TIdentifier> : IEntity<TIdentifier>
+    public abstract class EntityBase<TIdentifier> : IEntity<TIdentifier>
     {
         public TIdentifier Id { get; set; }
 
-        public static bool operator ==(Entity<TIdentifier> left, Entity<TIdentifier> right)
+        public static bool operator ==(EntityBase<TIdentifier> left, EntityBase<TIdentifier> right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Entity<TIdentifier> left, Entity<TIdentifier> right)
+        public static bool operator !=(EntityBase<TIdentifier> left, EntityBase<TIdentifier> right)
         {
             return !(left == right);
         }
@@ -20,7 +20,7 @@
             if (ReferenceEquals(this, obj)) return true;
             if (GetType() != obj.GetType()) return false;
 
-            if (obj is Entity<TIdentifier> value)
+            if (obj is EntityBase<TIdentifier> value)
             {
                 return (Equals(Id, default(TIdentifier)) || Equals(value.Id, default(TIdentifier))) ? false : Equals(Id, value.Id);
             }
