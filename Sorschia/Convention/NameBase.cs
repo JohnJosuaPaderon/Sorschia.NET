@@ -1,4 +1,5 @@
-﻿using Sorschia.Utilities;
+﻿using Sorschia.Application;
+using Sorschia.Utilities;
 
 namespace Sorschia.Convention
 {
@@ -6,9 +7,9 @@ namespace Sorschia.Convention
     {
         static NameBase()
         {
-            //_AcronymBuilder = SorschiaApp.ResolveRequiredService<IAcronymBuilder>();
-            //_FullNameBuilder = SorschiaApp.ResolveRequiredService<IFullNameBuilder>();
-            //_InformalFullNameBuilder = SorschiaApp.ResolveRequiredService<IInformalFullNameBuilder>();
+            _AcronymBuilder = SorschiaApp.GetService<IAcronymBuilder>();
+            _FullNameBuilder = SorschiaApp.GetService<IFullNameBuilder>();
+            _InformalFullNameBuilder = SorschiaApp.GetService<IInformalFullNameBuilder>();
         }
 
         private static readonly IAcronymBuilder _AcronymBuilder;
