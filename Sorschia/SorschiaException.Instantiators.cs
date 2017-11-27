@@ -46,5 +46,10 @@
         {
             return new SorschiaException($"The file '{filePath}' doesn't exists.", SorschiaExceptionType.FileNotFound);
         }
+
+        public static SorschiaException AppFailure(string message)
+        {
+            return new SorschiaException(message, SorschiaExceptionType.AppFailure);
+        }
     }
 }

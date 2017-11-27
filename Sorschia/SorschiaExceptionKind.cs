@@ -12,6 +12,7 @@
         InvalidOperation,
         CollectionItemDuplication,
         CollectionItemNotExists,
-        FileNotFound
+        FileNotFound,
+        AppFailure
     }
 }
