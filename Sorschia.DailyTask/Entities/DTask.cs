@@ -3,7 +3,7 @@ using System;
 
 namespace Sorschia.DailyTask.Entities
 {
-    public class DTask : Entity<long>, IDTask
+    public class DTask : EntityBase<long>, IDTask
     {
         public string Title { get; set; }
         public string Description { get; set; }
