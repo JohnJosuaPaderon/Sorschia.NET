@@ -2,7 +2,7 @@
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class Member : Entity<long>, IMember
+    public class Member : EntityBase<long>, IMember
     {
         public Member()
         {

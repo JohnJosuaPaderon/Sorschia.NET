@@ -3,7 +3,7 @@ using System;
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class Team : Entity<int>, ITeam
+    public class Team : EntityBase<int>, ITeam
     {
         public Team()
         {

@@ -3,7 +3,7 @@ using System.Security;
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class User : Entity<long>, IUser
+    public class User : EntityBase<long>, IUser
     {
         public Member Owner { get; set; }
         public SecureString SecureUsername { get; set; }

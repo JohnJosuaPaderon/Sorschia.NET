@@ -3,7 +3,7 @@ using System;
 
 namespace Sorschia.DevTeam.Entities
 {
-    public class Project : Entity<long>, IProject
+    public class Project : EntityBase<long>, IProject
     {
         public string Name { get; set; }
         public ValueRange<DateTime>? TimeFrame { get; set; }
