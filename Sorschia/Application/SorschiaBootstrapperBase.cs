@@ -10,8 +10,6 @@ namespace Sorschia.Application
         }
 
         public IServiceCollection Services { get; }
-        public string BaseDirectory { get; protected set; }
-        public string PluginDirectory { get; protected set; }
         public string ConfigurationFilePath { get; protected set; }
     }
 }

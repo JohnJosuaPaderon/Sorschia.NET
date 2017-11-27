@@ -5,6 +5,8 @@ namespace Sorschia.Application
 {
     public sealed class AppFileCollection : IAppFileCollection
     {
+        public static AppFileCollection Empty => new AppFileCollection();
+
         public AppFileCollection()
         {
             _Helper = AppFileCollectionHelper.Instance;

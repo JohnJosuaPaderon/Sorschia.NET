@@ -5,6 +5,8 @@ namespace Sorschia.Application
 {
     public sealed class AppSettingCollection : IAppSettingCollection
     {
+        public static AppSettingCollection Empty => new AppSettingCollection();
+
         public AppSettingCollection()
         {
             _Helper = AppSettingCollectionHelper.Instance;
