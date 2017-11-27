@@ -5,7 +5,6 @@ namespace Sorschia.Application
 {
     public sealed class AppDirectoryCollection : IAppDirectoryCollection
     {
-
         public AppDirectoryCollection()
         {
             _Helper = AppDirectoryCollectionHelper.Instance;

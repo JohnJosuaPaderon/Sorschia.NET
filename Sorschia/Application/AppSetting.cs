@@ -1,22 +1,16 @@
 ﻿namespace Sorschia.Application
 {
-    public sealed class AppDirectory : IAppDirectory
+    public sealed class AppSetting : IAppSetting
     {
-        public AppDirectory(AppDirectoryType type)
-        {
-            Type = type;
-        }
+        public string Key { get; set; }
+        public string Value { get; set; }
 
-        public AppDirectoryType Type { get; }
-        public string Path { get; set; }
-        public bool IsRequired { get; set; }
-
-        public static bool operator ==(AppDirectory left, AppDirectory right)
+        public static bool operator ==(AppSetting left, AppSetting right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(AppDirectory left, AppDirectory right)
+        public static bool operator !=(AppSetting left, AppSetting right)
         {
             return !(left == right);
         }
@@ -27,9 +21,9 @@
             if (ReferenceEquals(this, obj)) return true;
             if (GetType() != obj.GetType()) return false;
 
-            if (obj is AppDirectory value)
+            if (obj is AppSetting value)
             {
-                return Type == value.Type;
+                return (Key == null || value.Key == null) ? false : Key == value.Key;
             }
             else
             {
@@ -39,7 +33,7 @@
 
         public override int GetHashCode()
         {
-            return Type.GetHashCode();
+            return Key.GetHashCode();
         }
     }
 }
