@@ -5,7 +5,7 @@ namespace Sorschia.Application
 {
     public static class JsonAppFileConverter
     {
-        private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_KEY = "key";
         private const string PROPERTY_IS_REQUIRED = "isRequired";
         private const string PROPERTY_PATH = "path";
 
@@ -18,7 +18,7 @@ namespace Sorschia.Application
 
             var result = new JObject
             {
-                { PROPERTY_TYPE, file.Type.ToString() },
+                { PROPERTY_KEY, file.Key },
                 { PROPERTY_IS_REQUIRED, file.IsRequired },
                 { PROPERTY_PATH, file.Path }
             };
@@ -33,8 +33,9 @@ namespace Sorschia.Application
                 throw SorschiaException.ParameterRequired(nameof(jFile));
             }
 
-            var result = new AppFile(AppFileTypeParser.Parse(jFile.GetString(PROPERTY_TYPE)))
+            var result = new AppFile()
             {
+                Key = jFile.GetString(PROPERTY_KEY),
                 IsRequired = jFile.GetBoolean(PROPERTY_IS_REQUIRED),
                 Path = jFile.GetString(PROPERTY_PATH)
             };

@@ -5,8 +5,8 @@ namespace Sorschia.Processing
 {
     public interface IEnumerableProcess<T>
     {
-        IEnumerableProcessResult<T> Execute();
-        Task<IEnumerableProcessResult<T>> ExecuteAsync();
-        Task<IEnumerableProcessResult<T>> ExecuteAsync(CancellationToken cancellationToken);
+        IEnumerableProcessResult<T> Execute(IProcessContext context);
+        Task<IEnumerableProcessResult<T>> ExecuteAsync(IProcessContext context);
+        Task<IEnumerableProcessResult<T>> ExecuteAsync(IProcessContext context, CancellationToken cancellationToken);
     }
 }

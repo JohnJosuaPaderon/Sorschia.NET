@@ -5,7 +5,7 @@ namespace Sorschia.Application
 {
     public static class JsonAppDirectoryConverter
     {
-        private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_KEY = "key";
         private const string PROPERTY_IS_REQUIRED = "isRequired";
         private const string PROPERTY_PATH = "path";
 
@@ -18,7 +18,7 @@ namespace Sorschia.Application
 
             var result = new JObject
             {
-                { PROPERTY_TYPE, directory.Type.ToString() },
+                { PROPERTY_KEY, directory.Key },
                 { PROPERTY_IS_REQUIRED, directory.IsRequired },
                 { PROPERTY_PATH, directory.Path }
             };
@@ -33,8 +33,9 @@ namespace Sorschia.Application
                 throw SorschiaException.ParameterRequired(nameof(jDirectory));
             }
 
-            var result = new AppDirectory(AppDirectoryTypeParser.Parse(jDirectory.GetString(PROPERTY_TYPE)))
+            var result = new AppDirectory()
             {
+                Key = jDirectory.GetString(PROPERTY_KEY),
                 IsRequired = jDirectory.GetBoolean(PROPERTY_IS_REQUIRED),
                 Path = jDirectory.GetString(PROPERTY_PATH)
             };

@@ -5,15 +5,15 @@ namespace Sorschia.Processing
 {
     public interface IProcess
     {
-        IProcessResult Execute();
-        Task<IProcessResult> ExecuteAsync();
-        Task<IProcessResult> ExecuteAsync(CancellationToken cancellationToken);
+        IProcessResult Execute(IProcessContext context);
+        Task<IProcessResult> ExecuteAsync(IProcessContext context);
+        Task<IProcessResult> ExecuteAsync(IProcessContext context, CancellationToken cancellationToken);
     }
 
     public interface IProcess<T>
     {
-        IProcessResult<T> Execute();
-        Task<IProcessResult<T>> ExecuteAsync();
-        Task<IProcessResult<T>> ExecuteAsync(CancellationToken cancellationToken);
+        IProcessResult<T> Execute(IProcessContext context);
+        Task<IProcessResult<T>> ExecuteAsync(IProcessContext context);
+        Task<IProcessResult<T>> ExecuteAsync(IProcessContext context, CancellationToken cancellationToken);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Sorschia.Application;
+using System.IO;
 
 namespace Sorschia.Utilities
 {
@@ -14,6 +15,20 @@ namespace Sorschia.Utilities
             {
                 Directory.CreateDirectory(directory);
             }
+        }
+
+        public static string Resolve(ISorschiaApp app, string directory)
+        {
+            foreach (var appDirectory in app.Directories)
+            {
+                var placeholder = $"<{appDirectory.Key}>";
+                if (directory.Contains(placeholder))
+                {
+                    directory = directory.Replace(placeholder, appDirectory.Path);
+                }
+            }
+
+            return directory;
         }
     }
 }
