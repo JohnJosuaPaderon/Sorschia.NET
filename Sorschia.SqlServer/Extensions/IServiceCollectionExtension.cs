@@ -12,7 +12,8 @@ namespace Sorschia.Extensions
                 .UseDbConnectionProvider<SqlConnectionProvider, SqlConnection>()
                 .UseDbTransactionProvider<SqlTransactionProvider, SqlTransaction>()
                 .UseDbCommandCreator<SqlCommandCreator, SqlCommand>()
-                .UseDbQueryParameterConverter<SqlQueryParameterConverter, SqlParameter>();
+                .UseDbQueryParameterConverter<SqlQueryParameterConverter, SqlParameter>()
+                .UseDbProcessor<SqlProcessor, SqlCommand>();
         }
     }
 }
