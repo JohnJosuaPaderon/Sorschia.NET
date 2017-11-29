@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sorschia.Configuration
+﻿namespace Sorschia.Configuration
 {
     public sealed class JsonConnectionStringSource : ConnectionStringSourceBase, IConnectionStringSource
     {
-
+        public JsonConnectionStringSource(IConnectionStringSourceLoader loader) : base(loader)
+        {
+        }
     }
 }
