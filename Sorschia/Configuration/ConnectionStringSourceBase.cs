@@ -6,12 +6,14 @@ namespace Sorschia.Configuration
 {
     public abstract class ConnectionStringSourceBase : IConnectionStringSource
     {
-        public ConnectionStringSourceBase()
+        public ConnectionStringSourceBase(IConnectionStringSourceLoader loader)
         {
             _SecureSource = new Dictionary<string, SecureString>();
+            _Loader = loader;
         }
 
         private readonly Dictionary<string, SecureString> _SecureSource;
+        private readonly IConnectionStringSourceLoader _Loader;
 
         public string this[string key]
         {
@@ -67,7 +69,7 @@ namespace Sorschia.Configuration
 
         public void Initialize()
         {
-
+            _Loader.Load(this);
         }
     }
 }
