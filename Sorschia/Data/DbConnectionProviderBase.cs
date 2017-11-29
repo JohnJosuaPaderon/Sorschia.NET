@@ -31,6 +31,7 @@ namespace Sorschia.Data
                 {
                     var connection = Instantiate(processContext);
                     connection.Open();
+                    _Source.Add(processContext, connection);
                     return connection;
                 }
                 catch (Exception)
@@ -52,6 +53,7 @@ namespace Sorschia.Data
                 {
                     var connection = Instantiate(processContext);
                     await connection.OpenAsync();
+                    _Source.Add(processContext, connection);
                     return connection;
                 }
                 catch (Exception)
@@ -73,12 +75,30 @@ namespace Sorschia.Data
                 {
                     var connection = Instantiate(processContext);
                     await connection.OpenAsync(cancellationToken);
+                    _Source.Add(processContext, connection);
                     return connection;
                 }
                 catch (Exception)
                 {
                     throw;
                 }
+            }
+        }
+
+        public TConnection Request(IProcessContext processContext)
+        {
+            return _Source[processContext];
+        }
+
+        public void CloseDispose(IProcessContext processContext)
+        {
+            var connection = _Source[processContext];
+
+            if (connection != null)
+            {
+                connection.Close();
+                connection.Dispose();
+                _Source.Remove(processContext);
             }
         }
     }

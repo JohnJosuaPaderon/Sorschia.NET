@@ -7,5 +7,6 @@ namespace Sorschia.Data
         where TTransaction : DbTransaction
     {
         TTransaction this[IProcessContext processContext] { get; }
+        void Dispose(IProcessContext processContext);
     }
 }

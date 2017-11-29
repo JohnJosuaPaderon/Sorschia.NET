@@ -1,109 +1,94 @@
 ﻿using Sorschia.Processing;
+using System;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorschia.Data
 {
-    public abstract class DbProcessorBase<TConnection, TCommand> : IDbProcessor<TCommand>
-        where TConnection : DbConnection
+    public abstract class DbProcessorBase<TCommand> : IDbProcessor<TCommand>
         where TCommand : DbCommand
     {
-        public DbProcessorBase(IDbConnectionProvider<TConnection> connectionProvider)
+        public DbProcessorBase(IDbCommandCreator<TCommand> commandCreator)
         {
-            _ConnectionProvider = connectionProvider;
+            _CommandCreator = commandCreator;
         }
 
-        private readonly IDbConnectionProvider<TConnection> _ConnectionProvider;
+        private readonly IDbCommandCreator<TCommand> _CommandCreator;
 
-        public IEnumerableProcessResult<T> ExecuteEnumerableReader<T>(TCommand command, IProcessContext processContext, IDbDataReaderConverter<T> converter)
+        public IEnumerableProcessResult<T> ExecuteEnumerableReader<T>(IDbQuery query, IProcessContext processContext, IDbDataReaderConverter<T> converter)
         {
-            using (command)
-            {
-                command.Connection = _ConnectionProvider.Establish(processContext);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        return converter.EnumerableFromReader(reader);
-                    }
-                    else
-                    {
-                        return EnumerableProcessResult<T>.NoResult();
-                    }
-                }
-            }
+            throw new NotImplementedException();
         }
 
-        public Task<IEnumerableProcessResult<T>> ExecuteEnumerableReaderAsync<T>(TCommand command, IProcessContext processContext, IDbDataReaderConverter<T> converter)
+        public Task<IEnumerableProcessResult<T>> ExecuteEnumerableReaderAsync<T>(IDbQuery query, IProcessContext processContext, IDbDataReaderConverter<T> converter)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IEnumerableProcessResult<T>> ExecuteEnumerableReaderAsync<T>(TCommand command, IProcessContext processContext, IDbDataReaderConverter<T> converter, CancellationToken cancellationToken)
+        public Task<IEnumerableProcessResult<T>> ExecuteEnumerableReaderAsync<T>(IDbQuery query, IProcessContext processContext, IDbDataReaderConverter<T> converter, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public IProcessResult ExecuteNonQuery(TCommand command, IProcessContext processContext)
+        public IProcessResult ExecuteNonQuery(IDbQuery query, IProcessContext processContext)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public IProcessResult<T> ExecuteNonQuery<T>(TCommand command, IProcessContext processContext, IDbProcessorCallback<T, TCommand> callback)
+        public IProcessResult<T> ExecuteNonQuery<T>(IDbQuery query, IProcessContext processContext, IDbProcessorCallback<T, TCommand> callback)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult> ExecuteNonQueryAsync(TCommand command, IProcessContext processContext)
+        public Task<IProcessResult> ExecuteNonQueryAsync(IDbQuery query, IProcessContext processContext)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult<T>> ExecuteNonQueryAsync<T>(TCommand command, IProcessContext processContext, IDbProcessorCallback<T, TCommand> callback)
+        public Task<IProcessResult<T>> ExecuteNonQueryAsync<T>(IDbQuery query, IProcessContext processContext, IDbProcessorCallback<T, TCommand> callback)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult> ExecuteNonQueryAsync(TCommand command, IProcessContext processContext, CancellationToken cancellationToken)
+        public Task<IProcessResult> ExecuteNonQueryAsync(IDbQuery query, IProcessContext processContext, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult<T>> ExecuteNonQueryAsync<T>(TCommand command, IProcessContext processContext, IDbProcessorCallback<T, TCommand> callback, CancellationToken cancellationToken)
+        public Task<IProcessResult<T>> ExecuteNonQueryAsync<T>(IDbQuery query, IProcessContext processContext, IDbProcessorCallback<T, TCommand> callback, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public IProcessResult<T> ExecuteReader<T>(TCommand command, IProcessContext processContext, IDbDataReaderConverter<T> converter)
+        public IProcessResult<T> ExecuteReader<T>(IDbQuery query, IProcessContext processContext, IDbDataReaderConverter<T> converter)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult<T>> ExecuteReaderAsync<T>(TCommand command, IProcessContext processContext, IDbDataReaderConverter<T> converter)
+        public Task<IProcessResult<T>> ExecuteReaderAsync<T>(IDbQuery query, IProcessContext processContext, IDbDataReaderConverter<T> converter)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult<T>> ExecuteReaderAsync<T>(TCommand command, IProcessContext processContext, IDbDataReaderConverter<T> converter, CancellationToken cancellationToken)
+        public Task<IProcessResult<T>> ExecuteReaderAsync<T>(IDbQuery query, IProcessContext processContext, IDbDataReaderConverter<T> converter, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public IProcessResult<T> ExecuteScalar<T>(TCommand command, IProcessContext processContext, System.Func<object, T> converter)
+        public IProcessResult<T> ExecuteScalar<T>(IDbQuery query, IProcessContext processContext, Func<object, T> converter)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult<T>> ExecuteScalarAsync<T>(TCommand command, IProcessContext processContext, System.Func<object, T> converter)
+        public Task<IProcessResult<T>> ExecuteScalarAsync<T>(IDbQuery query, IProcessContext processContext, Func<object, T> converter)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<IProcessResult<T>> ExecuteScalarAsync<T>(TCommand command, IProcessContext processContext, System.Func<object, T> converter, CancellationToken cancellationToken)
+        public Task<IProcessResult<T>> ExecuteScalarAsync<T>(IDbQuery query, IProcessContext processContext, Func<object, T> converter, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
