@@ -18,8 +18,8 @@ namespace Sorschia.Processing
 
         public void Finish(IProcessContext context)
         {
-            _ConnectionProvider.CloseDispose(context);
             _TransactionProvider.Dispose(context);
+            _ConnectionProvider.CloseDispose(context);
         }
 
         public IProcessContext Generate()
