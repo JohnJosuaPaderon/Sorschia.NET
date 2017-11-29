@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Convention\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Processes\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
 
 </Project>
