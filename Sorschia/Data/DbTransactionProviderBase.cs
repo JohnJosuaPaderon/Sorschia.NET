@@ -25,6 +25,15 @@ namespace Sorschia.Data
 
             if (transaction != null)
             {
+                if (processContext.IsFaulted)
+                {
+                    transaction.Rollback();
+                }
+                else
+                {
+                    transaction.Commit();
+                }
+
                 transaction.Dispose();
                 _Source.Remove(processContext);
             }

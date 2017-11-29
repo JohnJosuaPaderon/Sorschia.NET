@@ -32,5 +32,12 @@ namespace Sorschia.Data
         {
             return instance.AddSingleton<IDbQueryParameterConverter<TParameter>, T>();
         }
+
+        public static IServiceCollection UseDbProcessor<T, TCommand>(this IServiceCollection instance)
+            where T : class, IDbProcessor<TCommand>
+            where TCommand : DbCommand
+        {
+            return instance.AddSingleton<IDbProcessor<TCommand>, T>();
+        }
     }
 }
