@@ -1,4 +1,6 @@
-﻿namespace Sorschia
+﻿using System;
+
+namespace Sorschia
 {
     partial class SorschiaException
     {
@@ -25,6 +27,11 @@
         public static SorschiaException EmptyCollection(string collectionName)
         {
             return new SorschiaException($"The collection '{collectionName}' is empty.", SorschiaExceptionType.EmptyCollection);
+        }
+
+        public static Exception ParseError(string message)
+        {
+            return new SorschiaException(message, SorschiaExceptionType.ParseError);
         }
 
         public static SorschiaException InvalidOperation(string message)

@@ -13,6 +13,7 @@
         CollectionItemDuplication,
         CollectionItemNotExists,
         FileNotFound,
-        AppFailure
+        AppFailure,
+        ParseError
     }
 }
