@@ -10,6 +10,7 @@ namespace Sorschia.Processing
         }
 
         public Guid Guid { get; }
+        public bool IsFaulted { get; set; }
 
         public static bool operator ==(ProcessContextBase left, ProcessContextBase right)
         {
