@@ -36,5 +36,7 @@ namespace Sorschia.Processing
         {
             return Guid.GetHashCode();
         }
+
+        public abstract void Dispose();
     }
 }
