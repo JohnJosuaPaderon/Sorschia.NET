@@ -4,12 +4,12 @@ namespace Sorschia.DailyTask.EntityInfo
 {
     public sealed class DTaskParameters : EntityParametersBase, IDTaskParameters
     {
-        public DTaskParameters(IEntityInfoConfiguration configuration) : base(configuration)
+        public DTaskParameters(IEntityParameterFormatter formatter) : base(formatter)
         {
-            Title = AppendPrefix(nameof(Title));
-            Description = AppendPrefix(nameof(Description));
-            ScheduledDate = AppendPrefix(nameof(ScheduledDate));
-            Status = AppendPrefix(nameof(Status));
+            Title = _Formatter.Format(nameof(Title));
+            Description = _Formatter.Format(nameof(Description));
+            ScheduledDate = _Formatter.Format(nameof(ScheduledDate));
+            Status = _Formatter.Format(nameof(Status));
         }
 
         public string Title { get; }
