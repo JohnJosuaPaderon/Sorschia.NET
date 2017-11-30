@@ -2,20 +2,15 @@
 {
     public abstract class EntityParametersBase : IEntityParameters
     {
-        public EntityParametersBase(IEntityInfoConfiguration configuration)
+        public EntityParametersBase(IEntityParameterFormatter formatter)
         {
-            _Configuration = configuration;
+            _Formatter = formatter;
 
-            Id = AppendPrefix(nameof(Id));
+            Id = _Formatter.Format(nameof(Id));
         }
 
-        protected readonly IEntityInfoConfiguration _Configuration;
+        protected readonly IEntityParameterFormatter _Formatter;
 
         public string Id { get; }
-
-        protected string AppendPrefix(string baseText)
-        {
-            return $"{_Configuration.ParameterPrefix}{baseText}";
-        }
     }
 }
