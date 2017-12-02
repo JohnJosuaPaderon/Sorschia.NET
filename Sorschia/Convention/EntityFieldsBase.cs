@@ -4,12 +4,8 @@
     {
         public EntityFieldsBase(IEntityFieldFormatter formatter)
         {
-            _Formatter = formatter;
-
-            Id = _Formatter.Format(nameof(Id));
+            Id = formatter.Format(nameof(Id));
         }
-
-        protected readonly IEntityFieldFormatter _Formatter;
         
         public string Id { get; }
     }
