@@ -1,5 +1,7 @@
 ﻿using Sorschia.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Security;
 
 namespace Sorschia.Configuration
@@ -8,6 +10,7 @@ namespace Sorschia.Configuration
     {
         public ConnectionStringSourceBase(IConnectionStringSourceLoader loader)
         {
+            IsLoaded = false;
             _SecureSource = new Dictionary<string, SecureString>();
             _Loader = loader;
         }
@@ -15,10 +18,13 @@ namespace Sorschia.Configuration
         private readonly Dictionary<string, SecureString> _SecureSource;
         private readonly IConnectionStringSourceLoader _Loader;
 
+        private bool IsLoaded;
+
         public string this[string key]
         {
             get
             {
+                TryInitialize();
                 if (_SecureSource.ContainsKey(key))
                 {
                     return SecureStringConverter.Convert(_SecureSource[key]);
@@ -30,6 +36,7 @@ namespace Sorschia.Configuration
             }
             set
             {
+                TryInitialize();
                 if (_SecureSource.ContainsKey(key))
                 {
                     _SecureSource[key] = SecureStringConverter.Convert(value);
@@ -43,6 +50,7 @@ namespace Sorschia.Configuration
 
         public void Add(string key, string connectionString)
         {
+            TryInitialize();
             if (string.IsNullOrWhiteSpace(key))
             {
                 throw SorschiaException.ParameterRequired(nameof(key));
@@ -59,17 +67,35 @@ namespace Sorschia.Configuration
 
         public void Clear()
         {
+            TryInitialize();
             _SecureSource.Clear();
         }
 
         public void Remove(string key)
         {
+            TryInitialize();
             _SecureSource.Remove(key);
         }
 
         public void Initialize()
         {
             _Loader.Load(this);
+        }
+
+        private void TryInitialize()
+        {
+            try
+            {
+                if (!IsLoaded)
+                {
+                    IsLoaded = true;
+                    Initialize();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"ERROR: {ex.Message}");
+            }
         }
     }
 }
