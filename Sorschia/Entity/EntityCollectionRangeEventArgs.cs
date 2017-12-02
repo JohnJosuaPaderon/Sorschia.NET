@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sorschia.Entities
+namespace Sorschia.Entity
 {
     public class EntityCollectionRangeEventArgs<T, TIdentifier> : EntityCollectionEventArgs
         where T : IEntity<TIdentifier>

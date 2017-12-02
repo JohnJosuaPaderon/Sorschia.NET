@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sorschia.Entities
+namespace Sorschia.Entity
 {
     [Flags]
     public enum EntityCollectionOperation

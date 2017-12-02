@@ -1,4 +1,4 @@
-﻿namespace Sorschia.Entities
+﻿namespace Sorschia.Entity
 {
     public abstract class EntityBase<TIdentifier> : IEntity<TIdentifier>
     {

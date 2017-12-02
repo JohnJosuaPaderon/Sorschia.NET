@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sorschia.Entities
+namespace Sorschia.Entity
 {
     public interface IEntityCollection<T, TIdentifier> : ICollection<T>
         where T : IEntity<TIdentifier>

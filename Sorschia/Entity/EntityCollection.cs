@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sorschia.Entities
+namespace Sorschia.Entity
 {
     public class EntityCollection<T, TIdentifier> : IEntityCollection<T, TIdentifier>
         where T : IEntity<TIdentifier>
