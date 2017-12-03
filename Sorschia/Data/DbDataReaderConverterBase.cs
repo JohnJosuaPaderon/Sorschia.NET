@@ -9,7 +9,7 @@ namespace Sorschia.Data
 {
     public abstract class DbDataReaderConverterBase<T>
     {
-        public IProcessResult<T> FromReader(DbDataReader reader, Func<DbDataReader, T> converter)
+        protected IProcessResult<T> FromReader(DbDataReader reader, Func<DbDataReader, T> converter)
         {
             if (reader.HasRows)
             {
@@ -29,7 +29,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, Func<DbDataReader, Task<T>> convertAsync)
+        protected async Task<IProcessResult<T>> AsyncFromReaderAsync(DbDataReader reader, Func<DbDataReader, Task<T>> convertAsync)
         {
             if (reader.HasRows)
             {
@@ -49,7 +49,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, CancellationToken, Task<T>> convertAsync)
+        protected async Task<IProcessResult<T>> AsyncFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, CancellationToken, Task<T>> convertAsync)
         {
             if (reader.HasRows)
             {
@@ -69,7 +69,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, Func<DbDataReader, T> convert)
+        protected async Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, Func<DbDataReader, T> convert)
         {
             if (reader.HasRows)
             {
@@ -89,7 +89,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, T> convert)
+        protected async Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, T> convert)
         {
             if (reader.HasRows)
             {
@@ -108,7 +108,8 @@ namespace Sorschia.Data
                 return ProcessResult<T>.NoResult();
             }
         }
-        public IEnumerableProcessResult<T> EnumerableFromReader(DbDataReader reader, Func<DbDataReader, T> convert)
+
+        protected IEnumerableProcessResult<T> EnumerableFromReader(DbDataReader reader, Func<DbDataReader, T> convert)
         {
             if (reader.HasRows)
             {
@@ -134,7 +135,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, Func<DbDataReader, Task<T>> convertAsync)
+        protected async Task<IEnumerableProcessResult<T>> AsyncEnumerableFromReaderAsync(DbDataReader reader, Func<DbDataReader, Task<T>> convertAsync)
         {
             if (reader.HasRows)
             {
@@ -160,7 +161,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, CancellationToken, Task<T>> convertAsync)
+        protected async Task<IEnumerableProcessResult<T>> AsyncEnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, CancellationToken, Task<T>> convertAsync)
         {
             if (reader.HasRows)
             {
@@ -186,7 +187,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, Func<DbDataReader, T> convert)
+        protected async Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, Func<DbDataReader, T> convert)
         {
             if (reader.HasRows)
             {
@@ -212,7 +213,7 @@ namespace Sorschia.Data
             }
         }
 
-        public async Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, T> convert)
+        protected async Task<IEnumerableProcessResult<T>> EnumerableFromReaderAsync(DbDataReader reader, CancellationToken cancellationToken, Func<DbDataReader, T> convert)
         {
             if (reader.HasRows)
             {
