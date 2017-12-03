@@ -1,4 +1,4 @@
-﻿using Sorschia.Entities;
+﻿using Sorschia.Entity;
 
 namespace Sorschia.Models
 {
