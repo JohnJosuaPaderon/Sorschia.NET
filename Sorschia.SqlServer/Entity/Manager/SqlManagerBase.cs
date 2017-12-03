@@ -2,16 +2,16 @@
 
 namespace Sorschia.Entity.Manager
 {
-    public abstract class SqlEntityManagerBase<T, TIdentifier> : EntityManagerBase<T, TIdentifier>
-        where T : IEntity<TIdentifier>
+    public abstract class SqlManagerBase
     {
-        public SqlEntityManagerBase(IProcessContextFactory contextFactory, string connectionStringKey)
+        public SqlManagerBase(IProcessContextFactory contextFactory, string connectionStringKey)
         {
             _ContextFactory = contextFactory;
-            ConnectionStringKey = connectionStringKey;
+            _ConnectionStringKey = connectionStringKey;
         }
 
         private readonly IProcessContextFactory _ContextFactory;
+        private readonly string _ConnectionStringKey;
 
         protected IProcessContext GenerateContext()
         {
@@ -19,15 +19,13 @@ namespace Sorschia.Entity.Manager
 
             if (context is DbProcessContext dbProcessContext)
             {
-                dbProcessContext.ConnectionStringKey = ConnectionStringKey;
-                return context; 
+                dbProcessContext.ConnectionStringKey = _ConnectionStringKey;
+                return context;
             }
             else
             {
                 throw SorschiaException.InvalidOperation($"Type of '{typeof(DbProcessContext).FullName}' is expected.");
             }
         }
-
-        private readonly string ConnectionStringKey;
     }
 }
