@@ -8,49 +8,49 @@ namespace Sorschia.Entity
     {
         static EntityManagerBase()
         {
-            StaticCollection = new EntityCollection<T, TIdentifier>();
+            StaticSource = new EntityCollection<T, TIdentifier>();
         }
 
-        protected static IEntityCollection<T, TIdentifier> StaticCollection { get; }
+        protected static IEntityCollection<T, TIdentifier> StaticSource { get; }
 
         protected IProcessResult<T> AddIfSuccess(IProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.Add(result.Data));
+            return InvokeIfSuccess(result, () => StaticSource.Add(result.Data));
         }
 
         protected IEnumerableProcessResult<T> AddIfSuccess(IEnumerableProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.Add(result.DataCollection));
+            return InvokeIfSuccess(result, () => StaticSource.Add(result.DataCollection));
         }
 
         protected IProcessResult<T> AddUpdateIfSuccess(IProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.AddUpdate(result.Data));
+            return InvokeIfSuccess(result, () => StaticSource.AddUpdate(result.Data));
         }
 
         protected IEnumerableProcessResult<T> AddUpdateIfSuccess(IEnumerableProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.AddUpdate(result.DataCollection));
+            return InvokeIfSuccess(result, () => StaticSource.AddUpdate(result.DataCollection));
         }
 
         protected IProcessResult<T> RemoveIfSuccess(IProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.Remove(result.Data));
+            return InvokeIfSuccess(result, () => StaticSource.Remove(result.Data));
         }
 
         protected IEnumerableProcessResult<T> RemoveIfSuccess(IEnumerableProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.Remove(result.DataCollection));
+            return InvokeIfSuccess(result, () => StaticSource.Remove(result.DataCollection));
         }
 
         protected IProcessResult<T> UpdateIfSuccess(IProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.Update(result.Data));
+            return InvokeIfSuccess(result, () => StaticSource.Update(result.Data));
         }
 
         protected IEnumerableProcessResult<T> UpdateIfSuccess(IEnumerableProcessResult<T> result)
         {
-            return InvokeIfSuccess(result, () => StaticCollection.Update(result.DataCollection));
+            return InvokeIfSuccess(result, () => StaticSource.Update(result.DataCollection));
         }
 
         protected IProcessResult<T> InvokeIfSuccess(IProcessResult<T> result, Action expression)

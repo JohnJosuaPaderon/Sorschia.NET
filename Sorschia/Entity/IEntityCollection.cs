@@ -21,5 +21,6 @@ namespace Sorschia.Entity
         void Remove(IEnumerable<T> items);
         void Update(IEnumerable<T> items);
         void AddUpdate(IEnumerable<T> items);
+        bool ContainsId(TIdentifier id);
     }
 }
