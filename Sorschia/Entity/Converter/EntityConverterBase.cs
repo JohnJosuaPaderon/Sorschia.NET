@@ -2,7 +2,7 @@
 
 namespace Sorschia.Entity.Converter
 {
-    public abstract class EntityConverterBase<T, TIdentifier>
+    public abstract class EntityConverterBase<T, TIdentifier> : DbDataReaderConverterBase<T>
         where T : IEntity<TIdentifier>
     {
         public EntityConverterBase()
