@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 
 namespace Sorschia.Data
 {
@@ -6,10 +7,18 @@ namespace Sorschia.Data
     {
         public SqlParameter Convert(IDbQueryParameter parameter)
         {
-            return new SqlParameter(parameter.Name, parameter.Value)
+            var result = new SqlParameter(parameter.Name, parameter.Value ?? DBNull.Value)
             {
                 Direction = DbQueryParameterDirectionConverter.Convert(parameter.Direction)
             };
+
+            if (parameter.Type != DbQueryParameterType.NotSet)
+            {
+                result.DbType = DbQueryParameterTypeToDbTypeConverter.Convert(parameter.Type);
+                result.SqlDbType = DbQueryParameterTypeToSqlDbTypeConverter.Convert(parameter.Type);
+            }
+
+            return result;
         }
     }
 }
