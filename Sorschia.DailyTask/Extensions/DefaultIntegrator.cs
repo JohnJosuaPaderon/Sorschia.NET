@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Sorschia.DailyTask.EntityInfo;
+using Sorschia.DailyTask.Convention;
 
 namespace Sorschia.DailyTask.Extensions
 {

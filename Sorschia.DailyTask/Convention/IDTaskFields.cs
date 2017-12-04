@@ -1,8 +1,8 @@
 ﻿using Sorschia.Convention;
 
-namespace Sorschia.DailyTask.EntityInfo
+namespace Sorschia.DailyTask.Convention
 {
-    public interface IDTaskParameters : IEntityParameters
+    public interface IDTaskFields : IEntityFields
     {
         string Title { get; }
         string Description { get; }

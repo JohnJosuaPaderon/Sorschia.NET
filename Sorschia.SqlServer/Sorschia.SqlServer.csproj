@@ -9,7 +9,7 @@
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
-    <Version>1.5.2</Version>
+    <Version>1.5.4</Version>
     <PackageTags>Sorschia SqlServer</PackageTags>
   </PropertyGroup>
 
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Convention\" />
+    <Folder Include="Extensions\" />
     <Folder Include="Processes\" />
     <Folder Include="Utilities\" />
   </ItemGroup>

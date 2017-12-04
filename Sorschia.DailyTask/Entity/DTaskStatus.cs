@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sorschia.DailyTask.Entities
+namespace Sorschia.DailyTask.Entity
 {
     [Flags]
     public enum DTaskStatus

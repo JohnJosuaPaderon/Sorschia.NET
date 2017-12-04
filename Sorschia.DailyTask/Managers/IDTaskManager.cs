@@ -1,4 +1,4 @@
-﻿using Sorschia.DailyTask.Entities;
+﻿using Sorschia.DailyTask.Entity;
 using Sorschia.Processing;
 using System.Threading;
 using System.Threading.Tasks;

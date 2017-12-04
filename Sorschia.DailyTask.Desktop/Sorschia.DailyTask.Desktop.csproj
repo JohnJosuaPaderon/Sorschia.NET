@@ -81,6 +81,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.4.0\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.0.1\lib\net47\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -158,7 +161,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SorschiaBootstrapper.cs" />
+    <Compile Include="Models\DTaskModel.cs" />
+    <Compile Include="Notifications\AddDTaskNotification.cs" />
+    <Compile Include="Notifications\IAddDTaskNotification.cs" />
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="ViewModels\AddDailyTaskViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AddDTaskView.xaml.cs">
+      <DependentUpon>AddDTaskView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -207,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\DatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Default.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -227,15 +242,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\AddDTaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sorschia.DailyTask.SqlServer\Sorschia.DailyTask.SqlServer.csproj">
+      <Project>{a9038708-d107-4067-850c-55ffefcc68fc}</Project>
+      <Name>Sorschia.DailyTask.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorschia.DailyTask\Sorschia.DailyTask.csproj">
+      <Project>{9F70B103-28AC-45C8-877B-B1170CA292D8}</Project>
+      <Name>Sorschia.DailyTask</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sorschia.Json\Sorschia.Json.csproj">
       <Project>{4546e6af-d2e1-430d-ad5a-341303023fa9}</Project>
       <Name>Sorschia.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorschia.SqlServer\Sorschia.SqlServer.csproj">
+      <Project>{978171a2-852a-4ab8-9e9c-b6690658955c}</Project>
+      <Name>Sorschia.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorschia.Wpf\Sorschia.Wpf.csproj">
+      <Project>{75b37ff2-5a94-4b36-a2a6-189a9eba692c}</Project>
+      <Name>Sorschia.Wpf</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sorschia\Sorschia.csproj">
       <Project>{3531D6E5-E58E-4DBC-B093-4DB86BA13B8A}</Project>

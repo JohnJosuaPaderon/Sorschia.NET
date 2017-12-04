@@ -3,8 +3,23 @@
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:prism="http://prismlibrary.com/"           
                      xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
+                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     xmlns:wpfVm="clr-namespace:Sorschia.ViewModels;assembly=Sorschia.Wpf"
+                     xmlns:local="clr-namespace:Sorschia.DailyTask.Views"
                      prism:ViewModelLocator.AutoWireViewModel="True">
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding AddDTaskRequest}">
+            <wpfVm:CustomPopupWindowAction IsModal="True">
+                <wpfVm:CustomPopupWindowAction.WindowContent>
+                    <local:AddDTaskView/>
+                </wpfVm:CustomPopupWindowAction.WindowContent>
+            </wpfVm:CustomPopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-            
+        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="{DynamicResource DefaultMargin}" Command="{Binding AddCommand}">
+            <materialDesign:PackIcon Kind="Plus" Height="25" Width="25"/>
+        </Button>
     </Grid>
 </mahApps:MetroWindow>

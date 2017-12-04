@@ -1,6 +1,6 @@
 ﻿using Sorschia.Convention;
 
-namespace Sorschia.DailyTask.EntityInfo
+namespace Sorschia.DailyTask.Convention
 {
     public sealed class DTaskParameters : EntityParametersBase, IDTaskParameters
     {

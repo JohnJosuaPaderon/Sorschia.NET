@@ -13,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Processes\" />
+    <Folder Include="Entity\Converter\" />
   </ItemGroup>
 
 </Project>

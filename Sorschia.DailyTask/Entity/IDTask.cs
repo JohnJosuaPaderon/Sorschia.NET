@@ -1,7 +1,7 @@
-﻿using Sorschia.Entities;
+﻿using Sorschia.Entity;
 using System;
 
-namespace Sorschia.DailyTask.Entities
+namespace Sorschia.DailyTask.Entity
 {
     public interface IDTask : IEntity<long>
     {

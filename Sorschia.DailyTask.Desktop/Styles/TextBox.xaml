@@ -6,6 +6,10 @@
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="_TextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+        <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>
+    </Style>
+    
     <Style x:Key="FieldTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
         <Setter Property="Height" Value="{DynamicResource FieldHeight}"/>
         <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>

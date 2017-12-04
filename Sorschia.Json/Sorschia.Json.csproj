@@ -9,7 +9,7 @@
     <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
     <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>1.5.0</Version>
+    <Version>1.5.1</Version>
     <PackageTags>Sorschia Json</PackageTags>
   </PropertyGroup>
 

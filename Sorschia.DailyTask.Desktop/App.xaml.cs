@@ -12,8 +12,8 @@ namespace Sorschia.DailyTask.Desktop
         {
             base.OnStartup(e);
 
+            SorschiaApp.Build(JsonAppConfigurationLoader.Instance, new AppBootstrapper());
             Bootstrapper.RunBootstrapper();
-            SorschiaApp.Build(JsonAppConfigurationLoader.Instance, new SorschiaBootstrapper());
         }
     }
 }

@@ -7,10 +7,13 @@
 
         <ResourceDictionary Source="Button.xaml"/>
         <ResourceDictionary Source="ColorZone.xaml"/>
+        <ResourceDictionary Source="DatePicker.xaml"/>
         <ResourceDictionary Source="PasswordBox.xaml"/>
         <ResourceDictionary Source="TextBlock.xaml"/>
         <ResourceDictionary Source="TextBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource _Button}"/>
+    <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource _DatePicker}"/>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource _TextBox}"/>
 </ResourceDictionary>

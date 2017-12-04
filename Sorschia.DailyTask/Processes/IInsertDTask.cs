@@ -1,4 +1,4 @@
-﻿using Sorschia.DailyTask.Entities;
+﻿using Sorschia.DailyTask.Entity;
 using Sorschia.Processing;
 
 namespace Sorschia.DailyTask.Processes

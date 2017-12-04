@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sorschia.Data;
+using Sorschia.Processing;
 using System.Data.SqlClient;
 
-namespace Sorschia.Extensions
+namespace Sorschia
 {
     public static class IServiceCollectionExtension
     {
@@ -13,7 +14,8 @@ namespace Sorschia.Extensions
                 .UseDbTransactionProvider<SqlTransactionProvider, SqlTransaction>()
                 .UseDbCommandCreator<SqlCommandCreator, SqlCommand>()
                 .UseDbQueryParameterConverter<SqlQueryParameterConverter, SqlParameter>()
-                .UseDbProcessor<SqlProcessor, SqlCommand>();
+                .UseDbProcessor<SqlProcessor, SqlCommand>()
+                .UseProcessContextFactory<DbProcessContextFactory<SqlConnection, SqlTransaction>>();
         }
     }
 }
