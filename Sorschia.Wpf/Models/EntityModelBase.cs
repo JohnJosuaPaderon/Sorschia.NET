@@ -7,6 +7,7 @@ namespace Sorschia.Models
     {
         public EntityModelBase(T source) : base(source)
         {
+            Id = source.Id;
         }
 
         private TIdentifier _Id;
