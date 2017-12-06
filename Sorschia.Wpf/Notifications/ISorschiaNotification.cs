@@ -2,7 +2,7 @@
 
 namespace Sorschia.Notifications
 {
-    public interface ICustomNotification : INotification
+    public interface ISorschiaNotification : INotification
     {
     }
 }

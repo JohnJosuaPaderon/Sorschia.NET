@@ -2,9 +2,9 @@
 
 namespace Sorschia.Notifications
 {
-    public class CustomNotification : BindableBase, ICustomNotification
+    public class SorschiaNotification : BindableBase, ISorschiaNotification
     {
-        public CustomNotification()
+        public SorschiaNotification()
         {
             Title = string.Empty;
         }
