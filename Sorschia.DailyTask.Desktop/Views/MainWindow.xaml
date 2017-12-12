@@ -10,11 +10,11 @@
                      prism:ViewModelLocator.AutoWireViewModel="True">
     <i:Interaction.Triggers>
         <prism:InteractionRequestTrigger SourceObject="{Binding AddDTaskRequest}">
-            <wpfVm:CustomPopupWindowAction IsModal="True">
-                <wpfVm:CustomPopupWindowAction.WindowContent>
+            <wpfVm:SorschiaPopupWindowAction IsModal="True">
+                <wpfVm:SorschiaPopupWindowAction.WindowContent>
                     <local:AddDTaskView/>
-                </wpfVm:CustomPopupWindowAction.WindowContent>
-            </wpfVm:CustomPopupWindowAction>
+                </wpfVm:SorschiaPopupWindowAction.WindowContent>
+            </wpfVm:SorschiaPopupWindowAction>
         </prism:InteractionRequestTrigger>
     </i:Interaction.Triggers>
     <Grid>
