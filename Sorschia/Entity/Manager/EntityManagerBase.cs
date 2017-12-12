@@ -1,7 +1,7 @@
 ﻿using Sorschia.Processing;
 using System;
 
-namespace Sorschia.Entity
+namespace Sorschia.Entity.Manager
 {
     public abstract class EntityManagerBase<T, TIdentifier>
         where T : IEntity<TIdentifier>
