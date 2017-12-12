@@ -1,4 +1,4 @@
-﻿namespace Sorschia.Utilities
+﻿namespace Sorschia.Convention
 {
     public interface IFullNameBuilder
     {

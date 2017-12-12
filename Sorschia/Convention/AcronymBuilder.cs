@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Sorschia.Utilities
+namespace Sorschia.Convention
 {
     public sealed class AcronymBuilder : IAcronymBuilder
     {

@@ -22,5 +22,13 @@ namespace Sorschia.Convention
                 .UseEntityFieldFormatter<DefaultEntityFieldFormatter>()
                 .UseEntityParameterFormatter<DefaultEntityParameterFormatter>();
         }
+
+        public static IServiceCollection UseDefaultStringBuilders(this IServiceCollection instance)
+        {
+            return instance
+                .AddSingleton<IAcronymBuilder, AcronymBuilder>()
+                .AddSingleton<IFullNameBuilder, FullNameBuilder>()
+                .AddSingleton<IInformalFullNameBuilder, InformalFullNameBuilder>();
+        }
     }
 }
