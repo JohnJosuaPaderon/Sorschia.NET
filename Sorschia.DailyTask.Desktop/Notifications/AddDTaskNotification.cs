@@ -5,7 +5,7 @@ using System;
 
 namespace Sorschia.DailyTask.Notifications
 {
-    public sealed class AddDTaskNotification : CustomNotification, IAddDTaskNotification
+    public sealed class AddDTaskNotification : SorschiaNotification, IAddDTaskNotification
     {
         public AddDTaskNotification()
         {

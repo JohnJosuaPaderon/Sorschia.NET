@@ -3,7 +3,7 @@ using Sorschia.Notifications;
 
 namespace Sorschia.DailyTask.Notifications
 {
-    public interface IAddDTaskNotification : ICustomNotification
+    public interface IAddDTaskNotification : ISorschiaNotification
     {
         DTaskModel DTask { get; }
     }
