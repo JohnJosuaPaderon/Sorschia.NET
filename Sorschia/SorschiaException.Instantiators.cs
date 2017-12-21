@@ -29,9 +29,14 @@ namespace Sorschia
             return new SorschiaException($"The collection '{collectionName}' is empty.", SorschiaExceptionType.EmptyCollection);
         }
 
-        public static Exception ParseError(string message)
+        public static SorschiaException ParseError(string message)
         {
             return new SorschiaException(message, SorschiaExceptionType.ParseError);
+        }
+
+        public static SorschiaException ParseError(Exception inner)
+        {
+            return new SorschiaException("Failed to parse.", inner, SorschiaExceptionType.ParseError);
         }
 
         public static SorschiaException InvalidOperation(string message)
@@ -57,6 +62,11 @@ namespace Sorschia
         public static SorschiaException AppFailure(string message)
         {
             return new SorschiaException(message, SorschiaExceptionType.AppFailure);
+        }
+
+        public static SorschiaException FieldRequired(string fieldName)
+        {
+            return new SorschiaException($"Value for the field '{fieldName}' is required and cannot be set to it's default value.", SorschiaExceptionType.FieldRequired);
         }
     }
 }

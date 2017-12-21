@@ -14,6 +14,7 @@
         CollectionItemNotExists,
         FileNotFound,
         AppFailure,
-        ParseError
+        ParseError,
+        FieldRequired
     }
 }
