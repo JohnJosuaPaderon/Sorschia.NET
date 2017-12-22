@@ -39,5 +39,12 @@ namespace Sorschia.Data
         {
             return instance.AddSingleton<IDbProcessor<TCommand>, T>();
         }
+
+        public static IServiceCollection UseDataService<TContract, TImplementation>(this IServiceCollection instance)
+            where TContract : class, IDataService
+            where TImplementation : class, TContract
+        {
+            return instance.AddSingleton<TContract, TImplementation>();
+        }
     }
 }
