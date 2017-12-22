@@ -6,7 +6,17 @@ namespace Sorschia.Configuration
     {
         public static IServiceCollection UseJsonConnectionStringSourceFromFileLoader(this IServiceCollection instance, string filePath)
         {
-            return instance.AddSingleton<IConnectionStringSourceLoader>(new JsonConnectionStringSourceFromFileLoader(filePath));
+            return instance
+                .UseJsonPropertyNameProviders()
+                .UseConnectionStringSourceLoader<JsonConnectionStringSourceFromFileLoader>()
+                .UseConnectionStringFileSource(filePath);
+        }
+
+        public static IServiceCollection UseJsonPropertyNameProviders(this IServiceCollection instance)
+        {
+            return instance
+                .UseConnectionStringSourcePropertyNameProvider<JsonConnectionStringSourcePropertyNameProvider>()
+                .UseConnectionStringPropertyNameProvider<JsonConnectionStringPropertyNameProvider>();
         }
     }
 }

@@ -1,63 +1,45 @@
 ﻿using Newtonsoft.Json.Linq;
 using Sorschia.Extensions;
-using System;
-using System.IO;
 
 namespace Sorschia.Configuration
 {
-    public sealed class JsonConnectionStringSourceFromFileLoader : IConnectionStringSourceLoader
+    public sealed class JsonConnectionStringSourceFromFileLoader : ConnectionStringFromFileLoaderBase, IConnectionStringSourceLoader
     {
-        private const string PROPERTY_CONNECTION_STRINGS = "connectionstrings";
-        private const string PROPERTY_CONNECTION_STRING_KEY = "key";
-        private const string PROPERTY_CONNECTION_STRING_VALUE = "value";
-
-        public JsonConnectionStringSourceFromFileLoader(string filePath)
+        public JsonConnectionStringSourceFromFileLoader(
+            IConnectionStringFileSource source,
+            IConnectionStringSourcePropertyNameProvider connectionStringProperties,
+            IJsonFromFileParser parser) : base(source)
         {
-            FilePath = filePath;
+            _Properties = connectionStringProperties;
+            _Parser = parser;
         }
-
-        public string FilePath { get; }
+        
+        private readonly IConnectionStringSourcePropertyNameProvider _Properties;
+        private readonly IJsonFromFileParser _Parser;
 
         public void Load(IConnectionStringSource connectionStringSource)
         {
-            if (string.IsNullOrWhiteSpace(FilePath))
+            ValidateSource();
+
+            JObject jObject = _Parser.ParseObject(_Source.FilePath);
+            JArray jConnectionStrings = null;
+
+            if (jObject != null)
             {
-                throw SorschiaException.PropertyRequired(nameof(FilePath));
+                connectionStringSource.IsEncrypted = jObject.GetBoolean(_Properties.IsEncrypted);
+                jConnectionStrings = jObject.GetArray(_Properties.ConnectionStrings);
             }
-            else if (!File.Exists(FilePath))
+
+            if (jConnectionStrings != null)
             {
-                throw SorschiaException.FileNotFound(FilePath);
+                foreach (JObject jConnectionString in jConnectionStrings)
+                {
+                    connectionStringSource.Add(jConnectionString.GetString(_Properties.ConnectionString.Key), jConnectionString.GetString(_Properties.ConnectionString.Value));
+                }
             }
             else
             {
-                JObject jObject = null;
-                JArray jConnectionStrings = null;
-
-                try
-                {
-                    jObject = JObject.Parse(File.ReadAllText(FilePath));
-                }
-                catch (Exception)
-                {
-                    throw SorschiaException.ParseError("Failed to parse connection strings from .json file.");
-                }
-
-                if (jObject != null)
-                {
-                    jConnectionStrings = jObject.GetArray(PROPERTY_CONNECTION_STRINGS);
-                }
-
-                if (jConnectionStrings != null)
-                {
-                    foreach (JObject jConnectionString in jConnectionStrings)
-                    {
-                        connectionStringSource.Add(jConnectionString.GetString(PROPERTY_CONNECTION_STRING_KEY), jConnectionString.GetString(PROPERTY_CONNECTION_STRING_VALUE));
-                    }
-                }
-                else
-                {
-                    throw SorschiaException.ParseError("Failed to get connection strings section from .json file.");
-                }
+                throw SorschiaException.ParseError("Failed to get connection strings section from .json file.");
             }
         }
     }
