@@ -8,15 +8,14 @@ namespace Sorschia.ViewModels
 {
     public abstract class ViewModelBase : BindableBase, INavigationAware
     {
-        public ViewModelBase(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public ViewModelBase(IEventAggregator eventAggregator)
         {
             _EventAggregator = eventAggregator;
 
             InitializeCommand = new DelegateCommand(Initialize);
             ResetMouseCaptureCommand = new DelegateCommand(ResetMouseCapture);
         }
-
-        protected readonly IRegionManager _RegionManager;
+        
         protected readonly IEventAggregator _EventAggregator;
 
         public DelegateCommand ResetMouseCaptureCommand { get; }
