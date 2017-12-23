@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sorschia.Data;
+using Sorschia.Repository;
 using Sorschia.Utilities;
 using System;
 
@@ -25,6 +27,31 @@ namespace Sorschia.Application
         {
             ValidateCurrent();
             return Current.ServiceProvider.GetService<T>();
+        }
+
+        public static T GetRepository<T>(bool forceInitialize = false)
+            where T : IRepository
+        {
+            var repository = GetService<T>();
+
+            if (forceInitialize)
+            {
+                repository.Initialize();
+            }
+            else
+            {
+                repository.TryInitialize();
+            }
+
+            return repository;
+        }
+
+        public static T GetDataService<T>()
+            where T : IDataService
+        {
+            var dataService = GetService<T>();
+            dataService.Initialize();
+            return dataService;
         }
 
         public static string GetDirectory(string key)
@@ -63,10 +90,25 @@ namespace Sorschia.Application
             Settings = settings;
         }
 
+        private IAppCryptoService _CryptoService;
+
         public IServiceProvider ServiceProvider { get; }
         public IAppDirectoryCollection Directories { get; }
         public IAppFileCollection Files { get; }
         public IAppSettingCollection Settings { get; }
+
+        public IAppCryptoService CryptoService
+        {
+            get
+            {
+                if (_CryptoService == null)
+                {
+                    _CryptoService = ServiceProvider.GetService<IAppCryptoService>();
+                }
+
+                return _CryptoService;
+            }
+        }
 
         public string GetAppDirectory(string key)
         {

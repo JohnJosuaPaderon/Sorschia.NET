@@ -8,6 +8,7 @@ namespace Sorschia.Application
         IAppDirectoryCollection Directories { get; }
         IAppFileCollection Files { get; }
         IAppSettingCollection Settings { get; }
+        IAppCryptoService CryptoService { get; }
         string GetAppDirectory(string key);
         string GetAppFile(string key);
         string GetAppSetting(string key);
