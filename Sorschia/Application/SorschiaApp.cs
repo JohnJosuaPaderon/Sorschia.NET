@@ -1,87 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Sorschia.Data;
-using Sorschia.Repository;
 using Sorschia.Utilities;
 using System;
 
 namespace Sorschia.Application
 {
-    public sealed class SorschiaApp : ISorschiaApp
+    public sealed partial class SorschiaApp : ISorschiaApp
     {
-        static SorschiaApp()
-        {
-            _Builder = new SorschiaAppBuilder();
-        }
-
-        public static ISorschiaApp Current { get; private set; }
-
-        private static void ValidateCurrent()
-        {
-            if (Current == null)
-            {
-                throw SorschiaException.AppFailure("Sorschia.Application.SorschiaApp.Current is not built.");
-            }
-        }
-
-        public static T GetService<T>()
-        {
-            ValidateCurrent();
-            return Current.ServiceProvider.GetService<T>();
-        }
-
-        public static T GetRepository<T>(bool forceInitialize = false)
-            where T : IRepository
-        {
-            var repository = GetService<T>();
-
-            if (forceInitialize)
-            {
-                repository.Initialize();
-            }
-            else
-            {
-                repository.TryInitialize();
-            }
-
-            return repository;
-        }
-
-        public static T GetDataService<T>()
-            where T : IDataService
-        {
-            var dataService = GetService<T>();
-            dataService.Initialize();
-            return dataService;
-        }
-
-        public static string GetDirectory(string key)
-        {
-            ValidateCurrent();
-            return Current.GetAppDirectory(key);
-        }
-
-        public static string GetFile(string key)
-        {
-            ValidateCurrent();
-            return Current.GetAppFile(key);
-        }
-
-        public static string GetSetting(string key)
-        {
-            ValidateCurrent();
-            return Current.GetAppSetting(key);
-        }
-
-        private static readonly SorschiaAppBuilder _Builder;
-
-        public static void Build(IAppConfigurationLoader configurationLoader, ISorschiaBootstrapper bootstrapper)
-        {
-            _Builder.Bootstrapper = bootstrapper;
-            _Builder.ConfigurationLoader = configurationLoader;
-
-            Current = _Builder.Build();
-        }
-
         internal SorschiaApp(IServiceProvider serviceProvider, IAppDirectoryCollection directories, IAppFileCollection files, IAppSettingCollection settings)
         {
             ServiceProvider = serviceProvider;

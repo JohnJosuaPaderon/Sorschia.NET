@@ -9,11 +9,7 @@ namespace Sorschia.Application
 
         public ISorschiaApp Build()
         {
-            if (Bootstrapper == null)
-            {
-                throw SorschiaException.PropertyRequired(nameof(Bootstrapper));
-            }
-
+            Validate();
             ConfigurationLoader.Initialize(Bootstrapper.ConfigurationFilePath);
 
             var serviceProvider = Bootstrapper.Services.BuildServiceProvider();
@@ -22,6 +18,19 @@ namespace Sorschia.Application
             var settings = ConfigurationLoader.GetSettings();
 
             return new SorschiaApp(serviceProvider, directories, files, settings);
+        }
+
+        private void Validate()
+        {
+            if (Bootstrapper == null)
+            {
+                throw SorschiaException.PropertyRequired(nameof(Bootstrapper));
+            }
+
+            if (ConfigurationLoader == null)
+            {
+                throw SorschiaException.PropertyRequired(nameof(ConfigurationLoader));
+            }
         }
     }
 }
