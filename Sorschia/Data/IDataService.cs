@@ -3,5 +3,6 @@
     public interface IDataService
     {
         void Initialize();
+        void TryInitialize();
     }
 }
