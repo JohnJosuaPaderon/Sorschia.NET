@@ -11,7 +11,12 @@ namespace Sorschia
 
         public static SorschiaException ParameterRequired(string parameterName)
         {
-            return new SorschiaException($"Value of parameter '{parameterName}' is required and cannot be set to null or default.", SorschiaExceptionType.ParameterRequired);
+            return ParameterRequired(parameterName, string.Empty);
+        }
+
+        public static SorschiaException ParameterRequired(string parameterName, string additionalMessage)
+        {
+            return new SorschiaException($"Value of parameter '{parameterName}' is required and cannot be set to null or default.{(string.IsNullOrWhiteSpace(additionalMessage) ? string.Empty : Environment.NewLine)}{additionalMessage}", SorschiaExceptionType.ParameterRequired);
         }
 
         public static SorschiaException InvalidConnectionString()
