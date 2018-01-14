@@ -6,8 +6,21 @@ namespace Sorschia.DailyTask.Models
 {
     public sealed class DTaskModel : EntityModelBase<IDTask, long>
     {
+        public static DTaskModel TryInitialize(IDTask source)
+        {
+            return source != null ? new DTaskModel(source) : null;
+        }
+
         public DTaskModel(IDTask source) : base(source)
         {
+            if (source == null)
+            {
+                throw SorschiaException.ParameterRequired(nameof(source));
+            }
+
+            Title = source.Title;
+            Description = source.Description;
+            ScheduledDate = source.ScheduledDate;
         }
 
         private string _Title;
