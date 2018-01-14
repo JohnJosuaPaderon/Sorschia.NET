@@ -2,6 +2,7 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using Sorschia.Events;
 using System.Windows.Input;
 
 namespace Sorschia.ViewModels
@@ -11,12 +12,14 @@ namespace Sorschia.ViewModels
         public ViewModelBase(IEventAggregator eventAggregator)
         {
             _EventAggregator = eventAggregator;
+            _AppMessageEvent = eventAggregator.GetEvent<AppMessageEvent>();
 
             InitializeCommand = new DelegateCommand(Initialize);
             ResetMouseCaptureCommand = new DelegateCommand(ResetMouseCapture);
         }
         
         protected readonly IEventAggregator _EventAggregator;
+        protected readonly AppMessageEvent _AppMessageEvent;
 
         public DelegateCommand ResetMouseCaptureCommand { get; }
         public DelegateCommand InitializeCommand { get; }
@@ -28,7 +31,7 @@ namespace Sorschia.ViewModels
 
         protected virtual void Initialize()
         {
-
+            // TODO: Initialize required components
         }
 
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
