@@ -9,7 +9,7 @@ namespace Sorschia.DailyTask.Notifications
     {
         public AddDTaskNotification()
         {
-            DTask = new DTaskModel(new DTask()
+            DTask = DTaskModel.TryInitialize(new DTask()
             {
                 ScheduledDate = DateTime.Now
             });
