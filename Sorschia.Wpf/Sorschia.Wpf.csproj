@@ -69,6 +69,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\AppMessageEvent.cs" />
+    <Compile Include="Events\AppMessage.cs" />
+    <Compile Include="Events\AppMessageType.cs" />
     <Compile Include="Events\SorschiaPubSubEventBase.cs" />
     <Compile Include="Events\WindowTitleBarTextEvent.cs" />
     <Compile Include="Events\WindowTitleBarVisibilityEvent.cs" />
@@ -91,6 +94,8 @@
       <Name>Sorschia</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
