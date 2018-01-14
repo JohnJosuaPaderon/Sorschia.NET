@@ -6,9 +6,12 @@ namespace Sorschia.Events
     {
         public T Default { get; set; }
         
-        public void Change(T payload)
+        public void Raise(T payload)
         {
-            Publish(payload);
+            if (!Equals(default(T), payload))
+            {
+                Publish(payload);
+            }
         }
 
         public void Reset()

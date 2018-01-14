@@ -4,19 +4,19 @@ namespace Sorschia.Events
 {
     public sealed class WindowTitleBarVisibilityEvent : SorschiaPubSubEventBase<Visibility>
     {
-        void Show()
+        public void Show()
         {
-            Change(Visibility.Visible);
+            Raise(Visibility.Visible);
         }
 
-        void Collapse()
+        public void Collapse()
         {
-            Change(Visibility.Collapsed);
+            Raise(Visibility.Collapsed);
         }
 
-        void Hide()
+        public void Hide()
         {
-            Change(Visibility.Hidden);
+            Raise(Visibility.Hidden);
         }
     }
 }
