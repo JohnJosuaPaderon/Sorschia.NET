@@ -5,7 +5,6 @@ using Sorschia.DailyTask.Entity.Manager;
 using Sorschia.DailyTask.Notifications;
 using Sorschia.Processing;
 using Sorschia.ViewModels;
-using System.Windows;
 
 namespace Sorschia.DailyTask.ViewModels
 {
@@ -28,11 +27,11 @@ namespace Sorschia.DailyTask.ViewModels
 
             if (result.Status == ProcessResultStatus.Success)
             {
-                MessageBox.Show($"Id : {result.Data?.Id}");
+                _AppMessageEvent.Information($"Id : {result.Data?.Id}");
             }
             else
             {
-                MessageBox.Show(result.Message);
+                _AppMessageEvent.Error(result.Message);
             }
         }
     }

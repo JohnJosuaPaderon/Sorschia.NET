@@ -1,15 +1,16 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Interactivity.InteractionRequest;
-using Prism.Mvvm;
 using Sorschia.Application;
 using Sorschia.Configuration;
 using Sorschia.DailyTask.Notifications;
+using Sorschia.ViewModels;
 
 namespace Sorschia.DailyTask.ViewModels
 {
-    public sealed class MainWindowViewModel : BindableBase
+    public sealed class MainWindowViewModel : ViewModelBase
     {
-        public MainWindowViewModel()
+        public MainWindowViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
             var connectionStringSource = SorschiaApp.GetService<IConnectionStringSource>();
 
