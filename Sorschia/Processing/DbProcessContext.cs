@@ -6,7 +6,7 @@ namespace Sorschia.Processing
     {
         public string ConnectionStringKey { get; set; }
 
-        public override void Dispose()
+        public void Dispose()
         {
             var factory = SorschiaApp.GetService<IProcessContextFactory>();
             factory.Finish(this);

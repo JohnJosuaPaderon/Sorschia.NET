@@ -2,7 +2,7 @@
 
 namespace Sorschia.Processing
 {
-    public abstract class ProcessContextBase : IProcessContext
+    public abstract class ProcessContextBase
     {
         public ProcessContextBase()
         {
@@ -36,7 +36,5 @@ namespace Sorschia.Processing
         {
             return Guid.GetHashCode();
         }
-
-        public abstract void Dispose();
     }
 }
