@@ -1,7 +1,5 @@
 ﻿using Sorschia.Utilities;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Security;
 
 namespace Sorschia.Configuration
@@ -17,13 +15,16 @@ namespace Sorschia.Configuration
 
         private readonly Dictionary<string, SecureString> _SecureSource;
         private readonly IConnectionStringSourceLoader _Loader;
-
+        
         private bool IsLoaded;
+
+        public bool IsEncrypted { get; set; }
 
         public string this[string key]
         {
             get
             {
+                ValidateKey(key);
                 TryInitialize();
                 if (_SecureSource.ContainsKey(key))
                 {
@@ -31,11 +32,13 @@ namespace Sorschia.Configuration
                 }
                 else
                 {
-                    throw SorschiaException.CollectionItemNotExists("Connection string with the specified key doesn't exists.");
+                    throw NotFound();
                 }
             }
             set
             {
+                ValidateKey(key);
+                ValidateConnectionString(value);
                 TryInitialize();
                 if (_SecureSource.ContainsKey(key))
                 {
@@ -43,13 +46,14 @@ namespace Sorschia.Configuration
                 }
                 else
                 {
-                    throw SorschiaException.CollectionItemNotExists("Connection string with the specified key doesn't exists.");
+                    throw NotFound();
                 }
             }
         }
 
         public void Add(string key, string connectionString)
         {
+            ValidateKey(key);
             TryInitialize();
             if (string.IsNullOrWhiteSpace(key))
             {
@@ -57,7 +61,7 @@ namespace Sorschia.Configuration
             }
             else if (_SecureSource.ContainsKey(key))
             {
-                throw SorschiaException.CollectionItemDuplication("Connection string with the specified key already exists.");
+                throw AlreadyExists();
             }
             else
             {
@@ -73,6 +77,7 @@ namespace Sorschia.Configuration
 
         public void Remove(string key)
         {
+            ValidateKey(key);
             TryInitialize();
             _SecureSource.Remove(key);
         }
@@ -82,19 +87,38 @@ namespace Sorschia.Configuration
             _Loader.Load(this);
         }
 
+        private SorschiaException NotFound()
+        {
+            return SorschiaException.CollectionItemNotExists("Connection string with the specified key doesn't exists.");
+        }
+
+        private SorschiaException AlreadyExists()
+        {
+            return SorschiaException.CollectionItemDuplication("Connection string with the specified key already exists.");
+        }
+
         private void TryInitialize()
         {
-            try
+            if (!IsLoaded)
             {
-                if (!IsLoaded)
-                {
-                    IsLoaded = true;
-                    Initialize();
-                }
+                IsLoaded = true;
+                Initialize();
             }
-            catch (Exception ex)
+        }
+
+        private void ValidateKey(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key))
             {
-                Debug.WriteLine($"ERROR: {ex.Message}");
+                throw SorschiaException.ParameterRequired(nameof(key));
+            }
+        }
+        
+        private void ValidateConnectionString(string connectionString)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw SorschiaException.ParameterRequired(nameof(connectionString));
             }
         }
     }

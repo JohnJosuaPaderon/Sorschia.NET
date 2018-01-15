@@ -15,5 +15,33 @@ namespace Sorschia.Configuration
         {
             return instance.AddSingleton<IConnectionStringSourceLoader, T>();
         }
+
+        public static IServiceCollection UseConnectionStringFileSource(this IServiceCollection instance, string filePath)
+        {
+            return instance.AddSingleton<IConnectionStringFileSource>(new ConnectionStringFileSource(filePath));
+        }
+
+        public static IServiceCollection UseConnectionStringSourcePropertyNameProvider<T>(this IServiceCollection instance)
+            where T : class, IConnectionStringSourcePropertyNameProvider
+        {
+            return instance.AddSingleton<IConnectionStringSourcePropertyNameProvider, T>();
+        }
+
+        public static IServiceCollection UseConnectionStringPropertyNameProvider<T>(this IServiceCollection instance)
+            where T : class, IConnectionStringPropertyNameProvider
+        {
+            return instance.AddSingleton<IConnectionStringPropertyNameProvider, T>();
+        }
+        
+        public static IServiceCollection UseConnectionStringCryptoService<T>(this IServiceCollection instance)
+            where T : class, IConnectionStringCryptoService
+        {
+            return instance.AddSingleton<IConnectionStringCryptoService, T>();
+        }
+
+        public static IServiceCollection UseDefaultConnectionStringCryptoService(this IServiceCollection instance)
+        {
+            return instance.UseConnectionStringCryptoService<ConnectionStringCryptoService>();
+        }
     }
 }
