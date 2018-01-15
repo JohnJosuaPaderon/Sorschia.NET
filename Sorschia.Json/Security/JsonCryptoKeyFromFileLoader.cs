@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Security;
 
 namespace Sorschia.Security
 {
-    public sealed class JsonCryptoKeyFromFileLoader : ICryptoKeyLoader
+    public sealed class JsonCryptoKeyFromFileLoader : CryptoKeyLoaderBase, ICryptoKeyLoader
     {
+        public JsonCryptoKeyFromFileLoader(string filePath, SecureString secureCryptoKey) : base(secureCryptoKey)
+        {
 
+        }
 
         public void Load(ICryptoKeyProvider recipient)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
