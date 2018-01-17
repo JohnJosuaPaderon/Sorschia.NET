@@ -6,6 +6,5 @@ namespace Sorschia.Events
     {
         Guid Id { get; }
         DateTime Timestamp { get; }
-        object Data { get; }
     }
 }
