@@ -6,12 +6,13 @@ namespace Sorschia.Application
 {
     public sealed partial class SorschiaApp : ISorschiaApp
     {
-        internal SorschiaApp(IServiceProvider serviceProvider, IAppDirectoryCollection directories, IAppFileCollection files, IAppSettingCollection settings)
+        internal SorschiaApp(IServiceProvider serviceProvider, IAppDirectoryCollection directories, IAppFileCollection files, IAppSettingCollection settings, IAppSession session)
         {
             ServiceProvider = serviceProvider;
             Directories = directories;
             Files = files;
             Settings = settings;
+            Session = session;
         }
 
         private IAppCryptoService _CryptoService;
@@ -20,6 +21,7 @@ namespace Sorschia.Application
         public IAppDirectoryCollection Directories { get; }
         public IAppFileCollection Files { get; }
         public IAppSettingCollection Settings { get; }
+        public IAppSession Session { get; }
 
         public IAppCryptoService CryptoService
         {
@@ -47,6 +49,16 @@ namespace Sorschia.Application
         public string GetAppSetting(string key)
         {
             return Settings[key].Value;
+        }
+
+        public void Start()
+        {
+            Session.Start();
+        }
+
+        public void Stop()
+        {
+            Session.Stop();
         }
     }
 }

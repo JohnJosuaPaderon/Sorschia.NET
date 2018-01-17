@@ -12,5 +12,7 @@ namespace Sorschia.Application
         string GetAppDirectory(string key);
         string GetAppFile(string key);
         string GetAppSetting(string key);
+        void Start();
+        void Stop();
     }
 }

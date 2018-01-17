@@ -87,5 +87,25 @@ namespace Sorschia.Application
 
             Current = _Builder.Build();
         }
+
+        public static void StartCurrent()
+        {
+            if (Current == null)
+            {
+                throw SorschiaException.AppFailure("Failed to start current app.");
+            }
+
+            Current.Start();
+        }
+
+        public static void StopCurrent()
+        {
+            if (Current == null)
+            {
+                throw SorschiaException.AppFailure("Failed to stop current app.");
+            }
+
+            Current.Stop();
+        }
     }
 }

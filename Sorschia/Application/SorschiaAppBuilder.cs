@@ -17,7 +17,7 @@ namespace Sorschia.Application
             var files = ConfigurationLoader.GetFiles();
             var settings = ConfigurationLoader.GetSettings();
 
-            return new SorschiaApp(serviceProvider, directories, files, settings);
+            return new SorschiaApp(serviceProvider, directories, files, settings, new AppSession());
         }
 
         private void Validate()
