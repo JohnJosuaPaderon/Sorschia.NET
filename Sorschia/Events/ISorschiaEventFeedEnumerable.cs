@@ -7,7 +7,7 @@ namespace Sorschia.Events
         where T : ISorschiaEventFeed
     {
         T this[Guid id] { get; }
-        ISorschiaEventFeedEnumerable<T> this[DateTime timestamp] { get; }
-        ISorschiaEventFeedEnumerable<T> this[DateTime begin, DateTime end] { get; }
+        IEnumerable<T> this[DateTime timestamp] { get; }
+        IEnumerable<T> this[DateTime begin, DateTime end] { get; }
     }
 }

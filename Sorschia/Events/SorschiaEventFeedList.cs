@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sorschia.Events
 {
-    internal class SorschiaEventFeedList<TFeed> : ISorschiaEventFeedEnumerable<TFeed>
+    public sealed class SorschiaEventFeedList<TFeed> : ISorschiaEventFeedEnumerable<TFeed>
         where TFeed : ISorschiaEventFeed
     {
-        public SorschiaEventFeedList()
+        internal SorschiaEventFeedList()
         {
             _Source = new Dictionary<Guid, TFeed>();
         }
@@ -18,29 +19,53 @@ namespace Sorschia.Events
         {
             get
             {
-                throw new NotImplementedException();
+                if (id != default(Guid) && _Source.ContainsKey(id))
+                {
+                    return _Source[id];
+                }
+                else
+                {
+                    return default(TFeed);
+                }
             }
         }
 
-        public ISorschiaEventFeedEnumerable<TFeed> this[DateTime timestamp]
+        public IEnumerable<TFeed> this[DateTime timestamp]
         {
             get
             {
-                throw new NotImplementedException();
+                if (timestamp != default(DateTime))
+                {
+                    return _Source.Values.Where(f => f.Timestamp == timestamp);
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
-        public ISorschiaEventFeedEnumerable<TFeed> this[DateTime begin, DateTime end]
+        public IEnumerable<TFeed> this[DateTime begin, DateTime end]
         {
             get
             {
-                throw new NotImplementedException();
+                if (begin != default(DateTime) && end != default(DateTime))
+                {
+                    return _Source.Values.Where(f => f.Timestamp >= begin && f.Timestamp <= end);
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
         public void Add(TFeed feed)
         {
-            throw new NotImplementedException();
+            if (feed != null && !_Source.ContainsKey(feed.Id))
+            {
+                _Source.Add(feed.Id, feed);
+            }
         }
 
         public IEnumerator<TFeed> GetEnumerator()

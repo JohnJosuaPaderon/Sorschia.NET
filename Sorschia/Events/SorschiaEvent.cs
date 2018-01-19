@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace Sorschia.Events
 {
-    internal sealed class SorschiaEvent<TFeed> : ISorschiaEvent<TFeed>
+    public sealed class SorschiaEvent<TFeed> : ISorschiaEvent<TFeed>
         where TFeed : ISorschiaEventFeed
     {
-        public SorschiaEvent(ISorschiaEventManager manager)
+        internal SorschiaEvent(ISorschiaEventManager manager)
         {
             _Manager = manager;
             _Feeds = new SorschiaEventFeedList<TFeed>();
