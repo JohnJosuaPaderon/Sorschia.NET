@@ -1,6 +1,6 @@
 ﻿using Sorschia.Entity;
 
-namespace Sorschia.DevTeam.Entities
+namespace Sorschia.DevTeam.Entity
 {
     public interface ITeamCollection : IEntityCollection<ITeam, int>
     {

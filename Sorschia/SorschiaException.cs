@@ -6,6 +6,8 @@ namespace Sorschia
     [Serializable]
     public partial class SorschiaException : Exception
     {
+        public static bool EnableReporting { get; set; }
+
         public SorschiaException(SorschiaExceptionType type)
         {
             Type = type;

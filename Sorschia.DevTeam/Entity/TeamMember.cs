@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sorschia.DevTeam.Entities
+namespace Sorschia.DevTeam.Entity
 {
     public class TeamMember : Member, ITeamMember
     {

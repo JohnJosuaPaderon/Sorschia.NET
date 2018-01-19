@@ -3,7 +3,7 @@ using Sorschia.Data;
 using Sorschia.Entity.Converter;
 using System;
 
-namespace Sorschia.DailyTask.Converters
+namespace Sorschia.DailyTask.Converter
 {
     public interface IDTaskConverter : IEntityConverter<IDTask, long>
     {

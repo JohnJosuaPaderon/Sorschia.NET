@@ -1,7 +1,7 @@
 ﻿using Sorschia.Entity;
 using System;
 
-namespace Sorschia.DevTeam.Entities
+namespace Sorschia.DevTeam.Entity
 {
     public interface IAssignment : IEntity<long>
     {

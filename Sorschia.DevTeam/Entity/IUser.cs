@@ -1,7 +1,7 @@
 ﻿using Sorschia.Entity;
 using System.Security;
 
-namespace Sorschia.DevTeam.Entities
+namespace Sorschia.DevTeam.Entity
 {
     public interface IUser : IEntity<long>
     {

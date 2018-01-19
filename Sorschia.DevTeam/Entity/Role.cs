@@ -1,4 +1,4 @@
-﻿namespace Sorschia.DevTeam.Entities
+﻿namespace Sorschia.DevTeam.Entity
 {
     public enum Role
     {

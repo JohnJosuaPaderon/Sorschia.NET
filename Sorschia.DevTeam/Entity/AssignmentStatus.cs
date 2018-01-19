@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sorschia.DevTeam.Entities
+namespace Sorschia.DevTeam.Entity
 {
     [Flags]
     public enum AssignmentStatus
