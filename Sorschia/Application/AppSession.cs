@@ -6,6 +6,12 @@ namespace Sorschia.Application
 {
     public sealed class AppSession : IAppSession
     {
+        public AppSession()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        public Guid Id { get; }
         public DateTime? Begin { get; private set; }
         public DateTime? End { get; private set; }
 
