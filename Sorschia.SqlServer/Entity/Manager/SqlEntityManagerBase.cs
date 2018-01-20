@@ -5,13 +5,13 @@ namespace Sorschia.Entity.Manager
     public abstract class SqlEntityManagerBase<T, TIdentifier> : EntityManagerBase<T, TIdentifier>
         where T : IEntity<TIdentifier>
     {
-        public SqlEntityManagerBase(IProcessContextFactory contextFactory, string connectionStringKey)
+        public SqlEntityManagerBase(IProcessContextFactory contextFactory, string connectionStringKey = null)
         {
             _ContextFactory = contextFactory;
-            ConnectionStringKey = connectionStringKey;
+            ConnectionStringKey = string.IsNullOrWhiteSpace(connectionStringKey) ? LibraryResources.DefaultConnectionStringKey : connectionStringKey;
         }
 
-        private readonly IProcessContextFactory _ContextFactory;
+        protected readonly IProcessContextFactory _ContextFactory;
 
         protected IProcessContext GenerateContext()
         {
