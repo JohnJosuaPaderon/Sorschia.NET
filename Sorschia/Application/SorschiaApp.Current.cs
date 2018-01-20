@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sorschia.Data;
+using Sorschia.Entity;
 using Sorschia.Repository;
 
 namespace Sorschia.Application
@@ -60,6 +61,14 @@ namespace Sorschia.Application
             }
 
             return dataService;
+        }
+
+        public static T GetStaticEntityProvider<T>()
+            where T : IStaticEntityProvider
+        {
+            var result = GetService<T>();
+            result?.TryInitialize();
+            return result;
         }
 
         public static string GetDirectory(string key)
