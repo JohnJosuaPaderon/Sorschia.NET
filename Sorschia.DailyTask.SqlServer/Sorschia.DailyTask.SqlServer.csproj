@@ -12,8 +12,4 @@
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entity\Converter\" />
-  </ItemGroup>
-
 </Project>
