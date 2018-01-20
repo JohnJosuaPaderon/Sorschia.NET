@@ -19,4 +19,11 @@
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Convention\" />
+    <Folder Include="Converter\" />
+    <Folder Include="Entity\Manager\" />
+    <Folder Include="Entity\Process\" />
+  </ItemGroup>
+
 </Project>
