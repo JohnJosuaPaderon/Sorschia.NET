@@ -160,7 +160,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\DTaskModel.cs" />
     <Compile Include="Notifications\AddDTaskNotification.cs" />
     <Compile Include="Notifications\IAddDTaskNotification.cs" />
     <Compile Include="AppBootstrapper.cs" />
@@ -275,6 +274,9 @@
       <Project>{3531D6E5-E58E-4DBC-B093-4DB86BA13B8A}</Project>
       <Name>Sorschia</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
