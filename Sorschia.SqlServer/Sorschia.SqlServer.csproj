@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Convention\" />
-  </ItemGroup>
-
 </Project>
