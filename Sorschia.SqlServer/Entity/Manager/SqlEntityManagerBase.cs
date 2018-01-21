@@ -1,17 +1,18 @@
-﻿using Sorschia.Processing;
+﻿using Sorschia.Events;
+using Sorschia.Processing;
 
 namespace Sorschia.Entity.Manager
 {
     public abstract class SqlEntityManagerBase<T, TIdentifier> : EntityManagerBase<T, TIdentifier>
         where T : IEntity<TIdentifier>
     {
-        public SqlEntityManagerBase(IProcessContextFactory contextFactory, string connectionStringKey = null)
+        public SqlEntityManagerBase(ISorschiaEventManager eventManager, IProcessContextFactory contextFactory, string connectionStringKey = null) : base(eventManager)
         {
             _ContextFactory = contextFactory;
             ConnectionStringKey = string.IsNullOrWhiteSpace(connectionStringKey) ? LibraryResources.DefaultConnectionStringKey : connectionStringKey;
         }
 
-        protected readonly IProcessContextFactory _ContextFactory;
+        private readonly IProcessContextFactory _ContextFactory;
 
         protected IProcessContext GenerateContext()
         {
