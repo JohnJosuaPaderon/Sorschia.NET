@@ -8,4 +8,11 @@ namespace Sorschia.Processing
         IEnumerable<IProcessResult> Results { get; }
         IProcessResult Flatten();
     }
+
+    public interface IAggregateProcessResult<T> : IProcessResult
+    {
+        void Add(IProcessResult<T> result);
+        IEnumerable<IProcessResult<T>> Results { get; }
+        IProcessResult Flatten();
+    }
 }
