@@ -4,6 +4,8 @@ using Sorschia.Data;
 using Sorschia.Entity.Converter;
 using System;
 using System.Data.Common;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MyDayManager.Entity.Converter
 {
@@ -43,6 +45,18 @@ namespace MyDayManager.Entity.Converter
         protected override IAssignment Convert(DbDataReader reader)
         {
             var status = PStatus.TryGetValueFromProcess(_StatusManager.Get, reader.GetInt16, _Fields.StatusId);
+            return Convert(reader, status);
+        }
+
+        protected override async Task<IAssignment> ConvertAsync(DbDataReader reader)
+        {
+            var status = await PStatus.TryGetValueFromProcessAsync(_StatusManager.GetAsync, reader.GetInt16, _Fields.StatusId);
+            return Convert(reader, status);
+        }
+
+        protected override async Task<IAssignment> ConvertAsync(DbDataReader reader, CancellationToken cancellationToken)
+        {
+            var status = await PStatus.TryGetValueFromProcessAsync(_StatusManager.GetAsync, reader.GetInt16, _Fields.StatusId, cancellationToken);
             return Convert(reader, status);
         }
     }
