@@ -7,29 +7,38 @@ using System.Threading.Tasks;
 
 namespace Sorschia.Entity.Process
 {
-    public abstract class SqlEntityReadEnumerableProcessBase<T, TIdentifier> : SqlEntityProcessBase, IEnumerableProcess<T>
+    public abstract class SqlEntityReadEnumerableProcessBase<T, TIdentifier, TConverter> : SqlEntityProcessBase, IEnumerableProcess<T>
+        where TConverter : IEntityConverter<T, TIdentifier>
         where T : IEntity<TIdentifier>
     {
-        public SqlEntityReadEnumerableProcessBase(IDbProcessor<SqlCommand> processor, IEntityConverter<T, TIdentifier> converter, string schema = null) : base(processor, schema)
+        public SqlEntityReadEnumerableProcessBase(IDbProcessor<SqlCommand> processor, TConverter converter, string schema = null) : base(processor, schema)
         {
             _Converter = converter;
         }
 
-        private readonly IEntityConverter<T, TIdentifier> _Converter;
+        private readonly TConverter _Converter;
+
+        protected virtual void PrepareConverter(TConverter converter)
+        {
+            // TODO: Prepare the Converter proeprties.
+        }
 
         public IEnumerableProcessResult<T> Execute(IProcessContext context)
         {
-            throw new System.NotImplementedException();
+            PrepareConverter(_Converter);
+            return _Processor.ExecuteEnumerableReader(Query, context, _Converter);
         }
 
         public Task<IEnumerableProcessResult<T>> ExecuteAsync(IProcessContext context)
         {
-            throw new System.NotImplementedException();
+            PrepareConverter(_Converter);
+            return _Processor.ExecuteEnumerableReaderAsync(Query, context, _Converter);
         }
 
         public Task<IEnumerableProcessResult<T>> ExecuteAsync(IProcessContext context, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            PrepareConverter(_Converter);
+            return _Processor.ExecuteEnumerableReaderAsync(Query, context, _Converter, cancellationToken);
         }
     }
 }
