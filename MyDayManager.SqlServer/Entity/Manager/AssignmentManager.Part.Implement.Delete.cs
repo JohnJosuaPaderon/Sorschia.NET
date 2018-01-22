@@ -1,4 +1,6 @@
-﻿using Sorschia.Processing;
+﻿using MyDayManager.Entity.Process;
+using Sorschia.Application;
+using Sorschia.Processing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -14,8 +16,11 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    _Delete.Assignment = assignment;
-                    return TryRemove(_Delete.Execute(context));
+                    using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                    {
+                        process.Assignment = assignment;
+                        return TryRemove(process.Execute(context));
+                    }
                 }
             }
             else
@@ -30,8 +35,11 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    _Delete.Assignment = assignment;
-                    return TryRemove(await _Delete.ExecuteAsync(context));
+                    using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                    {
+                        process.Assignment = assignment;
+                        return TryRemove(await process.ExecuteAsync(context));
+                    }
                 }
             }
             else
@@ -46,8 +54,11 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    _Delete.Assignment = assignment;
-                    return TryRemove(await _Delete.ExecuteAsync(context, cancellationToken));
+                    using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                    {
+                        process.Assignment = assignment;
+                        return TryRemove(await process.ExecuteAsync(context, cancellationToken));
+                    }
                 }
             }
             else
@@ -66,8 +77,11 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        _Delete.Assignment = assignment;
-                        result.Add(_Delete.Execute(context));
+                        using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                        {
+                            process.Assignment = assignment;
+                            result.Add(process.Execute(context));
+                        }
                     }
 
                     return TryRemove(result);
@@ -89,8 +103,11 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        _Delete.Assignment = assignment;
-                        result.Add(await _Delete.ExecuteAsync(context));
+                        using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                        {
+                            process.Assignment = assignment;
+                            result.Add(await process.ExecuteAsync(context));
+                        }
                     }
 
                     return TryRemove(result);
@@ -112,8 +129,11 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        _Delete.Assignment = assignment;
-                        result.Add(await _Delete.ExecuteAsync(context, cancellationToken));
+                        using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                        {
+                            process.Assignment = assignment;
+                            result.Add(await process.ExecuteAsync(context, cancellationToken));
+                        }
                     }
 
                     return TryRemove(result);

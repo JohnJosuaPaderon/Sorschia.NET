@@ -1,4 +1,6 @@
-﻿using Sorschia.Processing;
+﻿using MyDayManager.Entity.Process;
+using Sorschia.Application;
+using Sorschia.Processing;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,8 +18,11 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    _GetByKey.Key = key;
-                    return TryAddUpdate(_GetByKey.Execute(context));
+                    using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
+                    {
+                        process.Key = key;
+                        return TryAddUpdate(process.Execute(context));
+                    }
                 }
             }
         }
@@ -32,8 +37,11 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    _GetByKey.Key = key;
-                    return TryAddUpdate(await _GetByKey.ExecuteAsync(context));
+                    using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
+                    {
+                        process.Key = key;
+                        return TryAddUpdate(await process.ExecuteAsync(context));
+                    }
                 }
             }
         }
@@ -48,8 +56,11 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    _GetByKey.Key = key;
-                    return TryAddUpdate(await _GetByKey.ExecuteAsync(context, cancellationToken));
+                    using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
+                    {
+                        process.Key = key;
+                        return TryAddUpdate(await process.ExecuteAsync(context, cancellationToken));
+                    }
                 }
             }
         }

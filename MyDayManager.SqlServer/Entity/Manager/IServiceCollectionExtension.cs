@@ -7,7 +7,8 @@ namespace MyDayManager.Entity.Manager
         public static IServiceCollection UseMyDayManagerEntityManager(this IServiceCollection instance)
         {
             return instance
-                .AddSingleton<IAssignmentStatusManager, AssignmentStatusManager>();
+                .AddSingleton<IAssignmentStatusManager, AssignmentStatusManager>()
+                .AddSingleton<IAssignmentManager, AssignmentManager>();
         }
     }
 }

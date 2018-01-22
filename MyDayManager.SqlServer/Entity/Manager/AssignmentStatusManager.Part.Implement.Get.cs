@@ -1,4 +1,6 @@
-﻿using Sorschia.Processing;
+﻿using MyDayManager.Entity.Process;
+using Sorschia.Application;
+using Sorschia.Processing;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,8 +20,11 @@ namespace MyDayManager.Entity.Manager
                 {
                     using (var context = GenerateContext())
                     {
-                        _Get.Id = id;
-                        return TryAddUpdate(_Get.Execute(context));
+                        using (var process = SorschiaApp.GetService<IGetAssignmentStatus>())
+                        {
+                            process.Id = id;
+                            return TryAddUpdate(process.Execute(context));
+                        }
                     }
                 }
             }
@@ -41,8 +46,11 @@ namespace MyDayManager.Entity.Manager
                 {
                     using (var context = GenerateContext())
                     {
-                        _Get.Id = id;
-                        return TryAddUpdate(await _Get.ExecuteAsync(context));
+                        using (var process = SorschiaApp.GetService<IGetAssignmentStatus>())
+                        {
+                            process.Id = id;
+                            return TryAddUpdate(await process.ExecuteAsync(context));
+                        }
                     }
                 }
             }
@@ -64,8 +72,11 @@ namespace MyDayManager.Entity.Manager
                 {
                     using (var context = GenerateContext())
                     {
-                        _Get.Id = id;
-                        return TryAddUpdate(await _Get.ExecuteAsync(context, cancellationToken));
+                        using (var process = SorschiaApp.GetService<IGetAssignmentStatus>())
+                        {
+                            process.Id = id;
+                            return TryAddUpdate(await process.ExecuteAsync(context, cancellationToken));
+                        }
                     }
                 }
             }

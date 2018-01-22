@@ -1,5 +1,4 @@
 ﻿using MyDayManager.Entity.Event;
-using MyDayManager.Entity.Process;
 using Sorschia.Events;
 using Sorschia.Processing;
 
@@ -7,16 +6,8 @@ namespace MyDayManager.Entity.Manager
 {
     internal sealed partial class AssignmentManager : CoreEntityManagerBase<IAssignment, long>, IAssignmentManager
     {
-        public AssignmentManager(
-            ISorschiaEventManager eventManager,
-            IProcessContextFactory contextFactory,
-            IDeleteAssignment delete,
-            IInsertAssignment insert,
-            IUpdateAssignment update) : base(eventManager, contextFactory)
+        public AssignmentManager(ISorschiaEventManager eventManager, IProcessContextFactory contextFactory) : base(eventManager, contextFactory)
         {
-            _Delete = delete;
-            _Insert = insert;
-            _Update = update;
             _InvalidResult = ProcessResult<IAssignment>.Failed("Assignment is invalid.");
             _EmptyResult = AggregateProcessResult<IAssignment>.Failed("Empty Assignment collection.");
 
