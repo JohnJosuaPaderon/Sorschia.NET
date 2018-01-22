@@ -19,5 +19,11 @@ namespace MyDayManager.Entity.Manager
         IAggregateProcessResult<IAssignment> Delete(IEnumerable<IAssignment> assignments);
         Task<IAggregateProcessResult<IAssignment>> DeleteAsync(IEnumerable<IAssignment> assignments);
         Task<IAggregateProcessResult<IAssignment>> DeleteAsync(IEnumerable<IAssignment> assignments, CancellationToken cancellationToken);
+        IAggregateProcessResult<IAssignment> Insert(IEnumerable<IAssignment> assignments);
+        Task<IAggregateProcessResult<IAssignment>> InsertAsync(IEnumerable<IAssignment> assignments);
+        Task<IAggregateProcessResult<IAssignment>> InsertAsync(IEnumerable<IAssignment> assignments, CancellationToken cancellationToken);
+        IAggregateProcessResult<IAssignment> Update(IEnumerable<IAssignment> assignments);
+        Task<IAggregateProcessResult<IAssignment>> UpdateAsync(IEnumerable<IAssignment> assignments);
+        Task<IAggregateProcessResult<IAssignment>> UpdateAsync(IEnumerable<IAssignment> assignments, CancellationToken cancellationToken);
     }
 }
