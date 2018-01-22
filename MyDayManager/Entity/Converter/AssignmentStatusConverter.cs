@@ -14,7 +14,7 @@ namespace MyDayManager.Entity.Converter
         }
 
         private readonly IAssignmentStatusFields _Fields;
-        public IDbDataReaderConverterProperty<string> PDescription { get; }
+        public IDbDataReaderConverterProperty<string> PDescription { get; private set; }
 
         protected override IAssignmentStatus Convert(DbDataReader reader)
         {
@@ -22,6 +22,12 @@ namespace MyDayManager.Entity.Converter
             {
                 Id = PId.TryGetValue(reader.GetInt16(_Fields.Id))
             };
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            PDescription = null;
         }
     }
 }

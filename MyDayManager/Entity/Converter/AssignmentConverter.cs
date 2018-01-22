@@ -25,10 +25,10 @@ namespace MyDayManager.Entity.Converter
         private readonly IAssignmentFields _Fields;
         private readonly IAssignmentStatusManager _StatusManager;
 
-        public IDbDataReaderConverterProperty<string> PTitle { get; }
-        public IDbDataReaderConverterProperty<string> PDescription { get; }
-        public IDbDataReaderConverterProperty<IAssignmentStatus> PStatus { get; }
-        public IDbDataReaderConverterProperty<DateTime> PDate { get; }
+        public IDbDataReaderConverterProperty<string> PTitle { get; private set; }
+        public IDbDataReaderConverterProperty<string> PDescription { get; private set; }
+        public IDbDataReaderConverterProperty<IAssignmentStatus> PStatus { get; private set; }
+        public IDbDataReaderConverterProperty<DateTime> PDate { get; private set; }
 
         private IAssignment Convert(DbDataReader reader, IAssignmentStatus status)
         {
@@ -58,6 +58,15 @@ namespace MyDayManager.Entity.Converter
         {
             var status = await PStatus.TryGetValueFromProcessAsync(_StatusManager.GetAsync, reader.GetInt16, _Fields.StatusId, cancellationToken);
             return Convert(reader, status);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            PTitle = null;
+            PDescription = null;
+            PStatus = null;
+            PDate = null;
         }
     }
 }
