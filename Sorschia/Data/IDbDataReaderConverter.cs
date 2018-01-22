@@ -1,11 +1,12 @@
 ﻿using Sorschia.Processing;
+using System;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorschia.Data
 {
-    public interface IDbDataReaderConverter<T>
+    public interface IDbDataReaderConverter<T> : IDisposable
     {
         IProcessResult<T> FromReader(DbDataReader reader);
         Task<IProcessResult<T>> FromReaderAsync(DbDataReader reader);
