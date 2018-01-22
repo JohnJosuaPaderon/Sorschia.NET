@@ -19,5 +19,10 @@ namespace Sorschia.Entity.Process
         {
             return $"{_Schema}.{GetType().Name}";
         }
+
+        public virtual void Dispose()
+        {
+            // TODO: Dispose all used resources.
+        }
     }
 }

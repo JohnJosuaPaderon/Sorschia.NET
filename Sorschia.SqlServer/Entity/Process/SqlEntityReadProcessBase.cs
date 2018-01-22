@@ -40,5 +40,10 @@ namespace Sorschia.Entity.Process
             PrepareConverter(_Converter);
             return _Processor.ExecuteReaderAsync(Query, context, _Converter, cancellationToken);
         }
+
+        public override void Dispose()
+        {
+            _Converter.Dispose();
+        }
     }
 }
