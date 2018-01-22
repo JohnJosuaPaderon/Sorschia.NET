@@ -7,8 +7,8 @@ namespace MyDayManager.Entity.Process
         public static IServiceCollection UseMyDayManagerEntityProcess(this IServiceCollection instance)
         {
             return instance
-                .AddSingleton<IGetAssignmentStatus, GetAssignmentStatus>()
-                .AddSingleton<IGetAssignmentStatusByKey, GetAssignmentStatusByKey>();
+                .AddTransient<IGetAssignmentStatus, GetAssignmentStatus>()
+                .AddTransient<IGetAssignmentStatusByKey, GetAssignmentStatusByKey>();
         }
     }
 }
