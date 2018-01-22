@@ -21,6 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Entity\Manager\EntityManagerBase.Part.TryAdd.cs" />
     <None Include="Utilities\ValueConverter.Definitions.NullableTimeSpan.cs" />
     <None Include="Utilities\ValueConverter.Definitions.Stream.cs" />
   </ItemGroup>
