@@ -10,6 +10,11 @@ namespace Sorschia.Entity.Converter
             PId = new DbDataReaderConverterProperty<TIdentifier>();
         }
 
-        public IDbDataReaderConverterProperty<TIdentifier> PId { get; }
+        public IDbDataReaderConverterProperty<TIdentifier> PId { get; private set; }
+
+        public virtual void Dispose()
+        {
+            PId = null;
+        }
     }
 }
