@@ -6,5 +6,7 @@ namespace Sorschia.Application
     {
         IServiceCollection Services { get; }
         string ConfigurationFilePath { get; }
+        string ServiceIntegratorsDirectory { get; }
+        void IntegrateServices();
     }
 }

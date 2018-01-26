@@ -5,6 +5,7 @@ namespace Sorschia.Application
     public interface IServiceIntegrator
     {
         string Key { get; }
-        IServiceCollection Integrate(IServiceCollection services);
+        string[] Tags { get; }
+        void Integrate(IServiceCollection services);
     }
 }

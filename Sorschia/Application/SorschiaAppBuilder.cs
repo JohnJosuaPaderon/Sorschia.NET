@@ -11,7 +11,7 @@ namespace Sorschia.Application
         {
             Validate();
             ConfigurationLoader.Initialize(Bootstrapper.ConfigurationFilePath);
-
+            Bootstrapper.IntegrateServices();
             var serviceProvider = Bootstrapper.Services.BuildServiceProvider();
             var directories = ConfigurationLoader.GetDirectories();
             var files = ConfigurationLoader.GetFiles();
