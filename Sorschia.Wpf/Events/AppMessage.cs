@@ -4,10 +4,10 @@ namespace Sorschia.Events
 {
     public class AppMessage
     {
-        public AppMessage(AppMessageType type, string message)
+        public AppMessage(AppMessageType type, string content)
         {
             Type = type;
-            Message = message;
+            Content = content;
             Exception = null;
         }
 
@@ -15,11 +15,11 @@ namespace Sorschia.Events
         {
             Exception = exception ?? throw SorschiaException.ParameterRequired(nameof(exception));
             Type = AppMessageType.Exception;
-            Message = "An exception has occured.";
+            Content = "An exception has occured.";
         }
 
         public AppMessageType Type { get; }
         public Exception Exception { get; }
-        public string Message { get; }
+        public string Content { get; }
     }
 }
