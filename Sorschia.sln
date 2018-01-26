@@ -11,9 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorschia.Json", "Sorschia.J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.Wpf", "Sorschia.Wpf\Sorschia.Wpf.csproj", "{75B37FF2-5A94-4B36-A2A6-189A9EBA692C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDayManager", "MyDayManager\MyDayManager.csproj", "{32930455-5331-4420-B6D9-27B2C0200BCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDayManager", "MyDayManager\MyDayManager.csproj", "{32930455-5331-4420-B6D9-27B2C0200BCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDayManager.SqlServer", "MyDayManager.SqlServer\MyDayManager.SqlServer.csproj", "{187374F0-769C-4939-8EE5-B8BADCFD4F75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDayManager.SqlServer", "MyDayManager.SqlServer\MyDayManager.SqlServer.csproj", "{187374F0-769C-4939-8EE5-B8BADCFD4F75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDayManager.Desktop", "MyDayManager.Desktop\MyDayManager.Desktop.csproj", "{4A494090-5155-4CFD-AE87-C6A23B37C48E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDayManager.Wpf", "MyDayManager.Wpf\MyDayManager.Wpf.csproj", "{2A596435-726D-43C8-9910-B9FB61AB0ED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorschia.Json.Dependency", "Sorschia.Json.Dependency\Sorschia.Json.Dependency.csproj", "{FA4FE786-2AC7-4C1B-B679-F26B2E777228}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{187374F0-769C-4939-8EE5-B8BADCFD4F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{187374F0-769C-4939-8EE5-B8BADCFD4F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{187374F0-769C-4939-8EE5-B8BADCFD4F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A494090-5155-4CFD-AE87-C6A23B37C48E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A494090-5155-4CFD-AE87-C6A23B37C48E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A494090-5155-4CFD-AE87-C6A23B37C48E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A494090-5155-4CFD-AE87-C6A23B37C48E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A596435-726D-43C8-9910-B9FB61AB0ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A596435-726D-43C8-9910-B9FB61AB0ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A596435-726D-43C8-9910-B9FB61AB0ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A596435-726D-43C8-9910-B9FB61AB0ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA4FE786-2AC7-4C1B-B679-F26B2E777228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4FE786-2AC7-4C1B-B679-F26B2E777228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4FE786-2AC7-4C1B-B679-F26B2E777228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4FE786-2AC7-4C1B-B679-F26B2E777228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
