@@ -6,11 +6,13 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Sorschia library.</Description>
-    <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
+    <Copyright>Copyright (c) 2018 John Josua R. Paderon</Copyright>
     <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
-    <Version>1.6.0</Version>
+    <Version>1.7.1</Version>
     <PackageTags>Sorschia SqlServer</PackageTags>
+    <Authors>John Josua R. Paderon</Authors>
+    <Company>Sorschia</Company>
   </PropertyGroup>
 
   <ItemGroup>
