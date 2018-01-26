@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Interactivity.InteractionRequest;
+using Prism.Regions;
 using System;
 
 namespace Sorschia.ViewModels
@@ -34,6 +35,16 @@ namespace Sorschia.ViewModels
                     RaisePropertyChanged();
                 }
             }
+        }
+
+        public override void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            throw SorschiaException.InvalidOperation("Navigating to Popup is invalid.");
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            throw SorschiaException.InvalidOperation("Navigating from Popup is invalid.");
         }
 
         protected virtual void Close()
