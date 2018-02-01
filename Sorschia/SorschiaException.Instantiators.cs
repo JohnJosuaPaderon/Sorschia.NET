@@ -24,6 +24,11 @@ namespace Sorschia
             return new SorschiaException("Connection string is invalid.", SorschiaExceptionType.InvalidConnectionString);
         }
 
+        public static SorschiaException InvalidValue(string variableName, string additionalMessage)
+        {
+            return new SorschiaException($"Value for variable '{variableName}' is required and cannot be set to null or default.{(string.IsNullOrWhiteSpace(additionalMessage) ? string.Empty : Environment.NewLine)}{additionalMessage}", SorschiaExceptionType.InvalidValue);
+        }
+
         public static SorschiaException ValidationFailed(string message)
         {
             return new SorschiaException(message, SorschiaExceptionType.ValidationFailed);
@@ -31,7 +36,12 @@ namespace Sorschia
 
         public static SorschiaException EmptyCollection(string collectionName)
         {
-            return new SorschiaException($"The collection '{collectionName}' is empty.", SorschiaExceptionType.EmptyCollection);
+            return EmptyCollection(collectionName, string.Empty);
+        }
+
+        public static SorschiaException EmptyCollection(string collectionName, string additionalMessage)
+        {
+            return new SorschiaException($"The collection '{collectionName}' is empty.{(string.IsNullOrWhiteSpace(additionalMessage) ? string.Empty : Environment.NewLine)}{additionalMessage}", SorschiaExceptionType.EmptyCollection);
         }
 
         public static SorschiaException ParseError(string message)

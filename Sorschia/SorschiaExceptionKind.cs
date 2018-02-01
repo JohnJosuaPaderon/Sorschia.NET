@@ -15,6 +15,7 @@
         FileNotFound,
         AppFailure,
         ParseError,
-        FieldRequired
+        FieldRequired,
+        InvalidValue
     }
 }
