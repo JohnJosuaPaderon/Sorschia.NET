@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Sorschia.Configuration</RootNamespace>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>John Josua R. Paderon</Authors>
+    <Company>Sorschia</Company>
+    <Description>Sorschia Library.</Description>
+    <Copyright>Copyright (c) 2018 John Josua R. Paderon</Copyright>
+    <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
+    <PackageTags>Sorschia Configuration ConnectionString Json</PackageTags>
+    <Version>1.7.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sorschia.Configuration.ConnectionString\Sorschia.Configuration.ConnectionString.csproj" />
+    <ProjectReference Include="..\Sorschia.Json\Sorschia.Json.csproj" />
+  </ItemGroup>
+
+</Project>
