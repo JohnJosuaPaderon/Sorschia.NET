@@ -1,7 +1,0 @@
-﻿<Application x:Class="MyDayManager.Desktop.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Application.Resources>
-        <ResourceDictionary Source="/MyDayManager.Wpf;component/Styles/Default.xaml"/>
-    </Application.Resources>
-</Application>
