@@ -16,7 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sorschia.Security\Sorschia.Security.csproj" />
+    <ProjectReference Include="..\Sorschia.Utilities\Sorschia.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

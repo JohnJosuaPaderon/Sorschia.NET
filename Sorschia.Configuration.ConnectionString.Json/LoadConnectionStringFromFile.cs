@@ -13,7 +13,7 @@ namespace Sorschia.Configuration
 
             if (string.IsNullOrWhiteSpace(content))
             {
-                throw SorschiaException.InvalidValue(nameof(content), "Loaded json contains no data.");
+                throw SorschiaConnectionStringException.EmptySource();
             }
 
             var jArray = Parse(content);
@@ -40,7 +40,7 @@ namespace Sorschia.Configuration
                 }
                 else
                 {
-                    throw SorschiaException.EmptyCollection(nameof(parsed), "Parsed json array has no item.");
+                    throw SorschiaConnectionStringException.ParseError();
                 }
             }
             catch (Exception ex)

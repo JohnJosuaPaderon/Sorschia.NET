@@ -6,7 +6,7 @@
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw SorschiaException.ValidationFailed("Failed to validate Connection String Key.");
+                throw SorschiaConnectionStringException.InvalidKey();
             }
         }
 
@@ -14,7 +14,7 @@
         {
             if (string.IsNullOrWhiteSpace(connectionString))
             {
-                throw SorschiaException.ValidationFailed("Failed to validate Connection String.");
+                throw SorschiaConnectionStringException.InvalidValue();
             }
         }
 
@@ -22,7 +22,7 @@
         {
             if (connectionString == null)
             {
-                throw SorschiaException.ValidationFailed("Failed to validate Connection String.");
+                throw SorschiaConnectionStringException.Invalid();
             }
 
             ValidateKey(connectionString.Key);

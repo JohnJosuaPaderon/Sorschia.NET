@@ -1,7 +1,4 @@
-﻿using Sorschia.Application;
-using System.Configuration;
-using System.Windows;
-using Sorschia.Extensions;
+﻿using System.Windows;
 
 namespace MyDayManager.Desktop
 {
@@ -10,16 +7,16 @@ namespace MyDayManager.Desktop
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var appConfigurationLoader = ExternalAppConfigurationLoader.GetExternal(ConfigurationManager.AppSettings.GetString("AppConfigurationLoaderExternal"));
-            SorschiaApp.Build(appConfigurationLoader, new AppBootstrapper());
-            SorschiaApp.StartCurrent();
-            new UiBootstrapper().Run();
+            //var appConfigurationLoader = ExternalAppConfigurationLoader.GetExternal(ConfigurationManager.AppSettings.GetString("AppConfigurationLoaderExternal"));
+            //SorschiaApp.Build(appConfigurationLoader, new AppBootstrapper());
+            //SorschiaApp.StartCurrent();
+            //new UiBootstrapper().Run();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            SorschiaApp.StopCurrent();
+            //SorschiaApp.StopCurrent();
         }
     }
 }

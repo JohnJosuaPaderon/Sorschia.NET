@@ -8,7 +8,7 @@ namespace Sorschia.Configuration
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {
-                throw SorschiaException.FieldRequired(nameof(filePath));
+                throw SorschiaException.ValidationFailed("Invalid path of connection string.");
             }
             else if (!File.Exists(filePath))
             {

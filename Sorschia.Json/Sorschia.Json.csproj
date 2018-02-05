@@ -6,11 +6,13 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Sorschia library.</Description>
-    <Copyright>Copyright (c) 2017 John Josua R. Paderon</Copyright>
+    <Copyright>Copyright (c) 2018 John Josua R. Paderon</Copyright>
     <PackageIconUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/logo.png?raw=true</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/JohnJosuaPaderon/Sorschia.NET/blob/master/LICENSE</PackageLicenseUrl>
     <Version>1.7.1</Version>
     <PackageTags>Sorschia Json</PackageTags>
+    <Authors>John Josua R. Paderon</Authors>
+    <Company>Sorschia</Company>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sorschia.Utilities\Sorschia.Utilities.csproj" />
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 

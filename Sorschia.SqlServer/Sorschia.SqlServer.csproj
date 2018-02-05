@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sorschia.Data.Processing\Sorschia.Data.Processing.csproj" />
+    <ProjectReference Include="..\Sorschia.Entity\Sorschia.Entity.csproj" />
+    <ProjectReference Include="..\Sorschia.Processing\Sorschia.Processing.csproj" />
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 

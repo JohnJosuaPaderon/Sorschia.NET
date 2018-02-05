@@ -8,7 +8,7 @@ namespace Sorschia.Configuration
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw SorschiaException.ParameterRequired(nameof(key));
+                throw SorschiaConnectionStringException.InvalidKey();
             }
 
             Key = key;

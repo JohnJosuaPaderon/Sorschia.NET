@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sorschia.Data\Sorschia.Data.csproj" />
-    <ProjectReference Include="..\Sorschia.Entity\Sorschia.Entity.csproj" />
     <ProjectReference Include="..\Sorschia\Sorschia.csproj" />
   </ItemGroup>
 

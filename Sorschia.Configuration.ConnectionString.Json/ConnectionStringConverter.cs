@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Sorschia.Extensions;
-using Sorschia.Utilities;
+using Sorschia.Security;
 
 namespace Sorschia.Configuration
 {

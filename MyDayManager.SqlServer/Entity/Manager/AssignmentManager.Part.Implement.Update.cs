@@ -1,6 +1,5 @@
-﻿using MyDayManager.Entity.Process;
-using Sorschia.Application;
-using Sorschia.Processing;
+﻿using Sorschia.Processing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -16,11 +15,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IUpdateAssignment>())
-                    {
-                        process.Assignment = assignment;
-                        return TryUpdate(process.Execute(context));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IUpdateAssignment>())
+                    //{
+                    //    process.Assignment = assignment;
+                    //    return TryUpdate(process.Execute(context));
+                    //}
                 }
             }
             else
@@ -35,11 +35,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IUpdateAssignment>())
-                    {
-                        process.Assignment = assignment;
-                        return TryUpdate(await process.ExecuteAsync(context));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IUpdateAssignment>())
+                    //{
+                    //    process.Assignment = assignment;
+                    //    return TryUpdate(await process.ExecuteAsync(context));
+                    //}
                 }
             }
             else
@@ -54,11 +55,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IUpdateAssignment>())
-                    {
-                        process.Assignment = assignment;
-                        return TryUpdate(await process.ExecuteAsync(context, cancellationToken));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IUpdateAssignment>())
+                    //{
+                    //    process.Assignment = assignment;
+                    //    return TryUpdate(await process.ExecuteAsync(context, cancellationToken));
+                    //}
                 }
             }
             else
@@ -77,11 +79,12 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        using (var process = SorschiaApp.GetService<IUpdateAssignment>())
-                        {
-                            process.Assignment = assignment;
-                            result.Add(process.Execute(context));
-                        }
+                        throw new NotImplementedException();
+                        //using (var process = SorschiaApp.GetService<IUpdateAssignment>())
+                        //{
+                        //    process.Assignment = assignment;
+                        //    result.Add(process.Execute(context));
+                        //}
                     }
 
                     return TryUpdate(result);
@@ -103,11 +106,11 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        using (var process = SorschiaApp.GetService<IUpdateAssignment>())
-                        {
-                            process.Assignment = assignment;
-                            result.Add(await process.ExecuteAsync(context));
-                        }
+                        //using (var process = SorschiaApp.GetService<IUpdateAssignment>())
+                        //{
+                        //    process.Assignment = assignment;
+                        //    result.Add(await process.ExecuteAsync(context));
+                        //}
                     }
 
                     return TryUpdate(result);
@@ -129,11 +132,11 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        using (var process = SorschiaApp.GetService<IUpdateAssignment>())
-                        {
-                            process.Assignment = assignment;
-                            result.Add(await process.ExecuteAsync(context, cancellationToken));
-                        }
+                        //using (var process = SorschiaApp.GetService<IUpdateAssignment>())
+                        //{
+                        //    process.Assignment = assignment;
+                        //    result.Add(await process.ExecuteAsync(context, cancellationToken));
+                        //}
                     }
 
                     return TryUpdate(result);

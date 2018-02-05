@@ -1,14 +1,9 @@
-﻿using Sorschia.Application;
-
-namespace Sorschia.Convention
+﻿namespace Sorschia.Convention
 {
     public abstract partial class NameBase
     {
         static NameBase()
         {
-            _AcronymBuilder = SorschiaApp.GetService<IAcronymBuilder>();
-            _FullNameBuilder = SorschiaApp.GetService<IFullNameBuilder>();
-            _InformalFullNameBuilder = SorschiaApp.GetService<IInformalFullNameBuilder>();
         }
 
         private static readonly IAcronymBuilder _AcronymBuilder;

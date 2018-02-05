@@ -1,4 +1,4 @@
-﻿using Sorschia.Utilities;
+﻿using Sorschia.Security;
 
 namespace Sorschia.Configuration
 {

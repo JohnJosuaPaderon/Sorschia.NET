@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Sorschia.Configuration;
 
 namespace Sorschia
 {
@@ -8,9 +7,7 @@ namespace Sorschia
         public static IServiceCollection UseJson(this IServiceCollection instance, string connectionStringSourceFilePath)
         {
             return instance
-                .AddSingleton<IJsonFromFileParser, JsonFromFileParser>()
-                .UseConnectionStringSource<JsonConnectionStringSource>()
-                .UseJsonConnectionStringSourceFromFileLoader(connectionStringSourceFilePath);
+                .AddSingleton<IJsonFromFileParser, JsonFromFileParser>();
         }
     }
 }

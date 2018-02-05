@@ -1,6 +1,5 @@
-﻿using MyDayManager.Entity.Process;
-using Sorschia.Application;
-using Sorschia.Processing;
+﻿using Sorschia.Processing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -16,11 +15,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IDeleteAssignment>())
-                    {
-                        process.Assignment = assignment;
-                        return TryRemove(process.Execute(context));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                    //{
+                    //    process.Assignment = assignment;
+                    //    return TryRemove(process.Execute(context));
+                    //}
                 }
             }
             else
@@ -35,11 +35,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IDeleteAssignment>())
-                    {
-                        process.Assignment = assignment;
-                        return TryRemove(await process.ExecuteAsync(context));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                    //{
+                    //    process.Assignment = assignment;
+                    //    return TryRemove(await process.ExecuteAsync(context));
+                    //}
                 }
             }
             else
@@ -54,11 +55,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IDeleteAssignment>())
-                    {
-                        process.Assignment = assignment;
-                        return TryRemove(await process.ExecuteAsync(context, cancellationToken));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                    //{
+                    //    process.Assignment = assignment;
+                    //    return TryRemove(await process.ExecuteAsync(context, cancellationToken));
+                    //}
                 }
             }
             else
@@ -77,11 +79,12 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        using (var process = SorschiaApp.GetService<IDeleteAssignment>())
-                        {
-                            process.Assignment = assignment;
-                            result.Add(process.Execute(context));
-                        }
+                        throw new NotImplementedException();
+                        //using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                        //{
+                        //    process.Assignment = assignment;
+                        //    result.Add(process.Execute(context));
+                        //}
                     }
 
                     return TryRemove(result);
@@ -103,11 +106,12 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        using (var process = SorschiaApp.GetService<IDeleteAssignment>())
-                        {
-                            process.Assignment = assignment;
-                            result.Add(await process.ExecuteAsync(context));
-                        }
+                        throw new NotImplementedException();
+                        //using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                        //{
+                        //    process.Assignment = assignment;
+                        //    result.Add(await process.ExecuteAsync(context));
+                        //}
                     }
 
                     return TryRemove(result);
@@ -129,11 +133,12 @@ namespace MyDayManager.Entity.Manager
 
                     foreach (var assignment in assignments)
                     {
-                        using (var process = SorschiaApp.GetService<IDeleteAssignment>())
-                        {
-                            process.Assignment = assignment;
-                            result.Add(await process.ExecuteAsync(context, cancellationToken));
-                        }
+                        throw new NotImplementedException();
+                        //using (var process = SorschiaApp.GetService<IDeleteAssignment>())
+                        //{
+                        //    process.Assignment = assignment;
+                        //    result.Add(await process.ExecuteAsync(context, cancellationToken));
+                        //}
                     }
 
                     return TryRemove(result);

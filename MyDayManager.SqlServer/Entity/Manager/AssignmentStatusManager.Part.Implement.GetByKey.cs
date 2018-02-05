@@ -1,6 +1,5 @@
-﻿using MyDayManager.Entity.Process;
-using Sorschia.Application;
-using Sorschia.Processing;
+﻿using Sorschia.Processing;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,11 +17,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
-                    {
-                        process.Key = key;
-                        return TryAddUpdate(process.Execute(context));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
+                    //{
+                    //    process.Key = key;
+                    //    return TryAddUpdate(process.Execute(context));
+                    //}
                 }
             }
         }
@@ -37,11 +37,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
-                    {
-                        process.Key = key;
-                        return TryAddUpdate(await process.ExecuteAsync(context));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
+                    //{
+                    //    process.Key = key;
+                    //    return TryAddUpdate(await process.ExecuteAsync(context));
+                    //}
                 }
             }
         }
@@ -56,11 +57,12 @@ namespace MyDayManager.Entity.Manager
             {
                 using (var context = GenerateContext())
                 {
-                    using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
-                    {
-                        process.Key = key;
-                        return TryAddUpdate(await process.ExecuteAsync(context, cancellationToken));
-                    }
+                    throw new NotImplementedException();
+                    //using (var process = SorschiaApp.GetService<IGetAssignmentStatusByKey>())
+                    //{
+                    //    process.Key = key;
+                    //    return TryAddUpdate(await process.ExecuteAsync(context, cancellationToken));
+                    //}
                 }
             }
         }

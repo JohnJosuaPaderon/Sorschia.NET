@@ -115,6 +115,10 @@
       <Project>{32930455-5331-4420-B6D9-27B2C0200BCF}</Project>
       <Name>MyDayManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sorschia.Entity\Sorschia.Entity.csproj">
+      <Project>{9C034F4A-65B2-4FF7-9994-664D9D6E4D5B}</Project>
+      <Name>Sorschia.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sorschia.Wpf\Sorschia.Wpf.csproj">
       <Project>{75b37ff2-5a94-4b36-a2a6-189a9eba692c}</Project>
       <Name>Sorschia.Wpf</Name>
