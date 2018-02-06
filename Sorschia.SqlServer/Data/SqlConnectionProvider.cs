@@ -1,25 +1,17 @@
 ﻿using Sorschia.Data.Processing;
 using Sorschia.Processing;
-using System;
+using Sorschia.Security;
 using System.Data.SqlClient;
 
 namespace Sorschia.Data
 {
     public sealed class SqlConnectionProvider : DbConnectionProviderBase<SqlConnection>, IDbConnectionProvider<SqlConnection>
     {
-        //public SqlConnectionProvider(IConnectionStringSource connectionStringSource)
-        //{
-        //    _ConnectionStringSource = connectionStringSource;
-        //}
-
-        //private readonly IConnectionStringSource _ConnectionStringSource;
-
         protected override SqlConnection Instantiate(IProcessContext processContext)
         {
             if (processContext is DbProcessContext dbProcessContext)
             {
-                throw new NotImplementedException();
-                // return new SqlConnection(_ConnectionStringSource[dbProcessContext.ConnectionStringKey]);
+                return new SqlConnection(SecureStringConverter.Convert(dbProcessContext.SecureConnectionString));
             }
             else
             {

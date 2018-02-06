@@ -1,16 +1,17 @@
 ﻿using Sorschia.Data.Processing;
 using Sorschia.Events;
 using Sorschia.Processing;
+using System.Security;
 
 namespace Sorschia.Entity.Manager
 {
     public abstract class SqlEntityManagerBase<T, TIdentifier> : EntityManagerBase<T, TIdentifier>
         where T : IEntity<TIdentifier>
     {
-        public SqlEntityManagerBase(ISorschiaEventManager eventManager, IProcessContextFactory contextFactory, string connectionStringKey = null) : base(eventManager)
+        public SqlEntityManagerBase(ISorschiaEventManager eventManager, IProcessContextFactory contextFactory, SecureString secureConnectionString = null) : base(eventManager)
         {
             _ContextFactory = contextFactory;
-            ConnectionStringKey = string.IsNullOrWhiteSpace(connectionStringKey) ? LibraryResources.DefaultConnectionStringKey : connectionStringKey;
+            _SecureConnectionString = secureConnectionString ?? throw SorschiaException.ParameterRequired(nameof(secureConnectionString));
         }
 
         private readonly IProcessContextFactory _ContextFactory;
@@ -21,7 +22,7 @@ namespace Sorschia.Entity.Manager
 
             if (context is DbProcessContext dbProcessContext)
             {
-                dbProcessContext.ConnectionStringKey = ConnectionStringKey;
+                dbProcessContext.SecureConnectionString = _SecureConnectionString;
                 return context; 
             }
             else
@@ -30,6 +31,6 @@ namespace Sorschia.Entity.Manager
             }
         }
 
-        private readonly string ConnectionStringKey;
+        private readonly SecureString _SecureConnectionString;
     }
 }

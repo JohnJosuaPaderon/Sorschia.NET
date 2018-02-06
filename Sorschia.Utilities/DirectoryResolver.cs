@@ -10,10 +10,7 @@ namespace Sorschia.Utilities
             {
                 throw SorschiaException.ParameterRequired(nameof(directory));
             }
-            else if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
+            Directory.CreateDirectory(directory);
         }
     }
 }

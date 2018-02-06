@@ -4,6 +4,9 @@
     {
         static NameBase()
         {
+            _AcronymBuilder = SorschiaServiceResolver.Resolve<IAcronymBuilder>();
+            _FullNameBuilder = SorschiaServiceResolver.Resolve<IFullNameBuilder>();
+            _InformalFullNameBuilder = SorschiaServiceResolver.Resolve<IInformalFullNameBuilder>();
         }
 
         private static readonly IAcronymBuilder _AcronymBuilder;
